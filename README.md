@@ -28,6 +28,8 @@ language for AI-generated websites and Web UI.
 
 SongStyle AI Design System is under active development toward `v0.1.0`.
 
+Website: https://robbyshao-8ag.github.io/songstyle-ai-design-system/
+
 ## Read The Documentation / 阅读文档
 
 - [中文宣言](docs/manifesto/zh.md)

@@ -226,15 +226,8 @@ GitHub Pages deployment, and v0.1.0 release all satisfy the plans.
 
 ## Publication Prerequisite
 
-Local development is not blocked, but publication is currently blocked by
-authentication:
-
-- The `gh` command is not installed in the current environment.
-- The GitHub connector currently has no authorized accounts.
-
-Before the Phase 3 publication task, authorize the GitHub connector for
-`RobbyShao-8ag` or install and authenticate `gh`. Do not create a repository
-under a different account.
+Publication authentication has been verified for `RobbyShao-8ag` through the
+installed `gh` CLI. Do not create a repository under a different account.
 
 ## External References Used by This Plan
 

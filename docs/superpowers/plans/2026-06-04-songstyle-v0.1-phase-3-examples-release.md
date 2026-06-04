@@ -822,7 +822,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4
 ```
 
 - [ ] **Step 3: Verify workflows are covered and commit**
