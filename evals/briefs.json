@@ -1,0 +1,30 @@
+[
+  {
+    "id": "lifestyle-landing",
+    "title": "Contemporary home objects landing page",
+    "brief": "Design a landing page for a contemporary home objects brand. Introduce one flagship tabletop object, communicate material quality and daily use, provide a clear purchase path, and establish trust without using ancient-style decoration.",
+    "mustPreserve": ["Primary product category", "Purchase path", "Trust information"],
+    "risksToDetect": ["Decorative cultural symbols", "Empty space without purpose"]
+  },
+  {
+    "id": "digital-product-landing",
+    "title": "AI research workspace landing page",
+    "brief": "Design a landing page for an AI research workspace. Explain source collection, synthesis, collaboration, and a clear trial path without neon AI styling or excessive feature cards.",
+    "mustPreserve": ["Source collection", "Synthesis", "Collaboration", "Trial path"],
+    "risksToDetect": ["Neon AI styling", "Excessive feature cards"]
+  },
+  {
+    "id": "necessary-density",
+    "title": "Information-dense research results workspace",
+    "brief": "Design a research-results workspace containing filters, citations, status, and comparison data. It must remain information-dense enough for expert work while applying SongStyle order and restraint.",
+    "mustPreserve": ["Filters", "Citations", "Status", "Comparison data"],
+    "risksToDetect": ["Removing necessary expert information", "Empty space that slows work"]
+  },
+  {
+    "id": "overdecorated-existing-page",
+    "title": "Overdecorated existing product page",
+    "brief": "Review and redesign an existing product page with strong gradients, decorative particles, competing calls to action, repeated selling points, and cultural motifs unrelated to the product.",
+    "mustPreserve": ["Product value", "Primary call to action", "Necessary trust information"],
+    "risksToDetect": ["Decorative excess", "Unrelated cultural motifs", "Repeated selling points"]
+  }
+]

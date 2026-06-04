@@ -1,0 +1,60 @@
+{
+  "version": "0.1.0",
+  "scale": {
+    "0": "Fails the dimension and harms the page goal.",
+    "1": "Major problems dominate.",
+    "2": "Mixed result with clear improvement needed.",
+    "3": "Meets the dimension with minor issues.",
+    "4": "Strong, deliberate, and well explained."
+  },
+  "dimensions": [
+    {
+      "id": "information-necessity",
+      "nameZh": "信息必要性",
+      "nameEn": "Information Necessity",
+      "question": "页面中的每一条信息是否都支持用户任务或业务目标？",
+      "good": "保留的信息有明确作用，次要内容被延后或移除。",
+      "risk": "为了显得丰富而堆叠模块、卖点和重复文案。"
+    },
+    {
+      "id": "hierarchy-clarity",
+      "nameZh": "层级清晰度",
+      "nameEn": "Hierarchy Clarity",
+      "question": "用户能否迅速理解页面重点、阅读顺序与主要行动？",
+      "good": "重点明确，信息关系稳定，行动优先级清楚。",
+      "risk": "标题、卡片、色彩和行动彼此竞争。"
+    },
+    {
+      "id": "functional-negative-space",
+      "nameZh": "功能性留白",
+      "nameEn": "Functional Negative Space",
+      "question": "留白是否承担聚焦、分组、节奏、呼吸或联想的功能？",
+      "good": "空间帮助用户理解内容关系，并为阅读建立节奏。",
+      "risk": "空白只为显得高级，造成信息割裂或操作低效。"
+    },
+    {
+      "id": "appropriate-stopping",
+      "nameZh": "适度停止",
+      "nameEn": "Appropriate Stopping",
+      "question": "当表达已经充分时，设计是否停止继续添加？",
+      "good": "色彩、装饰和动效都有明确理由，完成任务后不再叠加。",
+      "risk": "因为工具可以生成更多，就继续加入视觉效果和模块。"
+    },
+    {
+      "id": "order-not-symbols",
+      "nameZh": "秩序而非符号",
+      "nameEn": "Order, Not Symbols",
+      "question": "文化气质是否主要来自秩序与关系，而不是装饰符号？",
+      "good": "宋式感来自比例、节奏、材料感与克制表达。",
+      "risk": "依赖水墨、印章、传统纹样或书法字体作为文化捷径。"
+    },
+    {
+      "id": "usability-accessibility-goals",
+      "nameZh": "可用性、可访问性与目标",
+      "nameEn": "Usability, Accessibility, and Goals",
+      "question": "页面是否仍然可用、可访问、真实，并与业务目标一致？",
+      "good": "审美选择支持用户完成任务，并保留必要信息密度。",
+      "risk": "为了留白或风格牺牲对比度、操作效率、真实性或转化路径。"
+    }
+  ]
+}

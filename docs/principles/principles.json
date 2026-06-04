@@ -1,0 +1,56 @@
+[
+  {
+    "id": "less-with-order",
+    "nameZh": "少而有序",
+    "nameEn": "Less, With Order",
+    "summaryZh": "减少信息不是目的，建立清晰而稳定的关系才是目的。",
+    "summaryEn": "Reducing information is not the goal; creating clear and stable relationships is.",
+    "reviewQuestionZh": "如果移除这个元素，用户的理解是否会变差？",
+    "reviewQuestionEn": "If this element is removed, does the user's understanding become worse?"
+  },
+  {
+    "id": "space-creates-meaning",
+    "nameZh": "留白生意",
+    "nameEn": "Space Creates Meaning",
+    "summaryZh": "留白是用于聚焦、节奏、呼吸与联想的主动设计元素。",
+    "summaryEn": "Negative space is an active design element for focus, rhythm, breathing, and association.",
+    "reviewQuestionZh": "这块空间承担了什么功能？",
+    "reviewQuestionEn": "What function does this space perform?"
+  },
+  {
+    "id": "restraint-knows-measure",
+    "nameZh": "克制有度",
+    "nameEn": "Restraint Knows Its Measure",
+    "summaryZh": "当信息、色彩、装饰与动效完成任务后，设计就应当停止。",
+    "summaryEn": "When information, color, decoration, and motion have completed their task, the design should stop.",
+    "reviewQuestionZh": "这个新增内容是在改善意义，还是只是在证明还能添加更多？",
+    "reviewQuestionEn": "Is this addition improving meaning, or only proving that more can be added?"
+  },
+  {
+    "id": "quietness-reveals-truth",
+    "nameZh": "平淡见真",
+    "nameEn": "Quietness Reveals Truth",
+    "summaryZh": "设计通过真实内容、准确结构与长期可读性建立价值，而不是依赖强刺激。",
+    "summaryEn": "Design builds value through truthful content, accurate structure, and long-term readability rather than intense stimulation.",
+    "reviewQuestionZh": "在第一次视觉印象之后，它仍然会显得有价值吗？",
+    "reviewQuestionEn": "Would this still feel valuable after the first visual impression?"
+  },
+  {
+    "id": "warmth-makes-technology-approachable",
+    "nameZh": "温润可亲",
+    "nameEn": "Warmth Makes Technology Approachable",
+    "summaryZh": "色彩、材质、光线、动效与语言应让技术具有可信赖的人性尺度。",
+    "summaryEn": "Color, material, light, motion, and language should give technology a trustworthy human scale.",
+    "reviewQuestionZh": "界面是否平静可信，同时没有变得含糊？",
+    "reviewQuestionEn": "Does the interface feel calm and credible without becoming vague?"
+  },
+  {
+    "id": "suggestion-leaves-resonance",
+    "nameZh": "含蓄留韵",
+    "nameEn": "Suggestion Leaves Resonance",
+    "summaryZh": "设计不必一次解释全部意义，但不能隐藏必要信息。",
+    "summaryEn": "Design does not need to explain every meaning at once, but it must not hide necessary information.",
+    "reviewQuestionZh": "什么可以被暗示，而不必完全说明？",
+    "reviewQuestionEn": "What can be suggested rather than fully stated?"
+  }
+]
