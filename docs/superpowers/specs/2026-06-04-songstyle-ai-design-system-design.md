@@ -2,7 +2,7 @@
 
 ## Design Specification
 
-- Status: Proposed for user review
+- Status: Approved
 - Date: 2026-06-04
 - Author: RobbyShao-8ag
 - Target repository: `RobbyShao-8ag/songstyle-ai-design-system`
