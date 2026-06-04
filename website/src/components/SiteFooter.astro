@@ -1,0 +1,43 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-title">宋式 AI 设计系统</p>
+      <p>Created by RobbyShao-8ag</p>
+    </div>
+    <div>
+      <p>Code and executable assets: MIT</p>
+      <p>Documentation and examples: CC BY 4.0</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: var(--song-space-section-compact);
+    border-top: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+    color: var(--song-color-text-muted);
+    font-size: var(--song-typography-size-small);
+    line-height: var(--song-typography-line-height-body);
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: var(--song-space-scale-8);
+  }
+
+  .footer-title {
+    color: var(--song-color-text-primary);
+    font-family: var(--song-typography-family-display);
+    font-size: var(--song-typography-size-lead);
+  }
+
+  p {
+    margin: 0 0 var(--song-space-scale-2);
+  }
+
+  @media (min-width: 720px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

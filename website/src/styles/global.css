@@ -1,0 +1,109 @@
+@import "../../../design-tokens/dist/songstyle.css";
+
+:root {
+  color: var(--song-color-text-primary);
+  background: var(--song-color-background-canvas);
+  font-family: var(--song-typography-family-body);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--song-color-background-canvas);
+  color: var(--song-color-text-primary);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--song-color-accent-primary);
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(100% - (2 * var(--song-space-page-gutter)), 1180px);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  margin: 0 0 var(--song-space-scale-4);
+  color: var(--song-color-accent-primary);
+  font-size: var(--song-typography-size-small);
+  font-weight: var(--song-typography-weight-medium);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.display-title {
+  margin: 0;
+  max-width: 14ch;
+  font-family: var(--song-typography-family-display);
+  font-size: clamp(var(--song-typography-size-display), 8vw, var(--song-typography-size-display-large));
+  font-weight: var(--song-typography-weight-regular);
+  line-height: var(--song-typography-line-height-tight);
+  letter-spacing: -0.04em;
+}
+
+.body-copy {
+  max-width: 42rem;
+  color: var(--song-color-text-secondary);
+  font-size: var(--song-typography-size-lead);
+  line-height: var(--song-typography-line-height-relaxed);
+}
+
+.quiet-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--song-space-scale-2);
+  color: var(--song-color-accent-primary);
+  font-weight: var(--song-typography-weight-medium);
+  text-decoration-thickness: var(--song-shape-border-width);
+  text-underline-offset: var(--song-space-scale-2);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  top: var(--song-space-scale-4);
+  left: var(--song-space-scale-4);
+  padding: var(--song-space-scale-3) var(--song-space-scale-4);
+  border-radius: var(--song-shape-radius-control);
+  background: var(--song-color-text-primary);
+  color: var(--song-color-background-canvas);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (min-width: 720px) {
+  .container {
+    width: min(100% - (2 * var(--song-space-page-gutter-wide)), 1180px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

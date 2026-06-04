@@ -1,0 +1,57 @@
+---
+import { withBase } from "../lib/paths";
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={withBase("/")}>SongStyle AI Design System</a>
+    <nav aria-label="主导航">
+      <a href={withBase("/")}>首页</a>
+      <a href={withBase("/reference-ui/")}>Reference UI</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+  }
+
+  .header-inner {
+    display: flex;
+    min-height: var(--song-space-scale-16);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--song-space-scale-4);
+  }
+
+  .brand {
+    font-family: var(--song-typography-family-display);
+    font-weight: var(--song-typography-weight-medium);
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    gap: var(--song-space-scale-6);
+    color: var(--song-color-text-secondary);
+    font-size: var(--song-typography-size-small);
+  }
+
+  nav a {
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--song-color-accent-primary);
+  }
+
+  @media (max-width: 560px) {
+    .header-inner {
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      padding-block: var(--song-space-scale-4);
+    }
+  }
+</style>

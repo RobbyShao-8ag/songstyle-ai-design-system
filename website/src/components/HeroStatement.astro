@@ -1,0 +1,38 @@
+---
+import { withBase } from "../lib/paths";
+---
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">宋式 AI 设计系统</p>
+    <h1 class="display-title">AI 不懂得何时停止。</h1>
+    <p class="hero-statement">宋式设计，在有限表达中建立秩序，在留白之中留下余韵。</p>
+    <p class="body-copy">
+      SongStyle 不是古风装饰，也不是把界面变得空旷。它是一套帮助人和 AI
+      判断什么应该存在、什么应该删减、以及表达应在何处停止的现代设计语言。
+    </p>
+    <a class="quiet-link" href={withBase("/reference-ui/")}>查看 Reference UI <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    min-height: min(78vh, 760px);
+    align-items: center;
+    padding-block: var(--song-space-section-spacious);
+  }
+
+  .hero-statement {
+    max-width: 28ch;
+    margin: var(--song-space-scale-8) 0 var(--song-space-scale-6);
+    color: var(--song-color-text-secondary);
+    font-family: var(--song-typography-family-display);
+    font-size: var(--song-typography-size-title-small);
+    line-height: var(--song-typography-line-height-body);
+  }
+
+  .body-copy {
+    margin: 0 0 var(--song-space-scale-8);
+  }
+</style>
