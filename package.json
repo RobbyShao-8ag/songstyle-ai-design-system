@@ -10,15 +10,17 @@
   },
   "scripts": {
     "dev": "npm run tokens:build && astro dev",
-    "build": "npm run tokens:build && astro check && astro build",
+    "build": "npm run tokens:build && npm run skills:build && astro check && astro build",
     "preview": "astro preview",
     "tokens:build": "node scripts/build-design-tokens.mjs",
     "tokens:check": "node --test tests/design-tokens.test.mjs && npm run tokens:build && git diff --exit-code -- design-tokens/dist",
+    "skills:build": "node scripts/build-skill-references.mjs",
+    "skills:check": "npm run skills:build && node scripts/validate-skills.mjs && git diff --exit-code -- skills/songstyle-web-designer/references skills/songstyle-design-reviewer/references",
     "content:check": "node --test tests/content-assets.test.mjs",
     "links:check": "node scripts/check-internal-links.mjs",
     "test:unit": "node --test tests/*.test.mjs",
     "test:e2e": "playwright test",
-    "check": "npm run test:unit && astro check",
+    "check": "npm run tokens:check && npm run skills:check && npm run test:unit && astro check",
     "verify": "npm run check && npm run build && npm run links:check && npm run test:e2e"
   },
   "dependencies": {

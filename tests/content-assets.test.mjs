@@ -212,3 +212,39 @@ test("prompt templates share the required structure and review sources", async (
     for (const dimension of review.dimensions) assert.match(markdown, new RegExp(dimension.nameZh));
   }
 });
+
+test("portable Agent Skills have valid metadata and generated references", async () => {
+  const skillNames = [
+    "songstyle-web-designer",
+    "songstyle-design-reviewer"
+  ];
+  const principles = JSON.parse(
+    await readFile("docs/principles/principles.json", "utf8")
+  );
+  const review = JSON.parse(
+    await readFile("checklists/songstyle-review.json", "utf8")
+  );
+
+  for (const skillName of skillNames) {
+    const skillFile = `skills/${skillName}/SKILL.md`;
+    const markdown = await readFile(skillFile, "utf8");
+    const data = parseFrontmatter(markdown, skillFile);
+    assert.equal(data.name, skillName);
+    assert.match(data.name, /^[a-z0-9-]+$/);
+    assert.ok(data.description && data.description.length <= 1024);
+    assert.equal(data.license, "MIT");
+    assert.match(markdown, /references\/songstyle-principles\.md/);
+    assert.match(markdown, /references\/review-model\.md/);
+
+    const principleReference = await readFile(
+      `skills/${skillName}/references/songstyle-principles.md`,
+      "utf8"
+    );
+    const reviewReference = await readFile(
+      `skills/${skillName}/references/review-model.md`,
+      "utf8"
+    );
+    for (const principle of principles) assert.match(principleReference, new RegExp(principle.id));
+    for (const dimension of review.dimensions) assert.match(reviewReference, new RegExp(dimension.id));
+  }
+});

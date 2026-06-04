@@ -23,6 +23,7 @@ order: 3
 Use the Design Tokens as a reference expression layer, not as a substitute for design judgment. Use prompts when you need a copyable structured request. Use Agent Skills when an AI agent should follow a repeatable workflow and self-review against the shared model.
 
 Browse the rendered [prompt templates](../../prompts/).
+Browse the portable [Agent Skills](../../skills/).
 
 ## What v0.1 Does Not Include
 
