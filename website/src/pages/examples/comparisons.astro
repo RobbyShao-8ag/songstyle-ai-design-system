@@ -26,12 +26,12 @@ const { Content } = await render(entry);
   </article>
 </BaseLayout>
 
-<style>
+<style is:global>
   .comparison-page { padding-block: var(--song-space-section-compact); }
-  section { margin-top: var(--song-space-section-compact); }
-  h2 { font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; }
-  .pair { display: grid; gap: var(--song-space-scale-6); }
-  .comparison-links { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-6); margin-top: var(--song-space-section-compact); }
-  .comparison-links a { color: var(--song-color-accent-primary); }
-  @media (min-width: 1000px) { .pair { grid-template-columns: 1fr 1fr; align-items: start; } }
+  .comparison-page section { margin-top: var(--song-space-section-compact); }
+  .comparison-page h2 { font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; }
+  .comparison-page .pair { display: grid; gap: var(--song-space-scale-6); }
+  .comparison-page .comparison-links { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-6); margin-top: var(--song-space-section-compact); }
+  .comparison-page .comparison-links a { color: var(--song-color-accent-primary); }
+  @media (min-width: 1000px) { .comparison-page .pair { grid-template-columns: 1fr 1fr; align-items: start; } }
 </style>

@@ -7,7 +7,7 @@ test.use({ contextOptions: { reducedMotion: "reduce" } });
 
 test("home content remains visible with effectively zero reveal transition", async ({ page }) => {
   await page.goto(withBase("/"));
-  const reveal = page.locator(".reveal").filter({ hasText: "为什么 AI 设计容易过度" });
+  const reveal = page.locator(".reveal").filter({ hasText: "同样的内容，设计判断不同" });
   await expect(reveal).toBeVisible();
   const transitionDurationMs = await reveal.evaluate(
     (element) => {

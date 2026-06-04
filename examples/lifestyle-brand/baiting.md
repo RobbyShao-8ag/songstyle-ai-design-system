@@ -7,8 +7,6 @@ section: 案例
 order: 1
 ---
 
-# 白汀 Baiting：当代家居饮水器物品牌
-
 ## Product brief and business goal
 
 白汀 Baiting 是一个当代家居饮水与桌面器物品牌。落地页需要介绍旗舰玻璃水壶，表达材料品质与日常使用，提供清楚购买路径，并在不使用古风装饰的前提下建立信任。

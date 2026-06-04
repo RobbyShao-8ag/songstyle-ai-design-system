@@ -14,15 +14,22 @@ const { Content } = await render(entry);
 
 <BaseLayout title={`${entry.data.title} | SongStyle AI Design System`} description={entry.data.description}>
   <article class="container case-study">
+    <header class="case-intro">
+      <p class="eyebrow">公平案例对比</p>
+      <h1>{entry.data.title}</h1>
+      <p>两个版本使用相同文案、相同图片、相同规格、相同行动与相同业务目标。变化只来自设计判断。</p>
+    </header>
+    <div class="case-visual-pair">
+      <section class="visual-section">
+        <h2>普通 AI 默认方案</h2>
+        <BaitingDefault data={baitingCase} />
+      </section>
+      <section class="visual-section">
+        <h2>SongStyle 改写</h2>
+        <BaitingSongStyle data={baitingCase} />
+      </section>
+    </div>
     <MarkdownProse><Content /></MarkdownProse>
-    <section class="visual-section">
-      <h2>普通 AI 默认方案</h2>
-      <BaitingDefault data={baitingCase} />
-    </section>
-    <section class="visual-section">
-      <h2>SongStyle 改写</h2>
-      <BaitingSongStyle data={baitingCase} />
-    </section>
     <nav class="case-links" aria-label="相关资源">
       <a href={withBase("/principles/")}>六项原则</a>
       <a href={withBase("/design-tokens/")}>设计变量</a>
@@ -32,10 +39,14 @@ const { Content } = await render(entry);
   </article>
 </BaseLayout>
 
-<style>
+<style is:global>
   .case-study { padding-block: var(--song-space-section-compact); }
-  .visual-section { margin-top: var(--song-space-section-compact); }
-  .visual-section h2 { font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; }
-  .case-links { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-6); margin-top: var(--song-space-section-compact); padding-top: var(--song-space-scale-6); border-top: var(--song-shape-border-width) solid var(--song-color-border-subtle); }
-  .case-links a { color: var(--song-color-accent-primary); }
+  .case-study .case-intro { max-width: 54rem; margin-bottom: var(--song-space-section-compact); }
+  .case-study .case-intro h1 { margin: 0; font-family: var(--song-typography-family-display); font-size: clamp(var(--song-typography-size-title), 6vw, var(--song-typography-size-display)); font-weight: 400; line-height: var(--song-typography-line-height-tight); }
+  .case-study .case-intro p:not(.eyebrow) { color: var(--song-color-text-secondary); font-size: var(--song-typography-size-lead); line-height: var(--song-typography-line-height-relaxed); }
+  .case-study .case-visual-pair { display: grid; gap: var(--song-space-scale-6); margin-bottom: var(--song-space-section-compact); }
+  .case-study .visual-section h2 { font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; }
+  .case-study .case-links { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-6); margin-top: var(--song-space-section-compact); padding-top: var(--song-space-scale-6); border-top: var(--song-shape-border-width) solid var(--song-color-border-subtle); }
+  .case-study .case-links a { color: var(--song-color-accent-primary); }
+  @media (min-width: 1000px) { .case-study .case-visual-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } }
 </style>

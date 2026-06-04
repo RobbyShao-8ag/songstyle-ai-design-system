@@ -7,8 +7,6 @@ section: 案例
 order: 2
 ---
 
-# 清序 Qingxu：AI 研究工作台
-
 ## Product brief and business goal
 
 清序 Qingxu 是面向团队的 AI 研究工作台，帮助用户收集来源、综合发现并分享清楚的研究叙事。落地页需要表达能力，但不能显得未来主义、过载或历史化。
