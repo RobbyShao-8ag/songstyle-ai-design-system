@@ -6,12 +6,15 @@ import { withBase } from "../lib/paths";
   <div class="container">
     <p class="eyebrow">宋式 AI 设计系统</p>
     <h1 class="display-title">AI 不懂得何时停止。</h1>
-    <p class="hero-statement">宋式设计，在有限表达中建立秩序，在留白之中留下余韵。</p>
+    <p class="hero-statement">同样的内容，SongStyle 让设计从“不断添加”转向“准确表达”。</p>
     <p class="body-copy">
-      SongStyle 不是古风装饰，也不是把界面变得空旷。它是一套帮助人和 AI
-      判断什么应该存在、什么应该删减、以及表达应在何处停止的现代设计语言。
+      一套帮助设计师、开发者与 AI 判断什么应该存在、如何建立秩序，以及表达应在何处停止的现代设计语言。
+      它不是古风装饰，也不是把界面变得空旷。
     </p>
-    <a class="quiet-link" href={withBase("/reference-ui/")}>查看 Reference UI <span aria-hidden="true">→</span></a>
+    <div class="hero-actions">
+      <a class="primary-link" href="#evidence">查看公平对比</a>
+      <a class="quiet-link" href={withBase("/prompts/")}>开始使用 Prompts <span aria-hidden="true">→</span></a>
+    </div>
   </div>
 </section>
 
@@ -34,5 +37,21 @@ import { withBase } from "../lib/paths";
 
   .body-copy {
     margin: 0 0 var(--song-space-scale-8);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--song-space-scale-6);
+  }
+
+  .primary-link {
+    padding: var(--song-space-scale-3) var(--song-space-scale-5);
+    border-radius: var(--song-shape-radius-control);
+    background: var(--song-color-text-primary);
+    color: var(--song-color-background-canvas);
+    font-weight: var(--song-typography-weight-medium);
+    text-decoration: none;
   }
 </style>

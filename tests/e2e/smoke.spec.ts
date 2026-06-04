@@ -23,14 +23,24 @@ test("home page presents the central thesis", async ({ page }) => {
     "AI 不懂得何时停止"
   );
   await expect(
-    page.getByRole("link", { name: "查看 Reference UI", exact: true })
-  ).toHaveAttribute("href", withBase("/reference-ui/"));
+    page.getByText("同样的内容，SongStyle 让设计从“不断添加”转向“准确表达”。", { exact: true })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "查看公平对比", exact: true })
+  ).toHaveAttribute("href", "#evidence");
 });
 
 test("home page presents the complete exhibition sequence", async ({ page }) => {
   await page.goto(withBase("/"));
-  for (const name of ["为什么 AI 设计容易过度", "六条核心原则", "普通 AI 与 SongStyle"]) {
+  for (const name of ["同样的内容，设计判断不同", "从必要信息，到适度停止", "两个虚构品牌案例"]) {
     await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
+  }
+  const evidence = page.getByTestId("home-evidence");
+  for (const text of ["相同文案", "相同图片", "相同功能", "相同目标"]) {
+    await expect(evidence.getByText(text, { exact: true })).toBeVisible();
+  }
+  for (const step of ["必要信息", "建立秩序", "功能性留白", "适度停止"]) {
+    await expect(page.getByRole("heading", { level: 3, name: step })).toBeVisible();
   }
   const cases = page.locator(".case-grid");
   await expect(cases.getByText("生活方式品牌", { exact: true })).toBeVisible();
@@ -39,6 +49,8 @@ test("home page presents the complete exhibition sequence", async ({ page }) => 
   for (const text of ["Prompts", "Agent Skills", "设计变量", "审查清单"]) {
     await expect(resources.getByText(text, { exact: true })).toBeVisible();
   }
+  await expect(page.getByRole("link", { name: "查看 Roadmap", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "参与首轮用户测试", exact: true })).toBeVisible();
 });
 
 test("reference controls are keyboard reachable", async ({ page }) => {

@@ -19,7 +19,15 @@ const resources = [
     </div>
     <div class="contribute">
       <p>SongStyle 是一个创作者主导的开源项目。欢迎贡献研究、文档、Prompt、Skill、参考 UI 与案例。</p>
-      <a class="quiet-link" href={withBase("/contributing/")}>参与贡献 <span aria-hidden="true">→</span></a>
+      <div class="participation-links">
+        <a class="quiet-link" href="https://github.com/RobbyShao-8ag/songstyle-ai-design-system/blob/main/ROADMAP.md">查看 Roadmap <span aria-hidden="true">→</span></a>
+        <a class="quiet-link" href={withBase("/research/first-round-user-testing/")}>参与首轮用户测试 <span aria-hidden="true">→</span></a>
+        <a class="quiet-link" href={withBase("/contributing/")}>参与贡献 <span aria-hidden="true">→</span></a>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .participation-links { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-6); }
+</style>

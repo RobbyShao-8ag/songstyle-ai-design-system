@@ -1,0 +1,32 @@
+---
+import { withBase } from "../../lib/paths";
+
+const steps = [
+  ["01", "必要信息", "先判断什么必须存在，不用更多内容掩盖不确定。"],
+  ["02", "建立秩序", "让关系、顺序与主次先于视觉效果。"],
+  ["03", "功能性留白", "让空间承担聚焦、节奏与理解任务。"],
+  ["04", "适度停止", "表达充分后停止，不用添加证明还能添加。"]
+];
+---
+
+<section class="home-section reveal">
+  <div class="container">
+    <p class="eyebrow">再看方法</p>
+    <h2>从必要信息，到适度停止</h2>
+    <div class="method-grid">
+      {steps.map(([number, title, description]) => (
+        <article><span>{number}</span><h3>{title}</h3><p>{description}</p></article>
+      ))}
+    </div>
+    <a class="quiet-link" href={withBase("/principles/")}>阅读六项完整原则 <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<style>
+  .method-grid { display: grid; gap: var(--song-space-scale-4); margin-bottom: var(--song-space-scale-8); }
+  article { padding-top: var(--song-space-scale-4); border-top: var(--song-shape-border-width) solid var(--song-color-border-subtle); }
+  span { color: var(--song-color-accent-primary); font-size: var(--song-typography-size-small); }
+  h3 { margin: var(--song-space-scale-3) 0; font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title-small); font-weight: 400; }
+  p { margin: 0; color: var(--song-color-text-secondary); line-height: var(--song-typography-line-height-body); }
+  @media (min-width: 760px) { .method-grid { grid-template-columns: repeat(4, 1fr); } }
+</style>

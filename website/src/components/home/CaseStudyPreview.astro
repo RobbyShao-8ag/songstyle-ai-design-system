@@ -1,4 +1,5 @@
 ---
+import { baitingCase, qingxuCase } from "../../data/cases";
 import { withBase } from "../../lib/paths";
 ---
 
@@ -7,8 +8,12 @@ import { withBase } from "../../lib/paths";
     <p class="eyebrow">可视化证据</p>
     <h2>两个虚构品牌案例</h2>
     <div class="case-grid">
-      <a href={withBase("/examples/lifestyle-brand/")}><span>生活方式品牌</span><strong>白汀 Baiting</strong><p>用材料、日常使用与清楚购买路径建立温润信任。</p></a>
-      <a href={withBase("/examples/digital-product/")}><span>现代数字产品</span><strong>清序 Qingxu</strong><p>用秩序与必要密度表达 AI 研究工作台的现代能力。</p></a>
+      <a href={withBase("/examples/lifestyle-brand/")}><img src={withBase(baitingCase.image)} alt={baitingCase.imageAlt} /><span>生活方式品牌</span><strong>白汀 Baiting</strong><p>同一器物内容与图片，比较过度强调与温润秩序。</p></a>
+      <a href={withBase("/examples/digital-product/")}><img src={withBase(qingxuCase.image)} alt={qingxuCase.imageAlt} /><span>现代数字产品</span><strong>清序 Qingxu</strong><p>同一研究工作流内容与图片，比较“AI 感”与可信表达。</p></a>
     </div>
   </div>
 </section>
+
+<style>
+  img { display: block; width: calc(100% + (2 * var(--song-space-scale-6))); height: 220px; margin: calc(-1 * var(--song-space-scale-6)) calc(-1 * var(--song-space-scale-6)) var(--song-space-scale-6); object-fit: cover; }
+</style>

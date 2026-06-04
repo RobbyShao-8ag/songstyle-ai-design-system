@@ -1,0 +1,81 @@
+---
+import { baitingCase } from "../../data/cases";
+import { withBase } from "../../lib/paths";
+---
+
+<section id="evidence" class="home-section evidence-section reveal" data-testid="home-evidence">
+  <div class="container">
+    <p class="eyebrow">先看证据</p>
+    <div class="evidence-heading">
+      <h2>同样的内容，设计判断不同</h2>
+      <p>普通 AI 与 SongStyle 使用相同文案、相同图片、相同功能和相同目标。变化只来自版面、层级、字体、空间、背景与停止时机。</p>
+    </div>
+    <ul class="invariant-list" aria-label="公平对比不变量">
+      <li>相同文案</li>
+      <li>相同图片</li>
+      <li>相同功能</li>
+      <li>相同目标</li>
+    </ul>
+    <div class="evidence-pair">
+      <article class="evidence-default">
+        <div class="evidence-label"><span>普通 AI 默认</span><small>不断添加强调</small></div>
+        <div class="default-visual">
+          <img src={withBase(baitingCase.image)} alt={baitingCase.imageAlt} />
+          <div class="default-overlay"></div>
+          <div class="default-copy">
+            <p>{baitingCase.brand} · {baitingCase.position}</p>
+            <h3>{baitingCase.headline}</h3>
+            <a href={withBase("/examples/lifestyle-brand/")}>{baitingCase.action}</a>
+            <div>{baitingCase.features.map((feature) => <span>{feature.value}</span>)}</div>
+          </div>
+        </div>
+      </article>
+      <article class="evidence-songstyle">
+        <div class="evidence-label"><span>SongStyle</span><small>准确表达后停止</small></div>
+        <div class="songstyle-visual">
+          <div>
+            <p>{baitingCase.brand} · {baitingCase.position}</p>
+            <h3>{baitingCase.headline}</h3>
+            <a href={withBase("/examples/lifestyle-brand/")}>{baitingCase.action}</a>
+          </div>
+          <img src={withBase(baitingCase.image)} alt={baitingCase.imageAlt} />
+        </div>
+      </article>
+    </div>
+    <a class="quiet-link" href={withBase("/examples/comparisons/")}>查看两个完整案例 <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<style>
+  .evidence-section { background: var(--song-color-background-subtle); }
+  .evidence-heading { display: grid; gap: var(--song-space-scale-6); margin-bottom: var(--song-space-scale-8); }
+  .evidence-heading p { max-width: 44rem; margin: 0; color: var(--song-color-text-secondary); line-height: var(--song-typography-line-height-relaxed); }
+  .invariant-list { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-3); margin: 0 0 var(--song-space-scale-8); padding: 0; list-style: none; }
+  .invariant-list li { padding: var(--song-space-scale-2) var(--song-space-scale-4); border: var(--song-shape-border-width) solid var(--song-color-border-subtle); border-radius: 999px; background: var(--song-color-surface-default); color: var(--song-color-text-secondary); font-size: var(--song-typography-size-small); }
+  .evidence-pair { display: grid; gap: var(--song-space-scale-6); margin-bottom: var(--song-space-scale-8); }
+  .evidence-pair article { min-width: 0; }
+  .evidence-label { display: flex; justify-content: space-between; gap: var(--song-space-scale-4); margin-bottom: var(--song-space-scale-3); color: var(--song-color-text-secondary); font-size: var(--song-typography-size-small); }
+  .evidence-label span { color: var(--song-color-text-primary); font-weight: var(--song-typography-weight-medium); }
+  .default-visual, .songstyle-visual { min-height: 400px; overflow: hidden; border-radius: var(--song-shape-radius-large); }
+  .default-visual { position: relative; background: #4a3043; color: #fff; }
+  .default-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .default-overlay { position: absolute; inset: 0; background: linear-gradient(125deg, rgb(45 21 67 / 0.95), rgb(124 58 237 / 0.54), rgb(255 195 172 / 0.24)); }
+  .default-copy { position: relative; display: grid; min-height: 400px; align-content: end; padding: var(--song-space-scale-6); }
+  .default-copy p { margin: 0 0 var(--song-space-scale-3); font-size: var(--song-typography-size-small); letter-spacing: 0.08em; }
+  .default-copy h3 { max-width: 14ch; margin: 0 0 var(--song-space-scale-4); font-size: var(--song-typography-size-title); line-height: 1.08; text-shadow: 0 4px 20px rgb(31 11 43 / 0.5); }
+  .default-copy a { justify-self: start; padding: var(--song-space-scale-3) var(--song-space-scale-4); border-radius: 999px; background: #7c3aed; color: #fff; font-weight: 700; text-decoration: none; }
+  .default-copy div { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-2); margin-top: var(--song-space-scale-4); }
+  .default-copy div span { padding: var(--song-space-scale-2) var(--song-space-scale-3); border: 1px solid rgb(255 255 255 / 0.44); border-radius: var(--song-shape-radius-control); background: rgb(255 255 255 / 0.16); font-size: var(--song-typography-size-small); backdrop-filter: blur(8px); }
+  .songstyle-visual { display: grid; gap: var(--song-space-scale-6); padding: var(--song-space-scale-6); border: var(--song-shape-border-width) solid var(--song-color-border-subtle); background: var(--song-color-surface-default); }
+  .songstyle-visual > div { align-self: center; }
+  .songstyle-visual p { margin: 0 0 var(--song-space-scale-4); color: var(--song-color-accent-primary); font-size: var(--song-typography-size-small); letter-spacing: 0.08em; }
+  .songstyle-visual h3 { max-width: 12ch; margin: 0 0 var(--song-space-scale-6); font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; line-height: 1.35; }
+  .songstyle-visual a { color: var(--song-color-accent-primary); text-underline-offset: var(--song-space-scale-2); }
+  .songstyle-visual img { display: block; width: 100%; height: 230px; object-fit: cover; }
+  @media (min-width: 760px) {
+    .evidence-heading { grid-template-columns: 1fr 1fr; align-items: end; }
+    .evidence-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .songstyle-visual { grid-template-columns: 0.85fr 1.15fr; }
+    .songstyle-visual img { height: 100%; min-height: 350px; }
+  }
+</style>

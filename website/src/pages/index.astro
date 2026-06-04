@@ -1,12 +1,10 @@
 ---
 import HeroStatement from "../components/HeroStatement.astro";
 import CaseStudyPreview from "../components/home/CaseStudyPreview.astro";
-import ComparisonPreview from "../components/home/ComparisonPreview.astro";
-import ExcessProblem from "../components/home/ExcessProblem.astro";
-import PrincipleSequence from "../components/home/PrincipleSequence.astro";
+import EvidenceComparison from "../components/home/EvidenceComparison.astro";
+import MethodSequence from "../components/home/MethodSequence.astro";
 import ResourceEntry from "../components/home/ResourceEntry.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { withBase } from "../lib/paths";
 ---
 
 <BaseLayout
@@ -14,39 +12,8 @@ import { withBase } from "../lib/paths";
   description="A modern Song-inspired design system for AI-generated websites and Web UI."
 >
   <HeroStatement />
-  <section class="container home-entry">
-    <p class="eyebrow">从理念开始</p>
-    <h2>“已经足够”不是减少，而是关系准确、表达充分。</h2>
-    <div class="entry-links">
-      <a class="quiet-link" href={withBase("/manifesto/")}>阅读宣言 <span aria-hidden="true">→</span></a>
-      <a class="quiet-link" href={withBase("/principles/")}>查看六项原则 <span aria-hidden="true">→</span></a>
-    </div>
-  </section>
-  <ExcessProblem />
-  <PrincipleSequence />
-  <ComparisonPreview />
+  <EvidenceComparison />
+  <MethodSequence />
   <CaseStudyPreview />
   <ResourceEntry />
 </BaseLayout>
-
-<style>
-  .home-entry {
-    padding-block: var(--song-space-section-spacious);
-  }
-
-  h2 {
-    max-width: 20ch;
-    margin: 0;
-    font-family: var(--song-typography-family-display);
-    font-size: clamp(var(--song-typography-size-title), 6vw, var(--song-typography-size-display));
-    font-weight: var(--song-typography-weight-regular);
-    line-height: var(--song-typography-line-height-tight);
-  }
-
-  .entry-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--song-space-scale-6);
-    margin-top: var(--song-space-scale-8);
-  }
-</style>
