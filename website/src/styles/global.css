@@ -92,9 +92,147 @@ a {
   transform: translateY(0);
 }
 
+.document-shell {
+  display: grid;
+  gap: var(--song-space-scale-12);
+  padding-block: var(--song-space-section-compact);
+}
+
+.doc-sidebar {
+  color: var(--song-color-text-secondary);
+  font-size: var(--song-typography-size-small);
+  line-height: var(--song-typography-line-height-body);
+}
+
+.doc-sidebar section + section {
+  margin-top: var(--song-space-scale-8);
+}
+
+.doc-sidebar h2 {
+  margin: 0 0 var(--song-space-scale-3);
+  color: var(--song-color-text-muted);
+  font-size: var(--song-typography-size-small);
+  font-weight: var(--song-typography-weight-medium);
+  letter-spacing: 0.08em;
+}
+
+.doc-sidebar ul {
+  display: grid;
+  gap: var(--song-space-scale-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doc-sidebar a {
+  text-decoration: none;
+}
+
+.doc-sidebar a:hover {
+  color: var(--song-color-accent-primary);
+}
+
+.document-article,
+.resource-article {
+  min-width: 0;
+}
+
+.resource-article {
+  max-width: 880px;
+  padding-block: var(--song-space-section-compact);
+}
+
+.markdown-prose {
+  max-width: 48rem;
+  font-size: var(--song-typography-size-body);
+  line-height: var(--song-typography-line-height-relaxed);
+}
+
+.markdown-prose h1,
+.markdown-prose h2,
+.markdown-prose h3 {
+  color: var(--song-color-text-primary);
+  font-family: var(--song-typography-family-display);
+  font-weight: var(--song-typography-weight-regular);
+  line-height: var(--song-typography-line-height-tight);
+}
+
+.markdown-prose h1 {
+  margin: 0 0 var(--song-space-scale-8);
+  font-size: clamp(var(--song-typography-size-title), 6vw, var(--song-typography-size-display));
+}
+
+.markdown-prose h2 {
+  margin: var(--song-space-scale-12) 0 var(--song-space-scale-4);
+  font-size: var(--song-typography-size-title);
+}
+
+.markdown-prose h3 {
+  margin: var(--song-space-scale-8) 0 var(--song-space-scale-3);
+  font-size: var(--song-typography-size-title-small);
+}
+
+.markdown-prose p,
+.markdown-prose ul,
+.markdown-prose ol,
+.markdown-prose blockquote,
+.markdown-prose pre,
+.markdown-prose table {
+  margin-block: var(--song-space-scale-4);
+}
+
+.markdown-prose a {
+  color: var(--song-color-accent-primary);
+  text-underline-offset: var(--song-space-scale-2);
+}
+
+.markdown-prose blockquote {
+  margin-inline: 0;
+  padding-left: var(--song-space-scale-6);
+  border-left: var(--song-shape-border-width) solid var(--song-color-accent-soft);
+  color: var(--song-color-text-secondary);
+}
+
+.markdown-prose pre {
+  overflow-x: auto;
+  padding: var(--song-space-scale-6);
+  border: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+  border-radius: var(--song-shape-radius-control);
+  background: var(--song-color-background-subtle);
+  font-size: var(--song-typography-size-small);
+}
+
+.markdown-prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.markdown-prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.markdown-prose th,
+.markdown-prose td {
+  padding: var(--song-space-scale-3);
+  border-bottom: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+  text-align: left;
+  vertical-align: top;
+}
+
 @media (min-width: 720px) {
   .container {
     width: min(100% - (2 * var(--song-space-page-gutter-wide)), 1180px);
+  }
+
+  .document-shell {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: var(--song-space-scale-16);
+  }
+
+  .doc-sidebar {
+    position: sticky;
+    top: var(--song-space-scale-6);
+    align-self: start;
   }
 }
 

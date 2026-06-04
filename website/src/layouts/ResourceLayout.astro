@@ -1,0 +1,20 @@
+---
+import MarkdownProse from "../components/MarkdownProse.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: "zh-CN" | "en";
+}
+
+const { title, description, lang = "zh-CN" } = Astro.props;
+---
+
+<BaseLayout title={`${title} | SongStyle AI Design System`} description={description} lang={lang}>
+  <article class="container resource-article">
+    <MarkdownProse>
+      <slot />
+    </MarkdownProse>
+  </article>
+</BaseLayout>

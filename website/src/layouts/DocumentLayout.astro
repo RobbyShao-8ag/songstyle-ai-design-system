@@ -1,0 +1,24 @@
+---
+import DocSidebar from "../components/DocSidebar.astro";
+import MarkdownProse from "../components/MarkdownProse.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: "zh-CN" | "en";
+}
+
+const { title, description, lang = "zh-CN" } = Astro.props;
+---
+
+<BaseLayout title={`${title} | SongStyle AI Design System`} description={description} lang={lang}>
+  <div class="container document-shell">
+    <DocSidebar />
+    <article class="document-article">
+      <MarkdownProse>
+        <slot />
+      </MarkdownProse>
+    </article>
+  </div>
+</BaseLayout>

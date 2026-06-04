@@ -32,3 +32,11 @@ test("reference controls are keyboard reachable", async ({ page }) => {
   await page.keyboard.press("Tab");
   await expect(page.locator(":focus-visible")).toBeVisible();
 });
+
+test("checklist content route renders", async ({ page }) => {
+  await page.goto(withBase("/checklist/"));
+  await expect(page.locator("main")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { level: 1, name: "SongStyle 审查清单" })
+  ).toBeVisible();
+});

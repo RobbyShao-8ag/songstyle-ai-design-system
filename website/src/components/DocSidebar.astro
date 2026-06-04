@@ -1,0 +1,24 @@
+---
+import { getDocumentNavigation } from "../lib/content";
+import { withBase } from "../lib/paths";
+
+const items = await getDocumentNavigation();
+const sections = Object.groupBy(items, ({ section }) => section);
+---
+
+<aside class="doc-sidebar" aria-label="文档导航">
+  {
+    Object.entries(sections).map(([section, sectionItems]) => (
+      <section>
+        <h2>{section}</h2>
+        <ul>
+          {sectionItems?.map((item) => (
+            <li>
+              <a href={withBase(item.route)}>{item.title}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</aside>

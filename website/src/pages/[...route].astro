@@ -1,0 +1,29 @@
+---
+import { render } from "astro:content";
+import DocumentLayout from "../layouts/DocumentLayout.astro";
+import ResourceLayout from "../layouts/ResourceLayout.astro";
+import { getContentItems, type ContentItem } from "../lib/content";
+
+export async function getStaticPaths() {
+  const items = (await getContentItems()).filter(({ kind }) => kind !== "examples");
+  return items.map((item) => ({
+    params: { route: item.route.replace(/^\/|\/$/g, "") },
+    props: { item }
+  }));
+}
+
+interface Props {
+  item: ContentItem;
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item.entry);
+const Layout = item.kind === "prompts" || item.kind === "skills"
+  ? ResourceLayout
+  : DocumentLayout;
+const lang = "lang" in item.entry.data ? item.entry.data.lang : "zh-CN";
+---
+
+<Layout title={item.title} description={item.description} lang={lang}>
+  <Content />
+</Layout>
