@@ -3,6 +3,7 @@ import { getEntry, render } from "astro:content";
 import QingxuDefault from "../../components/examples/QingxuDefault.astro";
 import QingxuSongStyle from "../../components/examples/QingxuSongStyle.astro";
 import MarkdownProse from "../../components/MarkdownProse.astro";
+import { qingxuCase } from "../../data/cases";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { withBase } from "../../lib/paths";
 
@@ -14,8 +15,8 @@ const { Content } = await render(entry);
 <BaseLayout title={`${entry.data.title} | SongStyle AI Design System`} description={entry.data.description}>
   <article class="container case-study">
     <MarkdownProse><Content /></MarkdownProse>
-    <section class="visual-section"><h2>普通 AI 默认方案</h2><QingxuDefault /></section>
-    <section class="visual-section"><h2>SongStyle 改写</h2><QingxuSongStyle /></section>
+    <section class="visual-section"><h2>普通 AI 默认方案</h2><QingxuDefault data={qingxuCase} /></section>
+    <section class="visual-section"><h2>SongStyle 改写</h2><QingxuSongStyle data={qingxuCase} /></section>
     <nav class="case-links" aria-label="相关资源">
       <a href={withBase("/principles/")}>六项原则</a>
       <a href={withBase("/design-tokens/")}>设计变量</a>

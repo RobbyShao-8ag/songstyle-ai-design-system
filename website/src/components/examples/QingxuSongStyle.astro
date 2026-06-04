@@ -1,18 +1,26 @@
-<section class="qingxu-songstyle" aria-label="清序 SongStyle 改写">
+---
+import type { CaseStudy } from "../../data/cases";
+import { withBase } from "../../lib/paths";
+
+interface Props {
+  data: CaseStudy;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="qingxu-songstyle" aria-label="清序 SongStyle 改写" data-testid="qingxu-songstyle">
   <header>
-    <p class="eyebrow">清序 Qingxu · AI 研究工作台</p>
-    <h3>从来源到叙事，让研究过程清楚可见。</h3>
-    <p>收集可信来源，综合带引用的发现，并与团队共同整理一条可以被理解和复核的研究叙事。</p>
-    <a href="#qingxu-workflow">开始试用</a>
+    <p class="eyebrow">{data.brand} · {data.position}</p>
+    <h3>{data.headline}</h3>
+    <p>{data.description}</p>
+    <a href="#qingxu-workflow">{data.action}</a>
   </header>
+  <img class="research-image" src={withBase(data.image)} alt={data.imageAlt} />
   <div id="qingxu-workflow" class="workflow">
-    <article><span>01</span><h4>收集来源</h4><p>保存网页、论文与访谈，保留出处与状态。</p></article>
-    <article><span>02</span><h4>综合发现</h4><p>让 AI 在引用基础上整理共识、差异与未知。</p></article>
-    <article><span>03</span><h4>分享叙事</h4><p>把研究结论组织为团队可以继续工作的清楚结构。</p></article>
-  </div>
-  <div class="research-panel" role="img" aria-label="研究工作台界面示意">
-    <aside><strong>来源</strong><span>12 已验证</span><span>3 待复核</span></aside>
-    <div class="research-content"><strong>研究叙事</strong><p>用户信任来自可见的来源、准确的状态与可复核的综合。</p><small>[1] 访谈摘要 · [2] 行业报告</small></div>
+    {data.features.map((feature) => (
+      <article><span>{feature.label}</span><h4>{feature.value}</h4></article>
+    ))}
   </div>
 </section>
 
@@ -22,19 +30,13 @@
   h3 { max-width: 15ch; margin: 0; font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; line-height: 1.4; }
   header p:not(.eyebrow) { color: var(--song-color-text-secondary); line-height: var(--song-typography-line-height-relaxed); }
   header a { color: var(--song-color-accent-primary); text-underline-offset: var(--song-space-scale-2); }
+  .research-image { display: block; width: 100%; height: clamp(260px, 42vw, 520px); margin-top: var(--song-space-scale-12); object-fit: cover; object-position: center; }
   .workflow { display: grid; gap: var(--song-space-scale-4); margin-top: var(--song-space-scale-12); }
   .workflow article { padding-top: var(--song-space-scale-4); border-top: var(--song-shape-border-width) solid var(--song-color-border-subtle); }
   .workflow span { color: var(--song-color-accent-primary); font-size: var(--song-typography-size-small); }
   .workflow h4 { margin: var(--song-space-scale-3) 0; font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-lead); font-weight: 400; }
-  .workflow p { margin: 0; color: var(--song-color-text-secondary); line-height: var(--song-typography-line-height-body); }
-  .research-panel { display: grid; gap: var(--song-space-scale-4); margin-top: var(--song-space-scale-12); padding: var(--song-space-scale-4); border: var(--song-shape-border-width) solid var(--song-color-border-subtle); border-radius: var(--song-shape-radius-control); background: var(--song-color-background-canvas); }
-  .research-panel aside { display: grid; align-content: start; gap: var(--song-space-scale-3); color: var(--song-color-text-secondary); font-size: var(--song-typography-size-small); }
-  .research-content { padding: var(--song-space-scale-4); background: var(--song-color-surface-elevated); }
-  .research-panel p { color: var(--song-color-text-secondary); line-height: var(--song-typography-line-height-body); }
-  .research-panel small { color: var(--song-color-text-muted); }
   @media (min-width: 760px) {
     .qingxu-songstyle { padding: var(--song-space-scale-12); }
     .workflow { grid-template-columns: repeat(3, 1fr); }
-    .research-panel { grid-template-columns: 180px 1fr; }
   }
 </style>

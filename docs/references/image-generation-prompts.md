@@ -1,3 +1,12 @@
+---
+title: 案例图片生成提示词
+description: 白汀与清序案例使用的共享编辑摄影生成提示词与公平复用规则。
+lang: zh-CN
+route: /references/image-generation-prompts/
+section: 参考
+order: 2
+---
+
 # Case Study Image Generation Prompts
 
 The Baiting and Qingxu case studies use generated editorial photography as

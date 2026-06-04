@@ -1,19 +1,27 @@
-<section class="baiting-default" aria-label="白汀普通 AI 默认方案">
-  <div class="motif motif-one" aria-hidden="true"></div>
-  <div class="motif motif-two" aria-hidden="true"></div>
-  <p class="badges">限时首发 · 东方灵感 · 匠心设计 · 热销推荐</p>
-  <h3>重新定义每一口水的艺术</h3>
-  <p>高硼硅玻璃、精工滤芯、黄金比例、品质生活，一次拥有。</p>
-  <div class="default-actions">
-    <a href="#baiting-songstyle">立即抢购</a>
-    <a href="#baiting-songstyle">探索故事</a>
-    <a href="#baiting-songstyle">领取优惠</a>
-  </div>
-  <div class="default-cards">
-    <article><strong>99%</strong><span>用户推荐</span></article>
-    <article><strong>12</strong><span>道工序</span></article>
-    <article><strong>360°</strong><span>美学设计</span></article>
-    <article><strong>24h</strong><span>品质陪伴</span></article>
+---
+import type { CaseStudy } from "../../data/cases";
+import { withBase } from "../../lib/paths";
+
+interface Props {
+  data: CaseStudy;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="baiting-default" aria-label="白汀普通 AI 默认方案" data-testid="baiting-default">
+  <img src={withBase(data.image)} alt={data.imageAlt} />
+  <div class="visual-overlay" aria-hidden="true"></div>
+  <div class="default-content">
+    <p class="badges">{data.brand} · {data.position} · 当代生活精选</p>
+    <h3>{data.headline}</h3>
+    <p class="description">{data.description}</p>
+    <a href="#baiting-details">{data.action}</a>
+    <div class="default-cards">
+      {data.features.map((feature) => (
+        <article><span>{feature.label}</span><strong>{feature.value}</strong></article>
+      ))}
+    </div>
   </div>
 </section>
 
@@ -21,25 +29,77 @@
   .baiting-default {
     position: relative;
     overflow: hidden;
-    padding: var(--song-space-scale-8);
+    min-height: 520px;
     border-radius: var(--song-shape-radius-large);
-    background: linear-gradient(135deg, #ffe0c2, #c7d7ff 48%, #ffd4e8);
-    color: #40253e;
-    text-align: center;
+    background: #4a3043;
+    color: #fff;
   }
-  .motif {
+  img {
     position: absolute;
-    width: 160px;
-    height: 160px;
-    border: 18px double rgb(166 83 66 / 0.35);
-    border-radius: 50%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-  .motif-one { top: -90px; left: -60px; }
-  .motif-two { right: -70px; bottom: -100px; }
-  .badges { font-size: var(--song-typography-size-small); font-weight: 600; }
-  h3 { margin: var(--song-space-scale-4) 0; font-size: var(--song-typography-size-title); }
-  .default-actions,
-  .default-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--song-space-scale-3); margin-top: var(--song-space-scale-6); }
-  .default-actions a { padding: var(--song-space-scale-3) var(--song-space-scale-4); border-radius: 999px; background: #7c3aed; color: #fff; text-decoration: none; }
-  .default-cards article { display: grid; min-width: 120px; gap: var(--song-space-scale-2); padding: var(--song-space-scale-4); border-radius: var(--song-shape-radius-control); background: rgb(255 255 255 / 0.65); }
+  .visual-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 75% 20%, rgb(255 206 224 / 0.62), transparent 34%),
+      linear-gradient(120deg, rgb(45 21 67 / 0.96), rgb(102 52 104 / 0.62) 58%, rgb(255 195 172 / 0.3));
+  }
+  .default-content {
+    position: relative;
+    display: grid;
+    align-content: end;
+    min-height: 520px;
+    padding: var(--song-space-scale-8);
+  }
+  .badges {
+    margin: 0 0 var(--song-space-scale-4);
+    font-size: var(--song-typography-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  h3 {
+    max-width: 18ch;
+    margin: 0;
+    font-size: clamp(var(--song-typography-size-title), 6vw, var(--song-typography-size-display));
+    line-height: 1.08;
+    text-shadow: 0 4px 28px rgb(31 11 43 / 0.52);
+  }
+  .description {
+    max-width: 42rem;
+    margin: var(--song-space-scale-4) 0;
+    line-height: var(--song-typography-line-height-body);
+  }
+  a {
+    justify-self: start;
+    padding: var(--song-space-scale-3) var(--song-space-scale-5);
+    border-radius: 999px;
+    background: #7c3aed;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgb(52 20 76 / 0.35);
+  }
+  .default-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--song-space-scale-3);
+    margin-top: var(--song-space-scale-6);
+  }
+  .default-cards article {
+    display: grid;
+    gap: var(--song-space-scale-2);
+    padding: var(--song-space-scale-4);
+    border: 1px solid rgb(255 255 255 / 0.44);
+    border-radius: var(--song-shape-radius-control);
+    background: rgb(255 255 255 / 0.18);
+    backdrop-filter: blur(12px);
+  }
+  .default-cards span { font-size: var(--song-typography-size-small); }
+  @media (max-width: 620px) {
+    .default-cards { grid-template-columns: 1fr; }
+  }
 </style>

@@ -61,6 +61,15 @@ test("lifestyle case study presents the full comparison", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 2, name: "普通 AI 默认方案" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "SongStyle 改写" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "审查结果" })).toBeVisible();
+  for (const testId of ["baiting-default", "baiting-songstyle"]) {
+    const section = page.getByTestId(testId);
+    await expect(section.getByRole("heading", { level: 3, name: "让水回到桌面，安静地成为日常。" })).toBeVisible();
+    await expect(section.getByText("高硼硅玻璃", { exact: true })).toBeVisible();
+    await expect(section.getByText("1.2 L", { exact: true })).toBeVisible();
+    await expect(section.getByText("宽口易清洁", { exact: true })).toBeVisible();
+    await expect(section.getByRole("link", { name: "查看器物与购买信息" })).toBeVisible();
+    await expect(section.locator('img[src$="/assets/cases/baiting-carafe.webp"]')).toBeVisible();
+  }
 });
 
 test("digital product case study presents the full comparison", async ({ page }) => {
@@ -68,6 +77,15 @@ test("digital product case study presents the full comparison", async ({ page })
   await expect(page.getByRole("heading", { level: 1, name: "清序 Qingxu：AI 研究工作台" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "普通 AI 默认方案" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "SongStyle 改写" })).toBeVisible();
+  for (const testId of ["qingxu-default", "qingxu-songstyle"]) {
+    const section = page.getByTestId(testId);
+    await expect(section.getByRole("heading", { level: 3, name: "从来源到叙事，让研究过程清楚可见。" })).toBeVisible();
+    for (const feature of ["收集来源", "综合发现", "分享叙事"]) {
+      await expect(section.getByText(feature, { exact: true })).toBeVisible();
+    }
+    await expect(section.getByRole("link", { name: "开始试用" })).toBeVisible();
+    await expect(section.locator('img[src$="/assets/cases/qingxu-research.webp"]')).toBeVisible();
+  }
 });
 
 test("comparisons explain every review dimension", async ({ page }) => {

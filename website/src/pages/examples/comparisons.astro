@@ -5,6 +5,7 @@ import BaitingSongStyle from "../../components/examples/BaitingSongStyle.astro";
 import QingxuDefault from "../../components/examples/QingxuDefault.astro";
 import QingxuSongStyle from "../../components/examples/QingxuSongStyle.astro";
 import MarkdownProse from "../../components/MarkdownProse.astro";
+import { baitingCase, qingxuCase } from "../../data/cases";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { withBase } from "../../lib/paths";
 
@@ -16,8 +17,8 @@ const { Content } = await render(entry);
 <BaseLayout title={`${entry.data.title} | SongStyle AI Design System`} description={entry.data.description}>
   <article class="container comparison-page">
     <MarkdownProse><Content /></MarkdownProse>
-    <section><h2>白汀 Baiting</h2><div class="pair"><BaitingDefault /><BaitingSongStyle /></div></section>
-    <section><h2>清序 Qingxu</h2><div class="pair"><QingxuDefault /><QingxuSongStyle /></div></section>
+    <section><h2>白汀 Baiting</h2><div class="pair"><BaitingDefault data={baitingCase} /><BaitingSongStyle data={baitingCase} /></div></section>
+    <section><h2>清序 Qingxu</h2><div class="pair"><QingxuDefault data={qingxuCase} /><QingxuSongStyle data={qingxuCase} /></div></section>
     <nav class="comparison-links" aria-label="比较工具">
       <a href={withBase("/prompts/design-review/compare-default-and-songstyle/")}>比较 Prompt</a>
       <a href={withBase("/checklist/")}>共享审查清单</a>

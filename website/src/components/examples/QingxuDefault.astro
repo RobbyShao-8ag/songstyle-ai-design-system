@@ -1,25 +1,48 @@
-<section class="qingxu-default" aria-label="清序普通 AI 默认方案">
-  <p class="badge">AI POWERED · NEXT GEN · 10X RESEARCH</p>
-  <h3>Supercharge Your Intelligence</h3>
-  <p>One platform. Infinite insights. Transform everything with AI.</p>
-  <div class="stats"><strong>10M+</strong><strong>99.9%</strong><strong>500%</strong></div>
-  <div class="feature-grid">
-    <article>Smart Sources</article><article>Instant Synthesis</article><article>AI Chat</article>
-    <article>Magic Notes</article><article>Team Brain</article><article>Auto Reports</article>
+---
+import type { CaseStudy } from "../../data/cases";
+import { withBase } from "../../lib/paths";
+
+interface Props {
+  data: CaseStudy;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="qingxu-default" aria-label="清序普通 AI 默认方案" data-testid="qingxu-default">
+  <div class="default-copy">
+    <p class="badge">{data.brand} · {data.position} · AI POWERED</p>
+    <h3>{data.headline}</h3>
+    <p>{data.description}</p>
+    <a href="#qingxu-workflow">{data.action}</a>
   </div>
-  <div class="screens" role="img" aria-label="竞争界面截图示意"><span></span><span></span><span></span></div>
+  <div class="visual-frame">
+    <img src={withBase(data.image)} alt={data.imageAlt} />
+    <div class="screen-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  </div>
+  <div class="feature-grid">
+    {data.features.map((feature) => (
+      <article><span>{feature.label}</span><strong>{feature.value}</strong></article>
+    ))}
+  </div>
 </section>
 
 <style>
   .qingxu-default { overflow: hidden; padding: var(--song-space-scale-8); border-radius: var(--song-shape-radius-large); background: radial-gradient(circle at top, #361475, #07152d 68%); color: #fff; text-align: center; }
   .badge { color: #7df9ff; font-size: var(--song-typography-size-small); letter-spacing: 0.16em; }
-  h3 { margin: var(--song-space-scale-4) 0; font-size: var(--song-typography-size-title); text-shadow: 0 0 24px #b14cff; }
-  .stats, .feature-grid, .screens { display: grid; gap: var(--song-space-scale-3); margin-top: var(--song-space-scale-6); }
-  .stats { grid-template-columns: repeat(3, 1fr); color: #7df9ff; }
+  h3 { max-width: 20ch; margin: var(--song-space-scale-4) auto; font-size: var(--song-typography-size-title); text-shadow: 0 0 24px #b14cff; }
+  .default-copy > p:not(.badge) { max-width: 46rem; margin-inline: auto; line-height: var(--song-typography-line-height-body); }
+  a { display: inline-block; margin-top: var(--song-space-scale-4); padding: var(--song-space-scale-3) var(--song-space-scale-5); border-radius: 999px; background: linear-gradient(90deg, #7c3aed, #2563eb); color: #fff; font-weight: 700; text-decoration: none; box-shadow: 0 0 24px rgb(177 76 255 / 0.5); }
+  .visual-frame { position: relative; overflow: hidden; margin-top: var(--song-space-scale-6); border: 1px solid rgb(125 249 255 / 0.38); border-radius: var(--song-shape-radius-control); }
+  .visual-frame img { display: block; width: 100%; height: 300px; object-fit: cover; opacity: 0.72; filter: saturate(1.25) contrast(1.08); }
+  .screen-grid { position: absolute; inset: auto var(--song-space-scale-4) var(--song-space-scale-4); display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--song-space-scale-3); }
+  .screen-grid span { height: 62px; border: 1px solid rgb(125 249 255 / 0.42); border-radius: var(--song-shape-radius-control); background: rgb(177 76 255 / 0.28); backdrop-filter: blur(10px); }
+  .feature-grid { display: grid; gap: var(--song-space-scale-3); margin-top: var(--song-space-scale-4); }
   .feature-grid { grid-template-columns: repeat(3, 1fr); }
-  .feature-grid article { padding: var(--song-space-scale-4); border: 1px solid rgb(125 249 255 / 0.35); border-radius: var(--song-shape-radius-control); background: rgb(177 76 255 / 0.16); }
-  .screens { grid-template-columns: repeat(3, 1fr); align-items: end; }
-  .screens span { display: block; height: 90px; border: 1px solid rgb(255 255 255 / 0.3); border-radius: var(--song-shape-radius-control); background: linear-gradient(145deg, rgb(125 249 255 / 0.2), rgb(177 76 255 / 0.35)); }
-  .screens span:nth-child(2) { height: 130px; }
-  @media (max-width: 620px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+  .feature-grid article { display: grid; gap: var(--song-space-scale-2); padding: var(--song-space-scale-4); border: 1px solid rgb(125 249 255 / 0.35); border-radius: var(--song-shape-radius-control); background: rgb(177 76 255 / 0.16); }
+  .feature-grid span { color: #7df9ff; font-size: var(--song-typography-size-small); }
+  @media (max-width: 620px) {
+    .feature-grid, .screen-grid { grid-template-columns: 1fr; }
+    .screen-grid { display: none; }
+  }
 </style>
