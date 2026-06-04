@@ -1,0 +1,25 @@
+---
+import { withBase } from "../../lib/paths";
+const resources = [
+  ["Prompts", "/prompts/", "可复制的 Web 设计与审查模板。"],
+  ["Agent Skills", "/skills/", "可移植的设计与审查工作流。"],
+  ["设计变量", "/design-tokens/", "色彩、空间、字体、形状与动效的可执行变量。"],
+  ["审查清单", "/checklist/", "人、Prompt 与 Skill 共享的六项维度。"]
+];
+---
+
+<section class="home-section reveal">
+  <div class="container">
+    <p class="eyebrow">执行层</p>
+    <h2>从原则走向执行</h2>
+    <div class="resource-grid">
+      {resources.map(([title, route, description]) => (
+        <a href={withBase(route)}><strong>{title}</strong><span>{description}</span></a>
+      ))}
+    </div>
+    <div class="contribute">
+      <p>SongStyle 是一个创作者主导的开源项目。欢迎贡献研究、文档、Prompt、Skill、参考 UI 与案例。</p>
+      <a class="quiet-link" href={withBase("/contributing/")}>参与贡献 <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

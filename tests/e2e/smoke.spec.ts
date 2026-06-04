@@ -27,6 +27,20 @@ test("home page presents the central thesis", async ({ page }) => {
   ).toHaveAttribute("href", withBase("/reference-ui/"));
 });
 
+test("home page presents the complete exhibition sequence", async ({ page }) => {
+  await page.goto(withBase("/"));
+  for (const name of ["为什么 AI 设计容易过度", "六条核心原则", "普通 AI 与 SongStyle"]) {
+    await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
+  }
+  const cases = page.locator(".case-grid");
+  await expect(cases.getByText("生活方式品牌", { exact: true })).toBeVisible();
+  await expect(cases.getByText("现代数字产品", { exact: true })).toBeVisible();
+  const resources = page.locator(".resource-grid");
+  for (const text of ["Prompts", "Agent Skills", "设计变量", "审查清单"]) {
+    await expect(resources.getByText(text, { exact: true })).toBeVisible();
+  }
+});
+
 test("reference controls are keyboard reachable", async ({ page }) => {
   await page.goto(withBase("/reference-ui/"));
   await page.keyboard.press("Tab");
@@ -39,4 +53,26 @@ test("checklist content route renders", async ({ page }) => {
   await expect(
     page.getByRole("heading", { level: 1, name: "SongStyle 审查清单" })
   ).toBeVisible();
+});
+
+test("lifestyle case study presents the full comparison", async ({ page }) => {
+  await page.goto(withBase("/examples/lifestyle-brand/"));
+  await expect(page.getByRole("heading", { level: 1, name: "白汀 Baiting：当代家居饮水器物品牌" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "普通 AI 默认方案" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "SongStyle 改写" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "审查结果" })).toBeVisible();
+});
+
+test("digital product case study presents the full comparison", async ({ page }) => {
+  await page.goto(withBase("/examples/digital-product/"));
+  await expect(page.getByRole("heading", { level: 1, name: "清序 Qingxu：AI 研究工作台" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "普通 AI 默认方案" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "SongStyle 改写" })).toBeVisible();
+});
+
+test("comparisons explain every review dimension", async ({ page }) => {
+  await page.goto(withBase("/examples/comparisons/"));
+  for (const text of ["信息必要性", "层级清晰度", "功能性留白", "适度停止", "秩序而非符号", "可用性、可访问性与目标"]) {
+    await expect(page.getByRole("heading", { level: 2, name: text })).toBeVisible();
+  }
 });

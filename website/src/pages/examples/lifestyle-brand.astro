@@ -1,0 +1,40 @@
+---
+import { getEntry, render } from "astro:content";
+import BaitingDefault from "../../components/examples/BaitingDefault.astro";
+import BaitingSongStyle from "../../components/examples/BaitingSongStyle.astro";
+import MarkdownProse from "../../components/MarkdownProse.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../lib/paths";
+
+const entry = await getEntry("examples", "lifestyle-brand/baiting");
+if (!entry) throw new Error("Missing Baiting case-study content");
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | SongStyle AI Design System`} description={entry.data.description}>
+  <article class="container case-study">
+    <MarkdownProse><Content /></MarkdownProse>
+    <section class="visual-section">
+      <h2>普通 AI 默认方案</h2>
+      <BaitingDefault />
+    </section>
+    <section class="visual-section">
+      <h2>SongStyle 改写</h2>
+      <BaitingSongStyle />
+    </section>
+    <nav class="case-links" aria-label="相关资源">
+      <a href={withBase("/principles/")}>六项原则</a>
+      <a href={withBase("/design-tokens/")}>设计变量</a>
+      <a href={withBase("/prompts/web-design/from-brief/")}>从 Brief Prompt</a>
+      <a href={withBase("/checklist/")}>审查清单</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .case-study { padding-block: var(--song-space-section-compact); }
+  .visual-section { margin-top: var(--song-space-section-compact); }
+  .visual-section h2 { font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; }
+  .case-links { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-6); margin-top: var(--song-space-section-compact); padding-top: var(--song-space-scale-6); border-top: var(--song-shape-border-width) solid var(--song-color-border-subtle); }
+  .case-links a { color: var(--song-color-accent-primary); }
+</style>

@@ -1,5 +1,10 @@
 ---
 import HeroStatement from "../components/HeroStatement.astro";
+import CaseStudyPreview from "../components/home/CaseStudyPreview.astro";
+import ComparisonPreview from "../components/home/ComparisonPreview.astro";
+import ExcessProblem from "../components/home/ExcessProblem.astro";
+import PrincipleSequence from "../components/home/PrincipleSequence.astro";
+import ResourceEntry from "../components/home/ResourceEntry.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { withBase } from "../lib/paths";
 ---
@@ -11,12 +16,17 @@ import { withBase } from "../lib/paths";
   <HeroStatement />
   <section class="container home-entry">
     <p class="eyebrow">从理念开始</p>
-    <h2>不是古风素材，而是一套判断何时停止的设计语言。</h2>
+    <h2>“已经足够”不是减少，而是关系准确、表达充分。</h2>
     <div class="entry-links">
       <a class="quiet-link" href={withBase("/manifesto/")}>阅读宣言 <span aria-hidden="true">→</span></a>
       <a class="quiet-link" href={withBase("/principles/")}>查看六项原则 <span aria-hidden="true">→</span></a>
     </div>
   </section>
+  <ExcessProblem />
+  <PrincipleSequence />
+  <ComparisonPreview />
+  <CaseStudyPreview />
+  <ResourceEntry />
 </BaseLayout>
 
 <style>

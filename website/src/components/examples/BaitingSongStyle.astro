@@ -1,0 +1,42 @@
+<section id="baiting-songstyle" class="baiting-songstyle" aria-label="白汀 SongStyle 改写">
+  <div class="story">
+    <p class="eyebrow">白汀 Baiting · 日常饮水器物</p>
+    <h3>让水回到桌面，安静地成为日常。</h3>
+    <p>一只 1.2L 高硼硅玻璃水壶，薄而稳的壶口，容易清洁的宽口结构，以及适合每日使用的温润手感。</p>
+    <a href="#baiting-details">查看器物与购买信息</a>
+  </div>
+  <div class="object-stage" role="img" aria-label="旗舰玻璃水壶示意">
+    <div class="carafe" aria-hidden="true"></div>
+  </div>
+  <dl id="baiting-details">
+    <div><dt>材质</dt><dd>高硼硅玻璃</dd></div>
+    <div><dt>容量</dt><dd>1.2 L</dd></div>
+    <div><dt>维护</dt><dd>宽口易清洁</dd></div>
+  </dl>
+</section>
+
+<style>
+  .baiting-songstyle {
+    display: grid;
+    gap: var(--song-space-scale-8);
+    padding: var(--song-space-scale-8);
+    border: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+    border-radius: var(--song-shape-radius-large);
+    background: var(--song-color-surface-default);
+  }
+  .story { align-self: center; }
+  h3 { max-width: 12ch; margin: 0; font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; line-height: 1.4; }
+  .story p:not(.eyebrow) { max-width: 34rem; color: var(--song-color-text-secondary); line-height: var(--song-typography-line-height-relaxed); }
+  .story a { color: var(--song-color-accent-primary); text-underline-offset: var(--song-space-scale-2); }
+  .object-stage { display: grid; min-height: 300px; place-items: center; background: var(--song-color-background-canvas); }
+  .carafe { position: relative; width: 130px; height: 190px; border: 2px solid var(--song-color-accent-soft); border-radius: 28px 28px 42px 42px; background: linear-gradient(to bottom, rgb(255 255 255 / 0.7), rgb(169 185 170 / 0.24)); box-shadow: var(--song-shape-shadow-soft); }
+  .carafe::before { content: ""; position: absolute; top: -34px; left: 36px; width: 58px; height: 38px; border: 2px solid var(--song-color-accent-soft); border-bottom: 0; border-radius: 14px 14px 0 0; }
+  dl { display: grid; gap: var(--song-space-scale-4); margin: 0; }
+  dl div { padding-top: var(--song-space-scale-3); border-top: var(--song-shape-border-width) solid var(--song-color-border-subtle); }
+  dt { color: var(--song-color-text-secondary); font-size: var(--song-typography-size-small); }
+  dd { margin: var(--song-space-scale-2) 0 0; }
+  @media (min-width: 760px) {
+    .baiting-songstyle { grid-template-columns: 1fr 1fr; padding: var(--song-space-scale-12); }
+    dl { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

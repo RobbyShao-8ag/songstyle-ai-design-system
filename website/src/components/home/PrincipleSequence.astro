@@ -1,0 +1,24 @@
+---
+import { withBase } from "../../lib/paths";
+const principles = [
+  ["少而有序", "减少不是目的，关系才是目的。"],
+  ["留白生意", "空间承担聚焦、节奏与联想。"],
+  ["克制有度", "表达充分后，设计应当停止。"],
+  ["平淡见真", "真实内容与准确结构经得起时间。"],
+  ["温润可亲", "让技术拥有可信赖的人性尺度。"],
+  ["含蓄留韵", "留下发现空间，但不隐藏必要信息。"]
+];
+---
+
+<section class="home-section reveal">
+  <div class="container">
+    <p class="eyebrow">核心层</p>
+    <h2>六条核心原则</h2>
+    <div class="principle-grid">
+      {principles.map(([title, description], index) => (
+        <article><span>0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>
+      ))}
+    </div>
+    <a class="quiet-link" href={withBase("/principles/")}>阅读完整原则 <span aria-hidden="true">→</span></a>
+  </div>
+</section>

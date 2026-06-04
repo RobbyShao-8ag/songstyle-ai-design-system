@@ -12,6 +12,7 @@ import { withBase } from "../lib/paths";
       <a href={withBase("/design-tokens/")}>设计变量</a>
       <a href={withBase("/prompts/")}>Prompts</a>
       <a href={withBase("/skills/")}>Skills</a>
+      <a href={withBase("/examples/")}>案例</a>
       <a href={withBase("/checklist/")}>审查清单</a>
       <a href={withBase("/contributing/")}>贡献</a>
     </nav>
@@ -39,6 +40,7 @@ import { withBase } from "../lib/paths";
 
   nav {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--song-space-scale-6);
     color: var(--song-color-text-secondary);
     font-size: var(--song-typography-size-small);

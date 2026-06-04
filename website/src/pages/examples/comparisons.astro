@@ -1,0 +1,36 @@
+---
+import { getEntry, render } from "astro:content";
+import BaitingDefault from "../../components/examples/BaitingDefault.astro";
+import BaitingSongStyle from "../../components/examples/BaitingSongStyle.astro";
+import QingxuDefault from "../../components/examples/QingxuDefault.astro";
+import QingxuSongStyle from "../../components/examples/QingxuSongStyle.astro";
+import MarkdownProse from "../../components/MarkdownProse.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../lib/paths";
+
+const entry = await getEntry("examples", "comparisons/overview");
+if (!entry) throw new Error("Missing comparison content");
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | SongStyle AI Design System`} description={entry.data.description}>
+  <article class="container comparison-page">
+    <MarkdownProse><Content /></MarkdownProse>
+    <section><h2>白汀 Baiting</h2><div class="pair"><BaitingDefault /><BaitingSongStyle /></div></section>
+    <section><h2>清序 Qingxu</h2><div class="pair"><QingxuDefault /><QingxuSongStyle /></div></section>
+    <nav class="comparison-links" aria-label="比较工具">
+      <a href={withBase("/prompts/design-review/compare-default-and-songstyle/")}>比较 Prompt</a>
+      <a href={withBase("/checklist/")}>共享审查清单</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .comparison-page { padding-block: var(--song-space-section-compact); }
+  section { margin-top: var(--song-space-section-compact); }
+  h2 { font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; }
+  .pair { display: grid; gap: var(--song-space-scale-6); }
+  .comparison-links { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-6); margin-top: var(--song-space-section-compact); }
+  .comparison-links a { color: var(--song-color-accent-primary); }
+  @media (min-width: 1000px) { .pair { grid-template-columns: 1fr 1fr; align-items: start; } }
+</style>
