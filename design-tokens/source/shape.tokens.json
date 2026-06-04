@@ -1,0 +1,27 @@
+{
+  "shape": {
+    "radius": {
+      "$type": "dimension",
+      "small": { "$value": { "value": 4, "unit": "px" }, "$description": "Subtle corner radius." },
+      "control": { "$value": { "value": 8, "unit": "px" }, "$description": "Default control corner radius." },
+      "large": { "$value": { "value": 16, "unit": "px" }, "$description": "Large surface corner radius." }
+    },
+    "border": {
+      "$type": "dimension",
+      "width": { "$value": { "value": 1, "unit": "px" }, "$description": "Default quiet border width." }
+    },
+    "shadow": {
+      "$type": "shadow",
+      "soft": {
+        "$value": {
+          "color": { "colorSpace": "srgb", "components": [0.1216, 0.1451, 0.1294], "alpha": 0.08 },
+          "offsetX": { "value": 0, "unit": "px" },
+          "offsetY": { "value": 12, "unit": "px" },
+          "blur": { "value": 36, "unit": "px" },
+          "spread": { "value": 0, "unit": "px" }
+        },
+        "$description": "Soft elevation without visual heaviness."
+      }
+    }
+  }
+}

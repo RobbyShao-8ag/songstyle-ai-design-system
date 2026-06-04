@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { readFile, readdir } from "node:fs/promises";
+import path from "node:path";
 import test from "node:test";
 
 import {
@@ -98,4 +100,37 @@ test("compileTokenFiles rejects duplicate token paths", () => {
     ]),
     /duplicate/i
   );
+});
+
+test("real SongStyle token sources cover required semantic tokens", async () => {
+  const sourceDir = path.resolve("design-tokens/source");
+  const names = (await readdir(sourceDir))
+    .filter((name) => name.endsWith(".tokens.json"))
+    .sort();
+  const files = await Promise.all(
+    names.map(async (name) => ({
+      name,
+      data: JSON.parse(await readFile(path.join(sourceDir, name), "utf8"))
+    }))
+  );
+  const result = compileTokenFiles(files);
+  const requiredTokens = [
+    "color.background.canvas",
+    "color.text.primary",
+    "color.border.subtle",
+    "color.accent.primary",
+    "space.page.gutter",
+    "space.section.default",
+    "typography.family.body",
+    "typography.family.display",
+    "typography.size.body",
+    "shape.radius.control",
+    "shape.shadow.soft",
+    "motion.duration.enter",
+    "motion.easing.standard"
+  ];
+
+  for (const name of requiredTokens) {
+    assert.ok(result.resolved[name], `Missing required token: ${name}`);
+  }
 });

@@ -1,0 +1,139 @@
+{
+  "color": {
+    "$type": "color",
+    "primitive": {
+      "porcelain": {
+        "50": {
+          "$value": { "colorSpace": "srgb", "components": [0.9843, 0.9804, 0.9647], "alpha": 1 },
+          "$description": "Warm porcelain white for the lightest backgrounds."
+        },
+        "100": {
+          "$value": { "colorSpace": "srgb", "components": [0.9608, 0.949, 0.9137], "alpha": 1 },
+          "$description": "Soft porcelain surface color."
+        },
+        "200": {
+          "$value": { "colorSpace": "srgb", "components": [0.9216, 0.902, 0.8471], "alpha": 1 },
+          "$description": "Porcelain tone for quiet divisions."
+        }
+      },
+      "ink": {
+        "900": {
+          "$value": { "colorSpace": "srgb", "components": [0.1216, 0.1451, 0.1294], "alpha": 1 },
+          "$description": "Deep ink for primary text."
+        },
+        "700": {
+          "$value": { "colorSpace": "srgb", "components": [0.2471, 0.2863, 0.2588], "alpha": 1 },
+          "$description": "Middle ink for supporting text."
+        },
+        "500": {
+          "$value": { "colorSpace": "srgb", "components": [0.4078, 0.451, 0.4196], "alpha": 1 },
+          "$description": "Muted ink for low-emphasis text."
+        }
+      },
+      "mist": {
+        "50": {
+          "$value": { "colorSpace": "srgb", "components": [0.9647, 0.9686, 0.9569], "alpha": 1 },
+          "$description": "Mist tint for subtle background contrast."
+        },
+        "100": {
+          "$value": { "colorSpace": "srgb", "components": [0.9294, 0.9412, 0.9216], "alpha": 1 },
+          "$description": "Mist tint for quiet selected states."
+        },
+        "300": {
+          "$value": { "colorSpace": "srgb", "components": [0.8118, 0.8392, 0.8118], "alpha": 1 },
+          "$description": "Mist tone for understated borders."
+        }
+      },
+      "celadon": {
+        "300": {
+          "$value": { "colorSpace": "srgb", "components": [0.6627, 0.7255, 0.6667], "alpha": 1 },
+          "$description": "Soft celadon accent."
+        },
+        "500": {
+          "$value": { "colorSpace": "srgb", "components": [0.4431, 0.5333, 0.4706], "alpha": 1 },
+          "$description": "Balanced celadon accent."
+        },
+        "700": {
+          "$value": { "colorSpace": "srgb", "components": [0.3098, 0.3961, 0.3412], "alpha": 1 },
+          "$description": "Deep celadon for primary actions."
+        }
+      },
+      "tea": {
+        "500": {
+          "$value": { "colorSpace": "srgb", "components": [0.5647, 0.4588, 0.3647], "alpha": 1 },
+          "$description": "Warm tea accent for restrained contrast."
+        },
+        "700": {
+          "$value": { "colorSpace": "srgb", "components": [0.4118, 0.3294, 0.2549], "alpha": 1 },
+          "$description": "Deep tea tone for warm emphasis."
+        }
+      },
+      "vermilion": {
+        "600": {
+          "$value": { "colorSpace": "srgb", "components": [0.651, 0.3255, 0.2588], "alpha": 1 },
+          "$description": "Vermilion reserved for error communication."
+        }
+      }
+    },
+    "background": {
+      "canvas": {
+        "$value": "{color.primitive.porcelain.50}",
+        "$description": "Primary page canvas."
+      },
+      "subtle": {
+        "$value": "{color.primitive.mist.50}",
+        "$description": "Quiet background contrast."
+      }
+    },
+    "surface": {
+      "default": {
+        "$value": "{color.primitive.porcelain.100}",
+        "$description": "Default contained surface."
+      },
+      "elevated": {
+        "$value": "{color.primitive.porcelain.50}",
+        "$description": "Elevated surface with minimal contrast."
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "{color.primitive.ink.900}",
+        "$description": "Primary readable text."
+      },
+      "secondary": {
+        "$value": "{color.primitive.ink.700}",
+        "$description": "Supporting readable text."
+      },
+      "muted": {
+        "$value": "{color.primitive.ink.500}",
+        "$description": "Low-emphasis text."
+      }
+    },
+    "border": {
+      "subtle": {
+        "$value": "{color.primitive.mist.300}",
+        "$description": "Quiet structural border."
+      }
+    },
+    "accent": {
+      "primary": {
+        "$value": "{color.primitive.celadon.700}",
+        "$description": "Primary interactive accent."
+      },
+      "soft": {
+        "$value": "{color.primitive.celadon.300}",
+        "$description": "Soft accent for gentle emphasis."
+      },
+      "warm": {
+        "$value": "{color.primitive.tea.500}",
+        "$description": "Warm accent for selective contrast."
+      }
+    },
+    "state": {
+      "error": {
+        "$value": "{color.primitive.vermilion.600}",
+        "$description": "Error and destructive-state communication."
+      }
+    }
+  }
+}

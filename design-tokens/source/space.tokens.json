@@ -1,0 +1,26 @@
+{
+  "space": {
+    "$type": "dimension",
+    "scale": {
+      "1": { "$value": { "value": 4, "unit": "px" }, "$description": "Smallest spacing step." },
+      "2": { "$value": { "value": 8, "unit": "px" }, "$description": "Compact spacing step." },
+      "3": { "$value": { "value": 12, "unit": "px" }, "$description": "Tight content spacing." },
+      "4": { "$value": { "value": 16, "unit": "px" }, "$description": "Default compact spacing." },
+      "6": { "$value": { "value": 24, "unit": "px" }, "$description": "Comfortable content spacing." },
+      "8": { "$value": { "value": 32, "unit": "px" }, "$description": "Grouped content spacing." },
+      "12": { "$value": { "value": 48, "unit": "px" }, "$description": "Wide content spacing." },
+      "16": { "$value": { "value": 64, "unit": "px" }, "$description": "Compact section spacing." },
+      "24": { "$value": { "value": 96, "unit": "px" }, "$description": "Default section spacing." },
+      "32": { "$value": { "value": 128, "unit": "px" }, "$description": "Spacious section spacing." }
+    },
+    "page": {
+      "gutter": { "$value": "{space.scale.6}", "$description": "Default page-side gutter." },
+      "gutter-wide": { "$value": "{space.scale.12}", "$description": "Wide-screen page-side gutter." }
+    },
+    "section": {
+      "compact": { "$value": "{space.scale.16}", "$description": "Compact vertical section rhythm." },
+      "default": { "$value": "{space.scale.24}", "$description": "Default vertical section rhythm." },
+      "spacious": { "$value": "{space.scale.32}", "$description": "Spacious vertical section rhythm." }
+    }
+  }
+}
