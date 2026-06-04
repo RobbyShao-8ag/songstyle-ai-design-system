@@ -23,7 +23,7 @@ test("home page presents the central thesis", async ({ page }) => {
     "AI 不懂得何时停止"
   );
   await expect(
-    page.getByRole("link", { name: "Reference UI", exact: true })
+    page.getByRole("link", { name: "查看 Reference UI", exact: true })
   ).toHaveAttribute("href", withBase("/reference-ui/"));
 });
 
