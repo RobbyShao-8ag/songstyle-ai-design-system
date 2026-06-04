@@ -1,0 +1,55 @@
+---
+import SongButton from "@songstyle/reference-ui/SongButton.astro";
+import SongCard from "@songstyle/reference-ui/SongCard.astro";
+import SongSection from "@songstyle/reference-ui/SongSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/paths";
+---
+
+<BaseLayout
+  title="Reference UI | SongStyle AI Design System"
+  description="A small, non-production reference UI demonstrating SongStyle design variables."
+>
+  <SongSection
+    eyebrow="Reference UI"
+    title="少量组件，用于证明设计语言可以执行"
+    description="这些组件不是生产级组件库。它们展示设计变量如何在可访问、可用的 Web UI 中建立克制的秩序。"
+  >
+    <div class="reference-grid">
+      <SongCard eyebrow="原则" title="少而有序">
+        <p>减少无意义的视觉竞争，但保留用户完成任务所需的信息与行动。</p>
+      </SongCard>
+      <SongCard eyebrow="留白" title="空间创造意义">
+        <p>留白不是空缺，而是帮助内容建立层级、节奏与联想的主动结构。</p>
+      </SongCard>
+    </div>
+    <div class="actions" aria-label="按钮示例">
+      <SongButton href={withBase("/")}>主要行动</SongButton>
+      <SongButton variant="quiet">安静行动</SongButton>
+    </div>
+  </SongSection>
+</BaseLayout>
+
+<style>
+  .reference-grid {
+    display: grid;
+    gap: var(--song-space-scale-6);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--song-space-scale-4);
+    margin-top: var(--song-space-scale-8);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @media (min-width: 720px) {
+    .reference-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

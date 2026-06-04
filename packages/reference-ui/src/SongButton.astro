@@ -1,0 +1,21 @@
+---
+interface Props {
+  href?: string;
+  variant?: "primary" | "quiet";
+}
+
+const { href, variant = "primary" } = Astro.props;
+const className = `song-button song-button--${variant}`;
+---
+
+{
+  href ? (
+    <a class={className} href={href}>
+      <slot />
+    </a>
+  ) : (
+    <button class={className} type="button">
+      <slot />
+    </button>
+  )
+}

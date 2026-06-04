@@ -1,0 +1,16 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+}
+
+const { eyebrow, title } = Astro.props;
+---
+
+<article class="song-card">
+  <p class="song-card__eyebrow">{eyebrow}</p>
+  <h3 class="song-card__title">{title}</h3>
+  <div class="song-card__body">
+    <slot />
+  </div>
+</article>

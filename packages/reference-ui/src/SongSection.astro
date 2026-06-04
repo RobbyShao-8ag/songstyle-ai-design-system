@@ -1,0 +1,23 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+}
+
+const { eyebrow, title, description } = Astro.props;
+const headingId = `song-section-${title.toLowerCase().replaceAll(/\s+/g, "-")}`;
+---
+
+<section class="song-section" aria-labelledby={headingId}>
+  <div class="song-section__inner">
+    <header class="song-section__header">
+      <p class="song-section__eyebrow">{eyebrow}</p>
+      <h1 id={headingId} class="song-section__title">{title}</h1>
+      <p class="song-section__description">{description}</p>
+    </header>
+    <div class="song-section__content">
+      <slot />
+    </div>
+  </div>
+</section>

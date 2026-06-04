@@ -1,4 +1,5 @@
 @import "../../../design-tokens/dist/songstyle.css";
+@import "../../../packages/reference-ui/src/reference-ui.css";
 
 :root {
   color: var(--song-color-text-primary);
