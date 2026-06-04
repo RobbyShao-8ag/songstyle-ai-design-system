@@ -174,3 +174,41 @@ test("English entry content and README links are complete", async () => {
     assert.match(readme, new RegExp(link.replaceAll("/", "\\/")));
   }
 });
+
+test("prompt templates share the required structure and review sources", async () => {
+  const webDesignPrompts = [
+    "prompts/web-design/from-brief.md",
+    "prompts/web-design/rewrite-existing-page.md"
+  ];
+  const reviewPrompts = [
+    "prompts/design-review/review-page.md",
+    "prompts/design-review/compare-default-and-songstyle.md"
+  ];
+  const requiredSections = [
+    "Assumptions / 假设",
+    "Information hierarchy / 信息层级",
+    "Removal decisions / 删减决策",
+    "Visual direction / 视觉方向",
+    "Implementation constraints / 实现约束",
+    "Review / 审查"
+  ];
+
+  for (const file of [...webDesignPrompts, ...reviewPrompts]) {
+    const markdown = await readFile(file, "utf8");
+    for (const section of requiredSections) assert.match(markdown, new RegExp(section.replace("/", "\\/")));
+    assert.match(markdown, /\/checklist\//);
+  }
+
+  for (const file of webDesignPrompts) {
+    const markdown = await readFile(file, "utf8");
+    assert.match(markdown, /\/principles\//);
+  }
+
+  const review = JSON.parse(
+    await readFile("checklists/songstyle-review.json", "utf8")
+  );
+  for (const file of reviewPrompts) {
+    const markdown = await readFile(file, "utf8");
+    for (const dimension of review.dimensions) assert.match(markdown, new RegExp(dimension.nameZh));
+  }
+});

@@ -22,6 +22,8 @@ order: 3
 
 Use the Design Tokens as a reference expression layer, not as a substitute for design judgment. Use prompts when you need a copyable structured request. Use Agent Skills when an AI agent should follow a repeatable workflow and self-review against the shared model.
 
+Browse the rendered [prompt templates](../../prompts/).
+
 ## What v0.1 Does Not Include
 
 SongStyle v0.1 is not a production component library, an online AI generator, a Figma plugin, an MCP server, or a historical reconstruction.
