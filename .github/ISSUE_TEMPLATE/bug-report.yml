@@ -1,0 +1,41 @@
+name: Bug report
+description: Report a reproducible problem in the website, documentation, assets, or tooling.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for helping make SongStyle reliable.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What happened, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Include the page, file, command, browser, and steps needed to reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Add screenshots, logs, links, or a minimal example.
+    validations:
+      required: true
+  - type: dropdown
+    id: dimension
+    attributes:
+      label: Related review dimension
+      options:
+        - Not a design review issue
+        - Information necessity
+        - Hierarchy clarity
+        - Functional negative space
+        - Appropriate stopping
+        - Order not symbols
+        - Usability, accessibility, and goals

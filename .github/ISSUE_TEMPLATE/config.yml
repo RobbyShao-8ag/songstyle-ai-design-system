@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: SongStyle documentation
+    url: https://robbyshao-8ag.github.io/songstyle-ai-design-system/
+    about: Read the principles, cases, Prompts, and Agent Skills before opening an issue.

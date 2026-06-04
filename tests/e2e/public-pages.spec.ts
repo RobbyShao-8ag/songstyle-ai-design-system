@@ -22,6 +22,8 @@ export const PUBLIC_ROUTES = [
   "/foundations/surface/",
   "/foundations/motion/",
   "/references/",
+  "/references/image-generation-prompts/",
+  "/research/first-round-user-testing/",
   "/guides/from-brief-to-web-design/",
   "/checklist/",
   "/prompts/",
@@ -48,6 +50,7 @@ for (const route of PUBLIC_ROUTES) {
     await page.goto(withBase(route));
     await expect(page.locator("main")).toBeVisible();
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 })).not.toContainText("404");
     const hasOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth
     );

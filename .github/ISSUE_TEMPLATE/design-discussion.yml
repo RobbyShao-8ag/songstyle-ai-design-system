@@ -1,0 +1,33 @@
+name: Design discussion
+description: Discuss a SongStyle principle, tradeoff, or unclear design decision with evidence.
+title: "[Design]: "
+labels: ["design discussion"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Design question
+      description: State the specific decision or ambiguity.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and constraints
+      description: Include audience, business goal, necessary information, and implementation constraints.
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options considered
+      description: Describe the alternatives and their tradeoffs.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Add screenshots, prototypes, references, or review checklist observations.
+    validations:
+      required: true

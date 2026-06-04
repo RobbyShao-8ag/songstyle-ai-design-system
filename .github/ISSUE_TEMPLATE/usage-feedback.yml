@@ -1,0 +1,44 @@
+name: SongStyle usage feedback
+description: Share evidence from using SongStyle in a real or test project.
+title: "[Feedback]: "
+labels: ["feedback"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Project context
+      description: What were you designing, for whom, and with which AI or design tools?
+    validations:
+      required: true
+  - type: textarea
+    id: before
+    attributes:
+      label: Default approach
+      description: Describe or link the result before applying SongStyle.
+    validations:
+      required: true
+  - type: textarea
+    id: after
+    attributes:
+      label: SongStyle approach
+      description: Describe or link the result after applying SongStyle.
+    validations:
+      required: true
+  - type: checkboxes
+    id: dimensions
+    attributes:
+      label: Review dimensions affected
+      options:
+        - label: Information necessity
+        - label: Hierarchy clarity
+        - label: Functional negative space
+        - label: Appropriate stopping
+        - label: Order not symbols
+        - label: Usability, accessibility, and goals
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and outcome
+      description: What improved, did not change, or became worse? Include artifacts when possible.
+    validations:
+      required: true

@@ -1,0 +1,40 @@
+name: Community case-study proposal
+description: Propose a fair before-and-after SongStyle case study.
+title: "[Case]: "
+labels: ["case study"]
+body:
+  - type: textarea
+    id: brief
+    attributes:
+      label: Product brief and business goal
+      description: Describe the product, audience, required content, action, and success goal.
+    validations:
+      required: true
+  - type: textarea
+    id: invariants
+    attributes:
+      label: Comparison invariants
+      description: List the copy, images, features, actions, and goals that will remain the same.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Existing evidence
+      description: Link the default result, SongStyle result, source files, or screenshots.
+    validations:
+      required: true
+  - type: textarea
+    id: learning
+    attributes:
+      label: Expected learning
+      description: Which design tradeoff or SongStyle principle would this case clarify?
+    validations:
+      required: true
+  - type: checkboxes
+    id: permissions
+    attributes:
+      label: Permissions
+      options:
+        - label: I have permission to share the submitted content and images.
+          required: true

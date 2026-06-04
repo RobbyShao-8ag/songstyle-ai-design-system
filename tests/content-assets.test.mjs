@@ -284,6 +284,28 @@ test("README explains the fair comparison contract", async () => {
   }
 });
 
+test("community validation files request context and evidence", async () => {
+  const roadmap = await readFile("ROADMAP.md", "utf8");
+  const userTesting = await readFile("docs/research/first-round-user-testing.md", "utf8");
+  assert.match(roadmap, /v0\.2 Focus/);
+  assert.match(roadmap, /Evidence And Community Validation/);
+  assert.match(userTesting, /不预设 SongStyle 有效/);
+  assert.match(userTesting, /相同的\s*业务目标、必要内容与可用性要求/);
+
+  for (const file of [
+    ".github/ISSUE_TEMPLATE/bug-report.yml",
+    ".github/ISSUE_TEMPLATE/usage-feedback.yml",
+    ".github/ISSUE_TEMPLATE/case-study-proposal.yml",
+    ".github/ISSUE_TEMPLATE/design-discussion.yml"
+  ]) {
+    const form = YAML.parse(await readFile(file, "utf8"));
+    assert.ok(form.name, `${file} is missing a name`);
+    assert.ok(form.description, `${file} is missing a description`);
+    assert.ok(Array.isArray(form.body), `${file} is missing form body`);
+    assert.match(JSON.stringify(form), /evidence/i, `${file} must request evidence`);
+  }
+});
+
 test("v0.1 executable and case-study assets are present", async () => {
   const files = [
     "design-tokens/dist/songstyle.css",
