@@ -28,6 +28,13 @@ language for AI-generated websites and Web UI.
 
 SongStyle AI Design System is under active development toward `v0.1.0`.
 
+## Read The Documentation / 阅读文档
+
+- [中文宣言](docs/manifesto/zh.md)
+- [English Manifesto](docs/en/manifesto.md)
+- [English Core Principles](docs/en/core-principles.md)
+- [English Usage Guide](docs/en/usage.md)
+
 ## Development / 本地开发
 
 ```bash

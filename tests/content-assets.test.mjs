@@ -155,3 +155,22 @@ test("foundation pages link to the Design Tokens documentation", async () => {
     assert.match(markdown, /design-tokens\//, `${file} must link to Design Tokens`);
   }
 });
+
+test("English entry content and README links are complete", async () => {
+  const files = [
+    "docs/en/manifesto.md",
+    "docs/en/core-principles.md",
+    "docs/en/usage.md"
+  ];
+  for (const file of files) await access(file);
+
+  const readme = await readFile("README.md", "utf8");
+  for (const link of [
+    "docs/manifesto/zh.md",
+    "docs/en/manifesto.md",
+    "docs/en/core-principles.md",
+    "docs/en/usage.md"
+  ]) {
+    assert.match(readme, new RegExp(link.replaceAll("/", "\\/")));
+  }
+});
