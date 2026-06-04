@@ -257,6 +257,33 @@ test("digital product case-study source exists", async () => {
   await access("examples/digital-product/qingxu.md");
 });
 
+test("evidence-first redesign assets and collaboration files exist", async () => {
+  const files = [
+    "ROADMAP.md",
+    "docs/research/first-round-user-testing.md",
+    "docs/references/image-generation-prompts.md",
+    ".github/ISSUE_TEMPLATE/bug-report.yml",
+    ".github/ISSUE_TEMPLATE/usage-feedback.yml",
+    ".github/ISSUE_TEMPLATE/case-study-proposal.yml",
+    ".github/ISSUE_TEMPLATE/design-discussion.yml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    "website/src/data/cases.ts",
+    "website/public/assets/cases/baiting-carafe.webp",
+    "website/public/assets/cases/qingxu-research.webp"
+  ];
+
+  for (const file of files) {
+    await assert.doesNotReject(access(file), `Missing redesign asset: ${file}`);
+  }
+});
+
+test("README explains the fair comparison contract", async () => {
+  const readme = await readFile("README.md", "utf8");
+  for (const term of ["same copy", "same image", "same features", "same goal"]) {
+    assert.match(readme, new RegExp(term, "i"), `README is missing: ${term}`);
+  }
+});
+
 test("v0.1 executable and case-study assets are present", async () => {
   const files = [
     "design-tokens/dist/songstyle.css",
