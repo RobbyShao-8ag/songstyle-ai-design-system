@@ -47,7 +47,7 @@ function shouldIgnore(href) {
   );
 }
 
-function hrefToTarget(href) {
+function hrefToTarget(href, sourceFile) {
   const urlPath = href.split("#")[0].split("?")[0];
   if (!urlPath || shouldIgnore(urlPath)) return null;
 
@@ -55,23 +55,27 @@ function hrefToTarget(href) {
     return path.join(DIST_DIR, "__invalid-base-path__");
   }
 
-  const withoutBase =
-    urlPath === BASE_PATH
-      ? "/"
-      : urlPath.startsWith(`${BASE_PATH}/`)
-        ? urlPath.slice(BASE_PATH.length)
-        : urlPath;
+  const withoutBase = urlPath === BASE_PATH
+    ? "/"
+    : urlPath.startsWith(`${BASE_PATH}/`)
+      ? urlPath.slice(BASE_PATH.length)
+      : urlPath;
   const normalized = withoutBase.replace(/^\/+/, "");
 
   if (normalized && path.extname(normalized) && !normalized.endsWith(".html")) {
     return null;
   }
 
+  const baseDirectory = urlPath.startsWith("/")
+    ? DIST_DIR
+    : path.dirname(sourceFile);
+  const target = path.resolve(baseDirectory, normalized || ".");
+
   if (!normalized || normalized.endsWith("/")) {
-    return path.join(DIST_DIR, normalized, "index.html");
+    return path.join(target, "index.html");
   }
 
-  return path.join(DIST_DIR, normalized);
+  return target;
 }
 
 const htmlFiles = await findHtmlFiles(DIST_DIR);
@@ -80,7 +84,7 @@ const missing = [];
 for (const file of htmlFiles) {
   const document = parse(await readFile(file, "utf8"));
   for (const href of collectLinks(document)) {
-    const target = hrefToTarget(href);
+    const target = hrefToTarget(href, file);
     if (!target) continue;
     try {
       await stat(target);

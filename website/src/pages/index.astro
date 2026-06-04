@@ -1,6 +1,7 @@
 ---
 import HeroStatement from "../components/HeroStatement.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/paths";
 ---
 
 <BaseLayout
@@ -8,4 +9,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   description="A modern Song-inspired design system for AI-generated websites and Web UI."
 >
   <HeroStatement />
+  <section class="container home-entry">
+    <p class="eyebrow">从理念开始</p>
+    <h2>不是古风素材，而是一套判断何时停止的设计语言。</h2>
+    <div class="entry-links">
+      <a class="quiet-link" href={withBase("/manifesto/")}>阅读宣言 <span aria-hidden="true">→</span></a>
+      <a class="quiet-link" href={withBase("/principles/")}>查看六项原则 <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .home-entry {
+    padding-block: var(--song-space-section-spacious);
+  }
+
+  h2 {
+    max-width: 20ch;
+    margin: 0;
+    font-family: var(--song-typography-family-display);
+    font-size: clamp(var(--song-typography-size-title), 6vw, var(--song-typography-size-display));
+    font-weight: var(--song-typography-weight-regular);
+    line-height: var(--song-typography-line-height-tight);
+  }
+
+  .entry-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--song-space-scale-6);
+    margin-top: var(--song-space-scale-8);
+  }
+</style>
