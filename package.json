@@ -1,0 +1,37 @@
+{
+  "name": "songstyle-ai-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A modern Song-inspired design system for AI-generated websites and Web UI.",
+  "license": "SEE LICENSE IN LICENSE-CODE AND LICENSE-CONTENT",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "npm run tokens:build && astro dev",
+    "build": "npm run tokens:build && astro check && astro build",
+    "preview": "astro preview",
+    "tokens:build": "node scripts/build-design-tokens.mjs",
+    "tokens:check": "node --test tests/design-tokens.test.mjs && npm run tokens:build && git diff --exit-code -- design-tokens/dist",
+    "content:check": "node --test tests/content-assets.test.mjs",
+    "links:check": "node scripts/check-internal-links.mjs",
+    "test:unit": "node --test tests/*.test.mjs",
+    "test:e2e": "playwright test",
+    "check": "npm run test:unit && astro check",
+    "verify": "npm run check && npm run build && npm run links:check && npm run test:e2e"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^6.0.1",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^6.4.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.52.0",
+    "parse5": "^7.3.0",
+    "typescript": "^5.8.3",
+    "yaml": "^2.7.1"
+  }
+}
