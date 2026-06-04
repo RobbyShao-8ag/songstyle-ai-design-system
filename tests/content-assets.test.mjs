@@ -248,3 +248,64 @@ test("portable Agent Skills have valid metadata and generated references", async
     for (const dimension of review.dimensions) assert.match(reviewReference, new RegExp(dimension.id));
   }
 });
+
+test("lifestyle case-study source exists", async () => {
+  await access("examples/lifestyle-brand/baiting.md");
+});
+
+test("digital product case-study source exists", async () => {
+  await access("examples/digital-product/qingxu.md");
+});
+
+test("v0.1 executable and case-study assets are present", async () => {
+  const files = [
+    "design-tokens/dist/songstyle.css",
+    "design-tokens/dist/songstyle.resolved.json",
+    "prompts/web-design/from-brief.md",
+    "prompts/web-design/rewrite-existing-page.md",
+    "prompts/design-review/review-page.md",
+    "prompts/design-review/compare-default-and-songstyle.md",
+    "skills/songstyle-web-designer/SKILL.md",
+    "skills/songstyle-web-designer/references/songstyle-principles.md",
+    "skills/songstyle-web-designer/references/review-model.md",
+    "skills/songstyle-design-reviewer/SKILL.md",
+    "skills/songstyle-design-reviewer/references/songstyle-principles.md",
+    "skills/songstyle-design-reviewer/references/review-model.md",
+    "examples/lifestyle-brand/baiting.md",
+    "examples/digital-product/qingxu.md",
+    "examples/comparisons/overview.md",
+    "docs/en/manifesto.md",
+    "docs/en/core-principles.md",
+    "docs/en/usage.md"
+  ];
+  for (const file of files) await access(file);
+});
+
+test("saved evaluations use the required evidence structure", async () => {
+  const files = [
+    "evals/results/lifestyle-landing.md",
+    "evals/results/digital-product-landing.md",
+    "evals/results/necessary-density.md",
+    "evals/results/overdecorated-existing-page.md",
+    "evals/results/website-review.md"
+  ];
+  const sections = [
+    "Brief",
+    "Asset under test",
+    "Required preservation",
+    "Risk detection",
+    "Shared checklist",
+    "Verdict"
+  ];
+  for (const file of files) {
+    const markdown = await readFile(file, "utf8");
+    for (const section of sections) assert.match(markdown, new RegExp(section));
+    assert.match(markdown, /PASS/);
+  }
+  await access("docs/guides/evaluations.md");
+});
+
+test("CI and GitHub Pages workflows exist", async () => {
+  await access(".github/workflows/ci.yml");
+  await access(".github/workflows/deploy.yml");
+});
