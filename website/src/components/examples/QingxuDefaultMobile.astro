@@ -1,0 +1,125 @@
+---
+import type { CaseStudy } from "../../data/cases";
+import { withBase } from "../../lib/paths";
+
+interface Props {
+  data: CaseStudy;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="qingxu-default-mobile" data-testid="qingxu-default-mobile">
+  <header>
+    <p>{data.brand} · {data.position} · AI POWERED</p>
+    <h3>{data.headline}</h3>
+    <p class="description">{data.description}</p>
+    <a href="#qingxu-mobile-brief">{data.action}</a>
+  </header>
+  <div class="dashboard">
+    <img src={withBase(data.image)} alt={data.imageAlt} />
+    <div class="widgets" aria-hidden="true"><span></span><span></span><span></span></div>
+  </div>
+  <div class="feature-grid">
+    {data.features.map((feature) => (
+      <article><span>{feature.label}</span><strong>{feature.value}</strong></article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .qingxu-default-mobile {
+    min-height: 100%;
+    padding: 30px 22px;
+    background:
+      radial-gradient(circle at 52% 0%, rgb(124 58 237 / 0.78), transparent 34%),
+      linear-gradient(180deg, #120b35, #07152d 64%, #050711);
+    color: #fff;
+    text-align: center;
+  }
+
+  header p:first-child {
+    color: #7df9ff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+  }
+
+  h3 {
+    max-width: 11ch;
+    margin: 22px auto;
+    font-size: 34px;
+    line-height: 1.12;
+    text-shadow: 0 0 28px rgb(177 76 255 / 0.72);
+  }
+
+  .description {
+    color: rgb(255 255 255 / 0.82);
+    line-height: 1.72;
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #7c3aed, #2563eb);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 0 26px rgb(177 76 255 / 0.55);
+  }
+
+  .dashboard {
+    position: relative;
+    overflow: hidden;
+    margin-top: 34px;
+    border: 1px solid rgb(125 249 255 / 0.38);
+    border-radius: 24px;
+  }
+
+  .dashboard img {
+    display: block;
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    opacity: 0.72;
+    filter: saturate(1.2) contrast(1.08);
+  }
+
+  .widgets {
+    position: absolute;
+    inset: auto 16px 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .widgets span {
+    height: 66px;
+    border: 1px solid rgb(125 249 255 / 0.42);
+    border-radius: 16px;
+    background: rgb(177 76 255 / 0.28);
+    backdrop-filter: blur(10px);
+  }
+
+  .feature-grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .feature-grid article {
+    display: grid;
+    gap: 8px;
+    padding: 18px;
+    border: 1px solid rgb(125 249 255 / 0.35);
+    border-radius: 18px;
+    background: rgb(177 76 255 / 0.16);
+  }
+
+  .feature-grid span {
+    color: #7df9ff;
+    font-size: 12px;
+  }
+</style>

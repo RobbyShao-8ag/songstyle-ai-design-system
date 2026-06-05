@@ -1,0 +1,124 @@
+---
+import type { CaseStudy } from "../../data/cases";
+import { withBase } from "../../lib/paths";
+
+interface Props {
+  data: CaseStudy;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="qingxu-songstyle-mobile" data-testid="qingxu-songstyle-mobile">
+  <header class="near">
+    <p>{data.brand} · {data.position}</p>
+    <h3>{data.headline}</h3>
+    <p class="description">{data.description}</p>
+    <a href="#qingxu-mobile-brief">{data.action}</a>
+  </header>
+  <figure class="evidence">
+    <img src={withBase(data.image)} alt={data.imageAlt} />
+  </figure>
+  <section class="middle" aria-label="研究过程">
+    {data.features.map((feature) => (
+      <article><span>{feature.label}</span><h4>{feature.value}</h4></article>
+    ))}
+  </section>
+  <aside class="far">
+    <span>近景是任务，中景是证据关系，远景是团队能共同理解的叙事。</span>
+  </aside>
+</section>
+
+<style>
+  .qingxu-songstyle-mobile {
+    min-height: 100%;
+    padding: 34px 26px 42px;
+    background:
+      radial-gradient(circle at 88% 8%, rgb(172 193 185 / 0.28), transparent 30%),
+      linear-gradient(180deg, #fbfaf5, #ecebe2);
+    color: #242521;
+  }
+
+  .near {
+    display: grid;
+    min-height: 330px;
+    align-content: center;
+  }
+
+  .near p:first-child {
+    margin: 0 0 24px;
+    color: #465f58;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    max-width: 9ch;
+    margin: 0;
+    font-family: var(--song-typography-family-display);
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1.34;
+  }
+
+  .description {
+    margin: 30px 0 24px;
+    color: #61635e;
+    line-height: 1.9;
+  }
+
+  a {
+    justify-self: start;
+    color: #425e55;
+    font-weight: 600;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+  }
+
+  .evidence {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .evidence img {
+    display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    filter: saturate(0.78) contrast(0.96);
+  }
+
+  .middle {
+    display: grid;
+    gap: 18px;
+    margin-top: 46px;
+  }
+
+  .middle article {
+    display: grid;
+    grid-template-columns: 3.6rem 1fr;
+    gap: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgb(70 95 88 / 0.24);
+  }
+
+  .middle span {
+    color: #6d7e77;
+    font-size: 12px;
+  }
+
+  .middle h4 {
+    margin: 0;
+    font-family: var(--song-typography-family-display);
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .far {
+    margin-top: 68px;
+    color: #656b65;
+    line-height: 1.9;
+  }
+</style>
