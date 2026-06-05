@@ -11,7 +11,7 @@ order: 1
 
 ## 项目调研
 
-- [宋代美学与数字设计调研摘要](/references/song-aesthetics-digital-design-research/)
+- [宋代美学与数字设计调研摘要](song-aesthetics-digital-design-research/)
 
 ## 博物馆与公共研究资料
 
