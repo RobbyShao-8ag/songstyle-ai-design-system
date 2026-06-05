@@ -1,7 +1,8 @@
 ---
 import { getEntry, render } from "astro:content";
-import QingxuDefault from "../../components/examples/QingxuDefault.astro";
-import QingxuSongStyle from "../../components/examples/QingxuSongStyle.astro";
+import MobileSiteComparison from "../../components/examples/MobileSiteComparison.astro";
+import QingxuDefaultMobile from "../../components/examples/QingxuDefaultMobile.astro";
+import QingxuSongStyleMobile from "../../components/examples/QingxuSongStyleMobile.astro";
 import MarkdownProse from "../../components/MarkdownProse.astro";
 import { qingxuCase } from "../../data/cases";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -17,12 +18,12 @@ const { Content } = await render(entry);
     <header class="case-intro">
       <p class="eyebrow">公平案例对比</p>
       <h1>{entry.data.title}</h1>
-      <p>两个版本使用相同文案、相同图片、相同功能、相同行动与相同业务目标。变化只来自设计判断。</p>
+      <p>两个版本使用相同建站 Brief、相同文案、相同图片、相同功能、相同行动与相同业务目标。变化只来自移动网站的设计判断。</p>
     </header>
-    <div class="case-visual-pair">
-      <section class="visual-section"><h2>普通 AI 默认方案</h2><QingxuDefault data={qingxuCase} /></section>
-      <section class="visual-section"><h2>SongStyle 改写</h2><QingxuSongStyle data={qingxuCase} /></section>
-    </div>
+    <MobileSiteComparison data={qingxuCase}>
+      <QingxuDefaultMobile slot="default" data={qingxuCase} />
+      <QingxuSongStyleMobile slot="songstyle" data={qingxuCase} />
+    </MobileSiteComparison>
     <MarkdownProse><Content /></MarkdownProse>
     <nav class="case-links" aria-label="相关资源">
       <a href={withBase("/principles/")}>六项原则</a>
@@ -35,12 +36,10 @@ const { Content } = await render(entry);
 
 <style is:global>
   .case-study { padding-block: var(--song-space-section-compact); }
-  .case-study .case-intro { max-width: 54rem; margin-bottom: var(--song-space-section-compact); }
+  .case-study .case-intro { max-width: 58rem; margin-bottom: var(--song-space-section-compact); }
   .case-study .case-intro h1 { margin: 0; font-family: var(--song-typography-family-display); font-size: clamp(var(--song-typography-size-title), 6vw, var(--song-typography-size-display)); font-weight: 400; line-height: var(--song-typography-line-height-tight); }
   .case-study .case-intro p:not(.eyebrow) { color: var(--song-color-text-secondary); font-size: var(--song-typography-size-lead); line-height: var(--song-typography-line-height-relaxed); }
-  .case-study .case-visual-pair { display: grid; gap: var(--song-space-scale-6); margin-bottom: var(--song-space-section-compact); }
-  .case-study .visual-section h2 { font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; }
+  .case-study .markdown-prose { margin-top: var(--song-space-section-compact); }
   .case-study .case-links { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-6); margin-top: var(--song-space-section-compact); padding-top: var(--song-space-scale-6); border-top: var(--song-shape-border-width) solid var(--song-color-border-subtle); }
   .case-study .case-links a { color: var(--song-color-accent-primary); }
-  @media (min-width: 1000px) { .case-study .case-visual-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } }
 </style>

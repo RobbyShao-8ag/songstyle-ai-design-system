@@ -1,9 +1,10 @@
 ---
 import { getEntry, render } from "astro:content";
-import BaitingDefault from "../../components/examples/BaitingDefault.astro";
-import BaitingSongStyle from "../../components/examples/BaitingSongStyle.astro";
-import QingxuDefault from "../../components/examples/QingxuDefault.astro";
-import QingxuSongStyle from "../../components/examples/QingxuSongStyle.astro";
+import BaitingDefaultMobile from "../../components/examples/BaitingDefaultMobile.astro";
+import BaitingSongStyleMobile from "../../components/examples/BaitingSongStyleMobile.astro";
+import MobileSiteComparison from "../../components/examples/MobileSiteComparison.astro";
+import QingxuDefaultMobile from "../../components/examples/QingxuDefaultMobile.astro";
+import QingxuSongStyleMobile from "../../components/examples/QingxuSongStyleMobile.astro";
 import MarkdownProse from "../../components/MarkdownProse.astro";
 import { baitingCase, qingxuCase } from "../../data/cases";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -17,8 +18,20 @@ const { Content } = await render(entry);
 <BaseLayout title={`${entry.data.title} | SongStyle AI Design System`} description={entry.data.description}>
   <article class="container comparison-page">
     <MarkdownProse><Content /></MarkdownProse>
-    <section><h2>白汀 Baiting</h2><div class="pair"><BaitingDefault data={baitingCase} /><BaitingSongStyle data={baitingCase} /></div></section>
-    <section><h2>清序 Qingxu</h2><div class="pair"><QingxuDefault data={qingxuCase} /><QingxuSongStyle data={qingxuCase} /></div></section>
+    <section>
+      <h2>白汀 Baiting</h2>
+      <MobileSiteComparison data={baitingCase}>
+        <BaitingDefaultMobile slot="default" data={baitingCase} />
+        <BaitingSongStyleMobile slot="songstyle" data={baitingCase} />
+      </MobileSiteComparison>
+    </section>
+    <section>
+      <h2>清序 Qingxu</h2>
+      <MobileSiteComparison data={qingxuCase}>
+        <QingxuDefaultMobile slot="default" data={qingxuCase} />
+        <QingxuSongStyleMobile slot="songstyle" data={qingxuCase} />
+      </MobileSiteComparison>
+    </section>
     <nav class="comparison-links" aria-label="比较工具">
       <a href={withBase("/prompts/design-review/compare-default-and-songstyle/")}>比较 Prompt</a>
       <a href={withBase("/checklist/")}>共享审查清单</a>
@@ -30,8 +43,6 @@ const { Content } = await render(entry);
   .comparison-page { padding-block: var(--song-space-section-compact); }
   .comparison-page section { margin-top: var(--song-space-section-compact); }
   .comparison-page h2 { font-family: var(--song-typography-family-display); font-size: var(--song-typography-size-title); font-weight: 400; }
-  .comparison-page .pair { display: grid; gap: var(--song-space-scale-6); }
   .comparison-page .comparison-links { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-6); margin-top: var(--song-space-section-compact); }
   .comparison-page .comparison-links a { color: var(--song-color-accent-primary); }
-  @media (min-width: 1000px) { .comparison-page .pair { grid-template-columns: 1fr 1fr; align-items: start; } }
 </style>
