@@ -16,14 +16,16 @@ const { data, compact = false } = Astro.props;
   class:list={["mobile-comparison", { compact }]}
   data-testid={`mobile-comparison-${data.id}`}
 >
-  <div class="comparison-summary">
-    <p class="eyebrow">公平移动网站对比</p>
-    <h2>同一份 Brief，两种移动网站</h2>
-    <p>{data.businessGoal}</p>
-    <ul aria-label="公平对比不变量">
-      {comparisonInvariants.map((item) => <li>{item}</li>)}
-    </ul>
-  </div>
+  {!compact && (
+    <div class="comparison-summary">
+      <p class="eyebrow">公平移动网站对比</p>
+      <h2>同一份 Brief，两种移动网站</h2>
+      <p>{data.businessGoal}</p>
+      <ul aria-label="公平对比不变量">
+        {comparisonInvariants.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  )}
 
   <div class="phone-pair">
     <PhoneFrame label="AI 默认移动网站" note="不断添加强调" testId={`${data.id}-default-phone`} tone="default">
@@ -92,10 +94,6 @@ const { data, compact = false } = Astro.props;
     padding: 0;
     border: 0;
     background: transparent;
-  }
-
-  .compact .comparison-summary {
-    display: none;
   }
 
   @media (min-width: 980px) {

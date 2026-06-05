@@ -1,0 +1,82 @@
+---
+import BaitingDefaultMobile from "../examples/BaitingDefaultMobile.astro";
+import BaitingSongStyleMobile from "../examples/BaitingSongStyleMobile.astro";
+import MobileSiteComparison from "../examples/MobileSiteComparison.astro";
+import { baitingCase, comparisonInvariants } from "../../data/cases";
+import { withBase } from "../../lib/paths";
+---
+
+<section id="mobile-showcase" class="home-section mobile-showcase reveal" data-testid="mobile-showcase-preview">
+  <div class="container">
+    <div class="showcase-heading">
+      <p class="eyebrow">先看移动网站</p>
+      <h2>同一份 Brief，两种移动网站</h2>
+      <p>左边是 AI 默认完成的移动网站，右边是 SongStyle 完成的移动网站。内容没有变，审美判断变了。</p>
+      <ul aria-label="公平对比不变量">
+        {comparisonInvariants.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+    <MobileSiteComparison data={baitingCase} compact>
+      <BaitingDefaultMobile slot="default" data={baitingCase} />
+      <BaitingSongStyleMobile slot="songstyle" data={baitingCase} />
+    </MobileSiteComparison>
+    <div class="showcase-actions">
+      <a class="quiet-link" href={withBase("/examples/lifestyle-brand/")}>查看白汀完整对比 <span aria-hidden="true">→</span></a>
+      <a class="quiet-link" href={withBase("/examples/digital-product/")}>查看清序完整对比 <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mobile-showcase {
+    background:
+      radial-gradient(circle at 80% 12%, rgb(188 205 192 / 0.28), transparent 24%),
+      var(--song-color-background-subtle);
+  }
+
+  .showcase-heading {
+    display: grid;
+    gap: var(--song-space-scale-6);
+    margin-bottom: var(--song-space-scale-8);
+  }
+
+  .showcase-heading p:not(.eyebrow) {
+    max-width: 42rem;
+    margin: 0;
+    color: var(--song-color-text-secondary);
+    font-size: var(--song-typography-size-lead);
+    line-height: var(--song-typography-line-height-relaxed);
+  }
+
+  .showcase-heading ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--song-space-scale-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .showcase-heading li {
+    padding: var(--song-space-scale-2) var(--song-space-scale-3);
+    border: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.64);
+    color: var(--song-color-text-secondary);
+    font-size: var(--song-typography-size-small);
+  }
+
+  .showcase-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--song-space-scale-6);
+    margin-top: var(--song-space-scale-8);
+  }
+
+  @media (min-width: 900px) {
+    .showcase-heading {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: end;
+    }
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+import { withBase } from "../../lib/paths";
+
+const items = [
+  ["格物致知", "每个元素都经得起追问：必要、准确、打磨到位。"],
+  ["三远法", "把近景、中景、远景转成任务、证据、叙事的信息距离。"],
+  ["宋版书", "标题断行、正文行距与疏密节奏共同建立可读的韵。"],
+  ["汝窑与墨分五彩", "用素白、暖纸、雾灰、天青、墨色和极少强调色建立层次。"],
+  ["留白生意", "空间承担聚焦、停顿、引导和想象，不只是空。"],
+  ["器以载道", "线、纹理和形状必须服务功能，不表演古风。"]
+];
+---
+
+<section class="home-section reveal">
+  <div class="container">
+    <p class="eyebrow">再看方法</p>
+    <h2>宋代美学如何变成数字界面</h2>
+    <div class="framework-grid">
+      {items.map(([title, description]) => (
+        <article>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </article>
+      ))}
+    </div>
+    <a class="quiet-link" href={withBase("/references/song-aesthetics-digital-design-research/")}>阅读调研转译摘要 <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<style>
+  .framework-grid {
+    display: grid;
+    gap: var(--song-space-scale-4);
+    margin-bottom: var(--song-space-scale-8);
+  }
+
+  article {
+    min-height: 190px;
+    padding: var(--song-space-scale-6);
+    border: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+    border-radius: var(--song-shape-radius-large);
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.72), rgb(239 238 229 / 0.42));
+  }
+
+  h3 {
+    margin: 0 0 var(--song-space-scale-4);
+    font-family: var(--song-typography-family-display);
+    font-size: var(--song-typography-size-title-small);
+    font-weight: 400;
+  }
+
+  p {
+    margin: 0;
+    color: var(--song-color-text-secondary);
+    line-height: var(--song-typography-line-height-relaxed);
+  }
+
+  @media (min-width: 760px) {
+    .framework-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
