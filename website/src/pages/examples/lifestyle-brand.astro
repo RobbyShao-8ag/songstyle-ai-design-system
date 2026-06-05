@@ -20,7 +20,7 @@ const { Content } = await render(entry);
       <h1>{entry.data.title}</h1>
       <p>两个版本使用相同建站 Brief、相同文案、相同图片、相同规格、相同行动与相同业务目标。变化只来自移动网站的设计判断。</p>
     </header>
-    <MobileSiteComparison data={baitingCase}>
+    <MobileSiteComparison data={baitingCase} compactSummary>
       <BaitingDefaultMobile slot="default" data={baitingCase} />
       <BaitingSongStyleMobile slot="songstyle" data={baitingCase} />
     </MobileSiteComparison>
@@ -42,4 +42,9 @@ const { Content } = await render(entry);
   .case-study .markdown-prose { margin-top: var(--song-space-section-compact); }
   .case-study .case-links { display: flex; flex-wrap: wrap; gap: var(--song-space-scale-6); margin-top: var(--song-space-section-compact); padding-top: var(--song-space-scale-6); border-top: var(--song-shape-border-width) solid var(--song-color-border-subtle); }
   .case-study .case-links a { color: var(--song-color-accent-primary); }
+
+  @media (min-width: 900px) {
+    .case-study { padding-top: var(--song-space-scale-6); }
+    .case-study .case-intro { margin-bottom: var(--song-space-scale-8); }
+  }
 </style>

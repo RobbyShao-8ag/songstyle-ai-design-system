@@ -8,7 +8,7 @@ const withBase = (route: string) => `${BASE_PATH}${route}`;
 async function expectTopInsideViewport(locator: Locator, viewportHeight: number) {
   const box = await locator.boundingBox();
   expect(box).not.toBeNull();
-  expect(box!.y).toBeLessThan(viewportHeight);
+  expect(box!.y).toBeLessThan(viewportHeight - 20);
 }
 
 for (const route of ["/", "/reference-ui/"]) {

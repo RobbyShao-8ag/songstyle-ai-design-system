@@ -9,12 +9,16 @@ import { withBase } from "../../lib/paths";
 <section id="mobile-showcase" class="home-section mobile-showcase reveal" data-testid="mobile-showcase-preview">
   <div class="container">
     <div class="showcase-heading">
-      <p class="eyebrow">先看移动网站</p>
-      <h2>同一份 Brief，两种移动网站</h2>
-      <p>左边是 AI 默认完成的移动网站，右边是 SongStyle 完成的移动网站。内容没有变，审美判断变了。</p>
-      <ul aria-label="公平对比不变量">
-        {comparisonInvariants.map((item) => <li>{item}</li>)}
-      </ul>
+      <div class="showcase-title">
+        <p class="eyebrow">先看移动网站</p>
+        <h2>同一份 Brief，两种移动网站</h2>
+      </div>
+      <div class="showcase-context">
+        <p>左边是 AI 默认完成的移动网站，右边是 SongStyle 完成的移动网站。内容没有变，审美判断变了。</p>
+        <ul aria-label="公平对比不变量">
+          {comparisonInvariants.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
     </div>
     <MobileSiteComparison data={baitingCase} compact>
       <BaitingDefaultMobile slot="default" data={baitingCase} />
@@ -38,6 +42,16 @@ import { withBase } from "../../lib/paths";
     display: grid;
     gap: var(--song-space-scale-6);
     margin-bottom: var(--song-space-scale-8);
+  }
+
+  .showcase-title,
+  .showcase-context {
+    display: grid;
+    align-content: start;
+  }
+
+  .showcase-context {
+    gap: var(--song-space-scale-4);
   }
 
   .showcase-heading p:not(.eyebrow) {
@@ -74,9 +88,24 @@ import { withBase } from "../../lib/paths";
   }
 
   @media (min-width: 900px) {
+    .home-section.mobile-showcase {
+      padding-top: var(--song-space-scale-4);
+    }
+
     .showcase-heading {
       grid-template-columns: 0.9fr 1.1fr;
-      align-items: end;
+      align-items: start;
+      gap: var(--song-space-scale-8);
+      margin-bottom: var(--song-space-scale-3);
+    }
+
+    .mobile-showcase .showcase-heading h2 {
+      margin-bottom: 0;
+      font-size: 2.75rem;
+    }
+
+    .showcase-heading p:not(.eyebrow) {
+      font-size: var(--song-typography-size-body);
     }
   }
 </style>

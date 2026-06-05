@@ -6,20 +6,27 @@ import PhoneFrame from "./PhoneFrame.astro";
 interface Props {
   data: CaseStudy;
   compact?: boolean;
+  compactSummary?: boolean;
 }
 
-const { data, compact = false } = Astro.props;
+const { data, compact = false, compactSummary = false } = Astro.props;
 ---
 
 <section
   id={`${data.id}-mobile-comparison`}
-  class:list={["mobile-comparison", { compact }]}
+  class:list={["mobile-comparison", { compact, "compact-summary": compactSummary }]}
   data-testid={`mobile-comparison-${data.id}`}
 >
   {!compact && (
-    <div class="comparison-summary">
-      <p class="eyebrow">公平移动网站对比</p>
-      <h2>同一份 Brief，两种移动网站</h2>
+    <div class:list={["comparison-summary", { "is-compact": compactSummary }]}>
+      {compactSummary ? (
+        <h2 class="visually-hidden">同一份 Brief，两种移动网站</h2>
+      ) : (
+        <>
+          <p class="eyebrow">公平移动网站对比</p>
+          <h2>同一份 Brief，两种移动网站</h2>
+        </>
+      )}
       <p>{data.businessGoal}</p>
       <ul aria-label="公平对比不变量">
         {comparisonInvariants.map((item) => <li>{item}</li>)}
@@ -51,6 +58,18 @@ const { data, compact = false } = Astro.props;
 
   .comparison-summary {
     max-width: 46rem;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .comparison-summary h2 {
@@ -104,6 +123,21 @@ const { data, compact = false } = Astro.props;
     .phone-pair {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: start;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .mobile-comparison.compact-summary {
+      gap: var(--song-space-scale-5);
+      padding-top: var(--song-space-scale-6);
+    }
+
+    .comparison-summary.is-compact p:not(.eyebrow) {
+      margin-top: 0;
+    }
+
+    .comparison-summary.is-compact ul {
+      margin-top: var(--song-space-scale-3);
     }
   }
 </style>

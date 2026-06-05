@@ -54,4 +54,23 @@ import { withBase } from "../lib/paths";
     font-weight: var(--song-typography-weight-medium);
     text-decoration: none;
   }
+
+  @media (min-width: 900px) {
+    .hero {
+      min-height: min(60vh, 580px);
+      padding-block: 0;
+    }
+
+    .display-title {
+      line-height: 1.2;
+    }
+
+    .hero-statement {
+      margin-block: var(--song-space-scale-3);
+    }
+
+    .body-copy {
+      margin-bottom: var(--song-space-scale-4);
+    }
+  }
 </style>
