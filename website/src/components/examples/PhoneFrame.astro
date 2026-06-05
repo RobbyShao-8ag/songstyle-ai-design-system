@@ -1,0 +1,92 @@
+---
+interface Props {
+  label: string;
+  note: string;
+  testId: string;
+  tone?: "default" | "songstyle";
+}
+
+const { label, note, testId, tone = "songstyle" } = Astro.props;
+---
+
+<figure class={`phone-frame ${tone}`} data-testid={testId}>
+  <figcaption>
+    <span>{label}</span>
+    <small>{note}</small>
+  </figcaption>
+  <div class="phone-shell" aria-label={label}>
+    <div class="phone-status" aria-hidden="true"><span></span><span></span></div>
+    <div class="phone-screen">
+      <slot />
+    </div>
+  </div>
+</figure>
+
+<style>
+  .phone-frame {
+    display: grid;
+    gap: var(--song-space-scale-3);
+    min-width: 0;
+    margin: 0;
+  }
+
+  figcaption {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--song-space-scale-4);
+    color: var(--song-color-text-secondary);
+    font-size: var(--song-typography-size-small);
+  }
+
+  figcaption span {
+    color: var(--song-color-text-primary);
+    font-weight: var(--song-typography-weight-medium);
+  }
+
+  .phone-shell {
+    overflow: hidden;
+    border: 1px solid rgb(37 37 34 / 0.2);
+    border-radius: 34px;
+    background: #11110f;
+    box-shadow: 0 24px 70px rgb(37 37 34 / 0.16);
+  }
+
+  .default .phone-shell {
+    box-shadow: 0 24px 70px rgb(58 26 117 / 0.18);
+  }
+
+  .songstyle .phone-shell {
+    border-color: rgb(93 106 91 / 0.24);
+    background: #20201c;
+  }
+
+  .phone-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 34px;
+    padding-inline: 28px;
+    background: #11110f;
+  }
+
+  .phone-status span:first-child {
+    width: 54px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.18);
+  }
+
+  .phone-status span:last-child {
+    width: 36px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.24);
+  }
+
+  .phone-screen {
+    aspect-ratio: 390 / 844;
+    overflow: hidden;
+    background: var(--song-color-surface-default);
+  }
+</style>

@@ -1,0 +1,111 @@
+---
+import type { CaseStudy } from "../../data/cases";
+import { comparisonInvariants } from "../../data/cases";
+import PhoneFrame from "./PhoneFrame.astro";
+
+interface Props {
+  data: CaseStudy;
+  compact?: boolean;
+}
+
+const { data, compact = false } = Astro.props;
+---
+
+<section
+  id={`${data.id}-mobile-comparison`}
+  class:list={["mobile-comparison", { compact }]}
+  data-testid={`mobile-comparison-${data.id}`}
+>
+  <div class="comparison-summary">
+    <p class="eyebrow">公平移动网站对比</p>
+    <h2>同一份 Brief，两种移动网站</h2>
+    <p>{data.businessGoal}</p>
+    <ul aria-label="公平对比不变量">
+      {comparisonInvariants.map((item) => <li>{item}</li>)}
+    </ul>
+  </div>
+
+  <div class="phone-pair">
+    <PhoneFrame label="AI 默认移动网站" note="不断添加强调" testId={`${data.id}-default-phone`} tone="default">
+      <slot name="default" />
+    </PhoneFrame>
+    <PhoneFrame label="SongStyle 移动网站" note="准确表达后停止" testId={`${data.id}-songstyle-phone`} tone="songstyle">
+      <slot name="songstyle" />
+    </PhoneFrame>
+  </div>
+</section>
+
+<style>
+  .mobile-comparison {
+    display: grid;
+    gap: var(--song-space-scale-8);
+    padding: var(--song-space-scale-6);
+    border: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+    border-radius: var(--song-shape-radius-large);
+    background:
+      linear-gradient(135deg, rgb(236 239 231 / 0.72), transparent 42%),
+      var(--song-color-background-subtle);
+  }
+
+  .comparison-summary {
+    max-width: 46rem;
+  }
+
+  .comparison-summary h2 {
+    max-width: 16ch;
+    margin: 0;
+    font-family: var(--song-typography-family-display);
+    font-size: clamp(var(--song-typography-size-title), 5vw, var(--song-typography-size-display));
+    font-weight: var(--song-typography-weight-regular);
+    line-height: var(--song-typography-line-height-tight);
+  }
+
+  .comparison-summary p:not(.eyebrow) {
+    color: var(--song-color-text-secondary);
+    line-height: var(--song-typography-line-height-relaxed);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--song-space-scale-2);
+    margin: var(--song-space-scale-5) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding: var(--song-space-scale-2) var(--song-space-scale-3);
+    border: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.62);
+    color: var(--song-color-text-secondary);
+    font-size: var(--song-typography-size-small);
+  }
+
+  .phone-pair {
+    display: grid;
+    gap: var(--song-space-scale-8);
+  }
+
+  .compact {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .compact .comparison-summary {
+    display: none;
+  }
+
+  @media (min-width: 980px) {
+    .mobile-comparison {
+      padding: var(--song-space-scale-10);
+    }
+
+    .phone-pair {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+    }
+  }
+</style>
