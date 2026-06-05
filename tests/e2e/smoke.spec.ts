@@ -1,8 +1,15 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import type { Locator } from "@playwright/test";
 
 const BASE_PATH = "/songstyle-ai-design-system";
 const withBase = (route: string) => `${BASE_PATH}${route}`;
+
+async function expectTopInsideViewport(locator: Locator, viewportHeight: number) {
+  const box = await locator.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.y).toBeLessThan(viewportHeight);
+}
 
 for (const route of ["/", "/reference-ui/"]) {
   test(`${route} renders without WCAG A/AA violations`, async ({ page }) => {
@@ -60,6 +67,19 @@ test("home page presents the mobile showcase sequence", async ({ page }) => {
   await expect(page.getByRole("link", { name: "参与首轮用户测试", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "查看白汀完整对比", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "查看清序完整对比", exact: true })).toBeVisible();
+});
+
+test("desktop first screen reveals the mobile comparison evidence", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 720 });
+
+  for (const [route, testId] of [
+    ["/", "baiting-default-phone"],
+    ["/examples/lifestyle-brand/", "baiting-default-phone"],
+    ["/examples/digital-product/", "qingxu-default-phone"]
+  ] as const) {
+    await page.goto(withBase(route));
+    await expectTopInsideViewport(page.getByTestId(testId), 720);
+  }
 });
 
 test("reference controls are keyboard reachable", async ({ page }) => {
