@@ -9,6 +9,10 @@ order: 1
 
 # 参考资料与延伸阅读
 
+## 项目调研
+
+- [宋代美学与数字设计调研摘要](/references/song-aesthetics-digital-design-research/)
+
 ## 博物馆与公共研究资料
 
 - The Metropolitan Museum of Art, [Northern Song Dynasty (960–1127)](https://www.metmuseum.org/essays/northern-song-dynasty-960-1127)
