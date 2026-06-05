@@ -10,7 +10,8 @@ const ROUTES = [
   "/reference-ui/",
   "/examples/lifestyle-brand/",
   "/examples/digital-product/",
-  "/examples/comparisons/"
+  "/examples/comparisons/",
+  "/references/song-aesthetics-digital-design-research/"
 ];
 
 for (const route of ROUTES) {

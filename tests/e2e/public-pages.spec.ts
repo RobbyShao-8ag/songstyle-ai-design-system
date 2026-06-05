@@ -23,6 +23,7 @@ export const PUBLIC_ROUTES = [
   "/foundations/motion/",
   "/references/",
   "/references/image-generation-prompts/",
+  "/references/song-aesthetics-digital-design-research/",
   "/research/first-round-user-testing/",
   "/guides/from-brief-to-web-design/",
   "/checklist/",

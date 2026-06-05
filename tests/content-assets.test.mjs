@@ -277,6 +277,79 @@ test("evidence-first redesign assets and collaboration files exist", async () =>
   }
 });
 
+test("mobile showcase redesign assets and components exist", async () => {
+  const files = [
+    "docs/references/song-aesthetics-digital-design-research.md",
+    "docs/assets/mobile-showcase-baiting.png",
+    "docs/assets/mobile-showcase-qingxu.png",
+    "website/src/components/examples/PhoneFrame.astro",
+    "website/src/components/examples/MobileSiteComparison.astro",
+    "website/src/components/examples/BaitingDefaultMobile.astro",
+    "website/src/components/examples/BaitingSongStyleMobile.astro",
+    "website/src/components/examples/QingxuDefaultMobile.astro",
+    "website/src/components/examples/QingxuSongStyleMobile.astro",
+    "website/src/components/home/MobileShowcasePreview.astro",
+    "website/src/components/home/SongAestheticFramework.astro"
+  ];
+
+  for (const file of files) {
+    await assert.doesNotReject(access(file), `Missing mobile showcase file: ${file}`);
+  }
+});
+
+test("research summary and README expose the digital SongStyle framework", async () => {
+  const research = await readFile(
+    "docs/references/song-aesthetics-digital-design-research.md",
+    "utf8"
+  );
+  for (const term of [
+    "系统性应用研究几乎空白",
+    "格物致知",
+    "三远法",
+    "宋版书",
+    "汝窑",
+    "留白生意",
+    "器以载道",
+    "未经独立验证"
+  ]) {
+    assert.match(research, new RegExp(term), `Research summary is missing: ${term}`);
+  }
+
+  const readme = await readFile("README.md", "utf8");
+  for (const term of [
+    "Digital SongStyle Framework",
+    "same brief",
+    "same copy",
+    "same image",
+    "same CTA",
+    "same goal",
+    "docs/assets/mobile-showcase-baiting.png",
+    "docs/assets/mobile-showcase-qingxu.png"
+  ]) {
+    assert.match(readme, new RegExp(term, "i"), `README is missing: ${term}`);
+  }
+});
+
+test("case data declares mobile website briefs and SongStyle mappings", async () => {
+  const data = await readFile("website/src/data/cases.ts", "utf8");
+  for (const term of [
+    "comparisonInvariants",
+    "same brief",
+    "same copy",
+    "same image",
+    "same CTA",
+    "same goal",
+    "businessGoal",
+    "mobileBrief",
+    "near",
+    "middle",
+    "far",
+    "songMappings"
+  ]) {
+    assert.match(data, new RegExp(term), `Case data is missing: ${term}`);
+  }
+});
+
 test("README explains the fair comparison contract", async () => {
   const readme = await readFile("README.md", "utf8");
   for (const term of ["same copy", "same image", "same features", "same goal"]) {

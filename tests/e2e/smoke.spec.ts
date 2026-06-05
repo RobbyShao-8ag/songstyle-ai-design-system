@@ -23,24 +23,31 @@ test("home page presents the central thesis", async ({ page }) => {
     "AI 不懂得何时停止"
   );
   await expect(
-    page.getByText("同样的内容，SongStyle 让设计从“不断添加”转向“准确表达”。", { exact: true })
+    page.getByText("同样的建站内容，SongStyle 让移动网站从不断添加转向准确表达。", { exact: true })
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "查看公平对比", exact: true })
-  ).toHaveAttribute("href", "#evidence");
+    page.getByRole("link", { name: "查看移动网站对比", exact: true })
+  ).toHaveAttribute("href", "#mobile-showcase");
 });
 
-test("home page presents the complete exhibition sequence", async ({ page }) => {
+test("home page presents the mobile showcase sequence", async ({ page }) => {
   await page.goto(withBase("/"));
-  for (const name of ["同样的内容，设计判断不同", "从必要信息，到适度停止", "两个虚构品牌案例"]) {
+  for (const name of [
+    "同一份 Brief，两种移动网站",
+    "宋代美学如何变成数字界面",
+    "两个虚构品牌案例"
+  ]) {
     await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
   }
-  const evidence = page.getByTestId("home-evidence");
-  for (const text of ["相同文案", "相同图片", "相同功能", "相同目标"]) {
-    await expect(evidence.getByText(text, { exact: true })).toBeVisible();
+  const showcase = page.getByTestId("mobile-showcase-preview");
+  for (const text of ["same brief", "same copy", "same image", "same CTA", "same goal"]) {
+    await expect(showcase.getByText(text, { exact: true })).toBeVisible();
   }
-  for (const step of ["必要信息", "建立秩序", "功能性留白", "适度停止"]) {
-    await expect(page.getByRole("heading", { level: 3, name: step })).toBeVisible();
+  for (const label of ["AI 默认移动网站", "SongStyle 移动网站"]) {
+    await expect(showcase.getByText(label, { exact: true })).toBeVisible();
+  }
+  for (const term of ["格物致知", "三远法", "宋版书", "汝窑与墨分五彩", "留白生意", "器以载道"]) {
+    await expect(page.getByRole("heading", { level: 3, name: term })).toBeVisible();
   }
   const cases = page.locator(".case-grid");
   await expect(cases.getByText("生活方式品牌", { exact: true })).toBeVisible();
@@ -51,6 +58,8 @@ test("home page presents the complete exhibition sequence", async ({ page }) => 
   }
   await expect(page.getByRole("link", { name: "查看 Roadmap", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "参与首轮用户测试", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "查看白汀完整对比", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "查看清序完整对比", exact: true })).toBeVisible();
 });
 
 test("reference controls are keyboard reachable", async ({ page }) => {
@@ -67,15 +76,20 @@ test("checklist content route renders", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("lifestyle case study presents the full comparison", async ({ page }) => {
+test("lifestyle case study presents two fair mobile websites", async ({ page }) => {
   await page.goto(withBase("/examples/lifestyle-brand/"));
   await expect(page.getByRole("heading", { level: 1, name: "白汀 Baiting：当代家居饮水器物品牌" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "普通 AI 默认方案" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "SongStyle 改写" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "审查结果" })).toBeVisible();
-  for (const testId of ["baiting-default", "baiting-songstyle"]) {
+  const comparison = page.getByTestId("mobile-comparison-baiting");
+  for (const label of ["AI 默认移动网站", "SongStyle 移动网站"]) {
+    await expect(comparison.getByText(label, { exact: true })).toBeVisible();
+  }
+  for (const invariant of ["same brief", "same copy", "same image", "same CTA", "same goal"]) {
+    await expect(comparison.getByText(invariant, { exact: true })).toBeVisible();
+  }
+  for (const testId of ["baiting-default-mobile", "baiting-songstyle-mobile"]) {
     const section = page.getByTestId(testId);
-    await expect(section.getByRole("heading", { level: 3, name: "让水回到桌面，安静地成为日常。" })).toBeVisible();
+    await expect(section.getByRole("heading", { name: "让水回到桌面，安静地成为日常。" })).toBeVisible();
+    await expect(section.getByText("一只 1.2 L 高硼硅玻璃水壶，薄而稳的壶口，容易清洁的宽口结构，以及适合每日使用的温润手感。", { exact: true })).toBeVisible();
     await expect(section.getByText("高硼硅玻璃", { exact: true })).toBeVisible();
     await expect(section.getByText("1.2 L", { exact: true })).toBeVisible();
     await expect(section.getByText("宽口易清洁", { exact: true })).toBeVisible();
@@ -84,14 +98,20 @@ test("lifestyle case study presents the full comparison", async ({ page }) => {
   }
 });
 
-test("digital product case study presents the full comparison", async ({ page }) => {
+test("digital product case study presents two fair mobile websites", async ({ page }) => {
   await page.goto(withBase("/examples/digital-product/"));
   await expect(page.getByRole("heading", { level: 1, name: "清序 Qingxu：AI 研究工作台" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "普通 AI 默认方案" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "SongStyle 改写" })).toBeVisible();
-  for (const testId of ["qingxu-default", "qingxu-songstyle"]) {
+  const comparison = page.getByTestId("mobile-comparison-qingxu");
+  for (const label of ["AI 默认移动网站", "SongStyle 移动网站"]) {
+    await expect(comparison.getByText(label, { exact: true })).toBeVisible();
+  }
+  for (const invariant of ["same brief", "same copy", "same image", "same CTA", "same goal"]) {
+    await expect(comparison.getByText(invariant, { exact: true })).toBeVisible();
+  }
+  for (const testId of ["qingxu-default-mobile", "qingxu-songstyle-mobile"]) {
     const section = page.getByTestId(testId);
-    await expect(section.getByRole("heading", { level: 3, name: "从来源到叙事，让研究过程清楚可见。" })).toBeVisible();
+    await expect(section.getByRole("heading", { name: "从来源到叙事，让研究过程清楚可见。" })).toBeVisible();
+    await expect(section.getByText("收集可信来源，综合带引用的发现，并与团队共同整理一条可以被理解和复核的研究叙事。", { exact: true })).toBeVisible();
     for (const feature of ["收集来源", "综合发现", "分享叙事"]) {
       await expect(section.getByText(feature, { exact: true })).toBeVisible();
     }
