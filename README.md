@@ -4,14 +4,19 @@
 
 > AI 不懂得何时停止。
 >
-> 同样的内容，SongStyle 让设计从“不断添加”转向“准确表达”。
+> 同样的建站内容，SongStyle 让移动网站从不断添加转向准确表达。
 
-SongStyle AI Design System is an open-source design language that helps
-designers, developers, and AI agents decide what should exist, how information
-should relate, and where expression should stop.
+SongStyle AI Design System is an open-source design language for turning Song
+aesthetics into modern UI, web, and app design decisions. It helps designers,
+developers, and AI agents decide what should exist, how information should
+relate, and where expression should stop.
 
-宋式 AI 设计系统不是古风素材库，也不是把界面变得空旷。它将宋代美学中更深层的
-秩序、留白、温润与克制，转译为现代网站和 Web UI 可以执行、审查和讨论的设计判断。
+宋式 AI 设计系统不是古风素材库，也不是把界面变得空旷。它将宋代美学中的格物致知、
+三远法、宋版书排版、汝窑色彩、留白生意与器以载道，转译为现代移动网站和 Web UI
+可以执行、审查和讨论的设计判断。
+
+项目调研显示：宋代美学在室内、文创、建筑与展览中已有较多应用讨论，但在 UI、网页、
+APP 与 AI 辅助数字设计中的系统性应用研究几乎空白。SongStyle 试图填补的正是这个空白。
 
 [Website](https://robbyshao-8ag.github.io/songstyle-ai-design-system/) ·
 [Prompts](https://robbyshao-8ag.github.io/songstyle-ai-design-system/prompts/) ·
@@ -21,32 +26,29 @@ should relate, and where expression should stop.
 
 ## See The Difference / 先看差异
 
-The ordinary AI and SongStyle versions use **the same copy, the same image,
-the same features, and the same goal**. The content did not become better. The
-design judgment did.
+The ordinary AI and SongStyle versions use **the same brief, the same copy,
+the same image, the same CTA, the same features, and the same goal**. The
+content did not become better. The design judgment did.
 
-普通 AI 与 SongStyle 版本使用相同文案、相同图片、相同功能和相同目标。变化只来自
-版面、层级、字体、字号、色彩、背景、图片裁切、空间、卡片与停止时机。
+普通 AI 与 SongStyle 版本使用相同建站要求、相同文案、相同图片、相同行动与相同目标。
+变化只来自移动网站的版面、层级、字体、字号、色彩、材质、图片裁切、空间和停止时机。
 
-| 白汀 Baiting | 清序 Qingxu |
-| --- | --- |
-| ![自然光下置于当代居家桌面的透明玻璃水壶](website/public/assets/cases/baiting-carafe.webp) | ![研究者在自然光工作空间中整理来源与研究资料](website/public/assets/cases/qingxu-research.webp) |
-| [生活方式品牌公平对比](https://robbyshao-8ag.github.io/songstyle-ai-design-system/examples/lifestyle-brand/) | [现代数字产品公平对比](https://robbyshao-8ag.github.io/songstyle-ai-design-system/examples/digital-product/) |
+![白汀移动网站公平对比](docs/assets/mobile-showcase-baiting.png)
 
-## The Method / 方法
+[白汀 Baiting 移动网站对比](https://robbyshao-8ag.github.io/songstyle-ai-design-system/examples/lifestyle-brand/)
 
-1. **必要信息 / Necessary information**
+![清序移动网站公平对比](docs/assets/mobile-showcase-qingxu.png)
 
-   先判断什么必须存在，不用更多内容掩盖不确定。
-2. **建立秩序 / Establish order**
+[清序 Qingxu 移动网站对比](https://robbyshao-8ag.github.io/songstyle-ai-design-system/examples/digital-product/)
 
-   让关系、顺序与主次先于视觉效果。
-3. **功能性留白 / Functional negative space**
+## Digital SongStyle Framework / 数字宋式框架
 
-   让空间承担聚焦、节奏与理解任务。
-4. **适度停止 / Appropriate stopping**
-
-   表达充分后停止，不用添加证明还能添加。
+- **格物致知 / Observed precision**: every visible element must be necessary, accurate, and carefully tuned.
+- **三远法 / Information distance**: near, middle, and far distance become task, evidence, and narrative hierarchy.
+- **宋版书 / Typographic rhythm**: composed line breaks, generous line-height, and sparse-dense rhythm shape reading.
+- **汝窑与墨分五彩 / Color and tone**: porcelain, warm paper, mist gray, celadon, ink tones, and tiny accents replace high-saturation spectacle.
+- **留白生意 / Functional breathing space**: negative space focuses, pauses, routes, and leaves room for imagination.
+- **器以载道 / Useful ornament**: lines, textures, and shapes must serve grouping, routing, tactility, or meaning.
 
 ## Use It / 开始使用
 
