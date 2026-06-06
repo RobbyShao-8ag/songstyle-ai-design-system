@@ -22,7 +22,9 @@ ${principles
     (principle) => `## ${principle.nameZh} / ${principle.nameEn}
 
 - ID: \`${principle.id}\`
+- Summary zh: ${principle.summaryZh}
 - Summary: ${principle.summaryEn}
+- Review question zh: ${principle.reviewQuestionZh}
 - Review question: ${principle.reviewQuestionEn}`
   )
   .join("\n\n")}

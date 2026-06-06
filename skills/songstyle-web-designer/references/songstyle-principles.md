@@ -5,35 +5,47 @@
 ## 少而有序 / Less, With Order
 
 - ID: `less-with-order`
+- Summary zh: 减少信息不是目的，建立清晰而稳定的关系才是目的。
 - Summary: Reducing information is not the goal; creating clear and stable relationships is.
+- Review question zh: 如果移除这个元素，用户的理解是否会变差？
 - Review question: If this element is removed, does the user's understanding become worse?
 
 ## 留白生意 / Space Creates Meaning
 
 - ID: `space-creates-meaning`
+- Summary zh: 留白是用于聚焦、节奏、呼吸与联想的主动设计元素。
 - Summary: Negative space is an active design element for focus, rhythm, breathing, and association.
+- Review question zh: 这块空间承担了什么功能？
 - Review question: What function does this space perform?
 
 ## 克制有度 / Restraint Knows Its Measure
 
 - ID: `restraint-knows-measure`
+- Summary zh: 当信息、色彩、装饰与动效完成任务后，设计就应当停止。
 - Summary: When information, color, decoration, and motion have completed their task, the design should stop.
+- Review question zh: 这个新增内容是在改善意义，还是只是在证明还能添加更多？
 - Review question: Is this addition improving meaning, or only proving that more can be added?
 
 ## 平淡见真 / Quietness Reveals Truth
 
 - ID: `quietness-reveals-truth`
+- Summary zh: 设计通过真实内容、准确结构与长期可读性建立价值，而不是依赖强刺激。中文标题可读性是硬约束：留白不能制造破碎语义、单字悬挂或为了装饰而变窄的标题列。
 - Summary: Design builds value through truthful content, accurate structure, and long-term readability rather than intense stimulation.
+- Review question zh: 在第一次视觉印象之后，它仍然会显得有价值吗？
 - Review question: Would this still feel valuable after the first visual impression?
 
 ## 温润可亲 / Warmth Makes Technology Approachable
 
 - ID: `warmth-makes-technology-approachable`
+- Summary zh: 色彩、材质、光线、动效与语言应让技术具有可信赖的人性尺度。
 - Summary: Color, material, light, motion, and language should give technology a trustworthy human scale.
+- Review question zh: 界面是否平静可信，同时没有变得含糊？
 - Review question: Does the interface feel calm and credible without becoming vague?
 
 ## 含蓄留韵 / Suggestion Leaves Resonance
 
 - ID: `suggestion-leaves-resonance`
+- Summary zh: 设计不必一次解释全部意义，但不能隐藏必要信息。
 - Summary: Design does not need to explain every meaning at once, but it must not hide necessary information.
+- Review question zh: 什么可以被暗示，而不必完全说明？
 - Review question: What can be suggested rather than fully stated?

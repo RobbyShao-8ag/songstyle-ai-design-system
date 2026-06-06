@@ -15,16 +15,16 @@ truthfulness, and business goals take priority over aesthetic preference.
 ## 层级清晰度 / Hierarchy Clarity
 
 - ID: `hierarchy-clarity`
-- Question: 用户能否迅速理解页面重点、阅读顺序与主要行动？
-- Good: 重点明确，信息关系稳定，行动优先级清楚。
-- Risk: 标题、卡片、色彩和行动彼此竞争。
+- Question: 用户能否迅速理解页面重点、阅读顺序与主要行动？中文标题可读性是否保持清楚？
+- Good: 重点明确，信息关系稳定，行动优先级清楚。中文标题可读性是硬约束：留白不能制造破碎语义、单字悬挂或为了装饰而变窄的标题列。
+- Risk: 标题、卡片、色彩和行动彼此竞争；或为了留白把中文标题压成破碎难读的窄列。
 
 ## 功能性留白 / Functional Negative Space
 
 - ID: `functional-negative-space`
 - Question: 留白是否承担聚焦、分组、节奏、呼吸或联想的功能？
 - Good: 空间帮助用户理解内容关系，并为阅读建立节奏。
-- Risk: 空白只为显得高级，造成信息割裂或操作低效。
+- Risk: 空白只为显得高级，造成信息割裂、操作低效或中文标题可读性下降。
 
 ## 适度停止 / Appropriate Stopping
 
