@@ -98,15 +98,15 @@
     "text": {
       "primary": {
         "$value": "{color.primitive.ink.900}",
-        "$description": "Primary readable text."
+        "$description": "Primary readable text. Usage: primary text, long body text, important labels, and required content on light SongStyle surfaces."
       },
       "secondary": {
         "$value": "{color.primitive.ink.700}",
-        "$description": "Supporting readable text."
+        "$description": "Supporting readable text. Usage: secondary explanations, metadata, and helper copy that still needs reliable contrast."
       },
       "muted": {
         "$value": "{color.primitive.ink.500}",
-        "$description": "Low-emphasis text."
+        "$description": "Low-emphasis text. Usage: low-priority supporting details only; not for required actions, prices, risks, errors, or legal meaning."
       }
     },
     "border": {
@@ -118,21 +118,21 @@
     "accent": {
       "primary": {
         "$value": "{color.primitive.celadon.700}",
-        "$description": "Primary interactive accent."
+        "$description": "Primary interactive accent. Usage: primary CTA, selected state, key link, and focused interactive emphasis."
       },
       "soft": {
         "$value": "{color.primitive.celadon.300}",
-        "$description": "Soft accent for gentle emphasis."
+        "$description": "Soft accent for gentle emphasis. Usage: quiet highlights and non-critical supporting emphasis, paired with readable text."
       },
       "warm": {
         "$value": "{color.primitive.tea.500}",
-        "$description": "Warm accent for selective contrast."
+        "$description": "Warm accent for selective contrast. Usage: secondary emphasis, warmth cues, and restrained hover or annotation states."
       }
     },
     "state": {
       "error": {
         "$value": "{color.primitive.vermilion.600}",
-        "$description": "Error and destructive-state communication."
+        "$description": "Error and destructive-state communication. Usage: errors, warnings, destructive actions, and validation states that must not be visually softened away."
       }
     }
   }

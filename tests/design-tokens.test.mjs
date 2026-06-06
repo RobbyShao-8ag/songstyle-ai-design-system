@@ -134,3 +134,24 @@ test("real SongStyle token sources cover required semantic tokens", async () => 
     assert.ok(result.resolved[name], `Missing required token: ${name}`);
   }
 });
+
+test("semantic color tokens document usage boundaries", async () => {
+  const source = JSON.parse(
+    await readFile("design-tokens/source/color.tokens.json", "utf8")
+  );
+  const semanticTokens = {
+    "color.text.primary": source.color.text.primary,
+    "color.text.secondary": source.color.text.secondary,
+    "color.text.muted": source.color.text.muted,
+    "color.accent.primary": source.color.accent.primary,
+    "color.state.error": source.color.state.error
+  };
+
+  for (const [name, token] of Object.entries(semanticTokens)) {
+    assert.match(token.$description, /Usage:/, `${name} needs usage guidance`);
+  }
+
+  assert.match(source.color.text.primary.$description, /body text|primary text/i);
+  assert.match(source.color.text.muted.$description, /not for required|low-priority/i);
+  assert.match(source.color.state.error.$description, /error|destructive/i);
+});
