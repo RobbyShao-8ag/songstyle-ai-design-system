@@ -144,6 +144,8 @@ test("semantic color tokens document usage boundaries", async () => {
     "color.text.secondary": source.color.text.secondary,
     "color.text.muted": source.color.text.muted,
     "color.accent.primary": source.color.accent.primary,
+    "color.accent.soft": source.color.accent.soft,
+    "color.accent.warm": source.color.accent.warm,
     "color.state.error": source.color.state.error
   };
 
@@ -153,5 +155,7 @@ test("semantic color tokens document usage boundaries", async () => {
 
   assert.match(source.color.text.primary.$description, /body text|primary text/i);
   assert.match(source.color.text.muted.$description, /not for required|low-priority/i);
+  assert.match(source.color.accent.soft.$description, /non-critical|supporting emphasis/i);
+  assert.match(source.color.accent.warm.$description, /secondary emphasis|warmth cues/i);
   assert.match(source.color.state.error.$description, /error|destructive/i);
 });
