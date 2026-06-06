@@ -78,10 +78,17 @@ test("review model includes score rubrics, critical failures, and evidence requi
     await readFile("checklists/songstyle-review.json", "utf8")
   );
   const checklistMarkdown = await readFile("checklists/songstyle-review.md", "utf8");
-  const assertMarkdownIncludes = (text, context) => {
+  const sectionForDimension = (dimension) => {
+    const heading = `## ${dimension.nameZh}`;
+    const start = checklistMarkdown.indexOf(heading);
+    assert.notEqual(start, -1, `Markdown must include section for ${dimension.id}`);
+    const next = checklistMarkdown.indexOf("\n## ", start + heading.length);
+    return checklistMarkdown.slice(start, next === -1 ? undefined : next);
+  };
+  const assertSectionIncludes = (section, text, context) => {
     assert.ok(
-      checklistMarkdown.includes(text),
-      `Markdown must include ${context}: ${text}`
+      section.includes(text),
+      `Markdown section must include ${context}: ${text}`
     );
   };
 
@@ -99,20 +106,21 @@ test("review model includes score rubrics, critical failures, and evidence requi
       Array.isArray(dimension.evidenceRequired) && dimension.evidenceRequired.length >= 2,
       `${dimension.id} must define evidence requirements`
     );
-    assertMarkdownIncludes(dimension.nameZh, `${dimension.id} Chinese name`);
-    assertMarkdownIncludes(dimension.question, `${dimension.id} question`);
-    assertMarkdownIncludes(dimension.good, `${dimension.id} good example`);
-    assertMarkdownIncludes(dimension.risk, `${dimension.id} risk`);
-    assertMarkdownIncludes("关键失败", "critical failure heading");
-    assertMarkdownIncludes("评分证据", "evidence heading");
+    const section = sectionForDimension(dimension);
+    assertSectionIncludes(section, dimension.nameZh, `${dimension.id} Chinese name`);
+    assertSectionIncludes(section, dimension.question, `${dimension.id} question`);
+    assertSectionIncludes(section, dimension.good, `${dimension.id} good example`);
+    assertSectionIncludes(section, dimension.risk, `${dimension.id} risk`);
+    assertSectionIncludes(section, "关键失败", `${dimension.id} critical failure heading`);
+    assertSectionIncludes(section, "评分证据", `${dimension.id} evidence heading`);
     for (const failure of dimension.criticalFailures) {
-      assertMarkdownIncludes(failure, `${dimension.id} critical failure`);
+      assertSectionIncludes(section, failure, `${dimension.id} critical failure`);
     }
     for (const evidence of dimension.evidenceRequired) {
-      assertMarkdownIncludes(evidence, `${dimension.id} evidence requirement`);
+      assertSectionIncludes(section, evidence, `${dimension.id} evidence requirement`);
     }
     for (const rubric of Object.values(dimension.scoreRubric)) {
-      assertMarkdownIncludes(rubric, `${dimension.id} score rubric`);
+      assertSectionIncludes(section, rubric, `${dimension.id} score rubric`);
     }
   }
 });
