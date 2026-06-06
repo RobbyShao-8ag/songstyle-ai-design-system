@@ -587,6 +587,6 @@ test("foundation hardening guides explain decisions and failure modes", async ()
   }
 
   const promptGuide = await readFile("docs/guides/prompts.md", "utf8");
-  assert.match(promptGuide, /decision-record-template\//);
-  assert.match(promptGuide, /anti-patterns\//);
+  assert.match(promptGuide, /\/guides\/decision-record-template\//);
+  assert.match(promptGuide, /\/guides\/anti-patterns\//);
 });
