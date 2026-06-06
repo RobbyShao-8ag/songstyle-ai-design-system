@@ -73,6 +73,32 @@ test("normative principles, review dimensions, and evaluation briefs are complet
   }
 });
 
+test("review model includes score rubrics, critical failures, and evidence requirements", async () => {
+  const review = JSON.parse(
+    await readFile("checklists/songstyle-review.json", "utf8")
+  );
+  const checklistMarkdown = await readFile("checklists/songstyle-review.md", "utf8");
+
+  for (const dimension of review.dimensions) {
+    assert.deepEqual(
+      Object.keys(dimension.scoreRubric ?? {}),
+      ["0", "1", "2", "3", "4"],
+      `${dimension.id} must define rubric scores 0-4`
+    );
+    assert.ok(
+      Array.isArray(dimension.criticalFailures) && dimension.criticalFailures.length >= 2,
+      `${dimension.id} must define critical failures`
+    );
+    assert.ok(
+      Array.isArray(dimension.evidenceRequired) && dimension.evidenceRequired.length >= 2,
+      `${dimension.id} must define evidence requirements`
+    );
+    assert.match(checklistMarkdown, new RegExp(dimension.nameZh));
+    assert.match(checklistMarkdown, /关键失败/);
+    assert.match(checklistMarkdown, /评分证据/);
+  }
+});
+
 const CHINESE_CONTENT_FILES = [
   "docs/manifesto/zh.md",
   "docs/principles/index.md",
