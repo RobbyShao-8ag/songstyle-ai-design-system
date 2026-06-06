@@ -3,7 +3,9 @@
 # SongStyle Review Model
 
 Score each dimension from 0 to 4. Necessary density, usability, accessibility,
-truthfulness, and business goals take priority over aesthetic preference.
+truthfulness, Chinese heading readability, and business goals take priority
+over aesthetic preference. Review information through near, middle, and far
+layers before scoring.
 
 ## 信息必要性 / Information Necessity
 
@@ -11,6 +13,19 @@ truthfulness, and business goals take priority over aesthetic preference.
 - Question: 页面中的每一条信息是否都支持用户任务或业务目标？
 - Good: 保留的信息有明确作用，次要内容被延后或移除。
 - Risk: 为了显得丰富而堆叠模块、卖点和重复文案。
+- Score rubric:
+  - 0: 该维度失败，并直接损害页面目标。
+  - 1: 该维度有可见意图，但主要问题仍然主导体验。
+  - 2: 结果混合，用户可以理解但需要明显修正。
+  - 3: 基本满足该维度，仅有少量不影响任务的问题。
+  - 4: 表达有意、稳定、可解释，并能作为该维度的参考案例。
+- Critical failures:
+  - 必须保留的信息被删除、隐藏或改写到不可理解。
+  - 页面无法说明每个主要模块如何支持用户任务或业务目标。
+- Evidence required:
+  - 页面目标
+  - 必须保留内容清单
+  - 删除、延后、合并、保留或澄清决策
 
 ## 层级清晰度 / Hierarchy Clarity
 
@@ -18,6 +33,19 @@ truthfulness, and business goals take priority over aesthetic preference.
 - Question: 用户能否迅速理解页面重点、阅读顺序与主要行动？中文标题可读性是否保持清楚？
 - Good: 重点明确，信息关系稳定，行动优先级清楚。中文标题可读性是硬约束：留白不能制造破碎语义、单字悬挂或为了装饰而变窄的标题列。
 - Risk: 标题、卡片、色彩和行动彼此竞争；或为了留白把中文标题压成破碎难读的窄列。
+- Score rubric:
+  - 0: 主任务、阅读顺序、标题或主要行动不可理解。
+  - 1: 主次关系存在，但多个标题、卡片、颜色或行动持续竞争。
+  - 2: 层级基本可理解，但存在竞争重点、弱 CTA 或不理想的中文标题换行。
+  - 3: 近景、中景、远景关系清楚，仅有少量节奏问题。
+  - 4: 阅读顺序、行动优先级和信息距离稳定清楚，标题换行也保持语义完整。
+- Critical failures:
+  - 主任务、阅读顺序或主要行动不可理解。
+  - 展示型中文标题因为装饰性窄列出现破碎语义或单字悬挂。
+- Evidence required:
+  - 首屏阅读顺序
+  - 近景、中景、远景分类
+  - 标题换行与主 CTA 可见性
 
 ## 功能性留白 / Functional Negative Space
 
@@ -25,6 +53,19 @@ truthfulness, and business goals take priority over aesthetic preference.
 - Question: 留白是否承担聚焦、分组、节奏、呼吸或联想的功能？
 - Good: 空间帮助用户理解内容关系，并为阅读建立节奏。
 - Risk: 空白只为显得高级，造成信息割裂、操作低效或中文标题可读性下降。
+- Score rubric:
+  - 0: 该维度失败，并直接损害页面目标。
+  - 1: 该维度有可见意图，但主要问题仍然主导体验。
+  - 2: 结果混合，用户可以理解但需要明显修正。
+  - 3: 基本满足该维度，仅有少量不影响任务的问题。
+  - 4: 表达有意、稳定、可解释，并能作为该维度的参考案例。
+- Critical failures:
+  - 留白切断必要信息关系，导致用户无法理解下一步。
+  - 空白只制造高级感，没有承担聚焦、分组、节奏、呼吸或联想功能。
+- Evidence required:
+  - 留白承担的具体功能
+  - 相邻信息之间的关系
+  - 小屏幕下的阅读和操作路径
 
 ## 适度停止 / Appropriate Stopping
 
@@ -32,6 +73,19 @@ truthfulness, and business goals take priority over aesthetic preference.
 - Question: 当表达已经充分时，设计是否停止继续添加？
 - Good: 色彩、装饰和动效都有明确理由，完成任务后不再叠加。
 - Risk: 因为工具可以生成更多，就继续加入视觉效果和模块。
+- Score rubric:
+  - 0: 该维度失败，并直接损害页面目标。
+  - 1: 该维度有可见意图，但主要问题仍然主导体验。
+  - 2: 结果混合，用户可以理解但需要明显修正。
+  - 3: 基本满足该维度，仅有少量不影响任务的问题。
+  - 4: 表达有意、稳定、可解释，并能作为该维度的参考案例。
+- Critical failures:
+  - 新增装饰、动效、模块或视觉层没有任务、业务、可访问性或意义功能。
+  - 为了展示生成能力而加入重复卖点、徽章、渐变、图标或无效段落。
+- Evidence required:
+  - 每个新增视觉元素的功能
+  - 被停止添加的内容
+  - 动效、装饰和强调的使用理由
 
 ## 秩序而非符号 / Order, Not Symbols
 
@@ -39,6 +93,19 @@ truthfulness, and business goals take priority over aesthetic preference.
 - Question: 文化气质是否主要来自秩序与关系，而不是装饰符号？
 - Good: 宋式感来自比例、节奏、材料感与克制表达。
 - Risk: 依赖水墨、印章、传统纹样或书法字体作为文化捷径。
+- Score rubric:
+  - 0: 该维度失败，并直接损害页面目标。
+  - 1: 该维度有可见意图，但主要问题仍然主导体验。
+  - 2: 结果混合，用户可以理解但需要明显修正。
+  - 3: 基本满足该维度，仅有少量不影响任务的问题。
+  - 4: 表达有意、稳定、可解释，并能作为该维度的参考案例。
+- Critical failures:
+  - 宋式感主要依赖水墨、印章、传统纹样、书法字体或古风符号。
+  - 文化符号削弱信息秩序、可读性或品牌真实性。
+- Evidence required:
+  - 比例、节奏、材料感或信息关系如何产生文化气质
+  - 没有使用或被移除的文化捷径
+  - 符号元素的功能说明
 
 ## 可用性、可访问性与目标 / Usability, Accessibility, and Goals
 
@@ -46,3 +113,16 @@ truthfulness, and business goals take priority over aesthetic preference.
 - Question: 页面是否仍然可用、可访问、真实，并与业务目标一致？
 - Good: 审美选择支持用户完成任务，并保留必要信息密度。
 - Risk: 为了留白或风格牺牲对比度、操作效率、真实性或转化路径。
+- Score rubric:
+  - 0: 用户任务、可访问性、真实性或业务目标被设计选择破坏。
+  - 1: 页面可用性勉强存在，但关键行动、对比度、反馈或必要事实有明显问题。
+  - 2: 用户可以完成任务，但可访问性、必要密度或业务路径需要明显修正。
+  - 3: 可用性、可访问性、真实性和业务目标基本成立，仅有轻微风险。
+  - 4: 审美选择主动支持任务、可访问性、真实性和业务结果。
+- Critical failures:
+  - 正文、关键说明、CTA、焦点状态或错误状态不清楚。
+  - 为了审美牺牲真实性、可访问性、转化路径或业务硬要求。
+- Evidence required:
+  - 主要用户任务
+  - 可访问性与对比度检查
+  - 业务目标、真实性和必要密度检查

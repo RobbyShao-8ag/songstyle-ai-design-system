@@ -125,6 +125,27 @@ test("review model includes score rubrics, critical failures, and evidence requi
   }
 });
 
+test("generated skill references include expanded foundation hardening rules", async () => {
+  const skillNames = ["songstyle-web-designer", "songstyle-design-reviewer"];
+  for (const skillName of skillNames) {
+    const reviewReference = await readFile(
+      `skills/${skillName}/references/review-model.md`,
+      "utf8"
+    );
+    for (const term of [
+      "Score rubric",
+      "Critical failures",
+      "Evidence required",
+      "Chinese heading",
+      "near",
+      "middle",
+      "far"
+    ]) {
+      assert.match(reviewReference, new RegExp(term, "i"), `${skillName} reference is missing ${term}`);
+    }
+  }
+});
+
 const CHINESE_CONTENT_FILES = [
   "docs/manifesto/zh.md",
   "docs/principles/index.md",
