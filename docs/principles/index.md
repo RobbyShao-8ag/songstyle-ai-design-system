@@ -18,4 +18,6 @@ order: 1
 5. [温润可亲](warmth-makes-technology-approachable/)：让技术拥有可信赖的人性尺度。
 6. [含蓄留韵](suggestion-leaves-resonance/)：保留联想空间，但不隐藏必要信息。
 
+当原则之间或原则与可用性发生冲突时，使用[原则优先级与冲突裁决](priority-and-tradeoffs/)：先保护硬约束，再确认任务目标，随后整理信息秩序，最后决定审美表达强度。
+
 使用[宋式审查清单](../checklist/)把原则转化为可重复的设计判断。

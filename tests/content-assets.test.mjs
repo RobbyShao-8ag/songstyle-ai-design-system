@@ -455,3 +455,50 @@ test("CI and GitHub Pages workflows exist", async () => {
   await access(".github/workflows/ci.yml");
   await access(".github/workflows/deploy.yml");
 });
+
+const FOUNDATION_HARDENING_DOCS = [
+  {
+    file: "docs/principles/priority-and-tradeoffs.md",
+    route: "/principles/priority-and-tradeoffs/",
+    terms: ["硬约束", "任务目标", "信息秩序", "审美表达", "冲突裁决"]
+  },
+  {
+    file: "docs/foundations/information-distance.md",
+    route: "/foundations/information-distance/",
+    terms: ["近景", "中景", "远景", "三远法", "信息距离"]
+  },
+  {
+    file: "docs/foundations/accessibility-alignment.md",
+    route: "/foundations/accessibility-alignment/",
+    terms: ["WCAG", "对比度", "焦点状态", "低饱和", "温润但合规"]
+  },
+  {
+    file: "docs/guides/necessary-density-boundary.md",
+    route: "/guides/necessary-density-boundary/",
+    terms: ["必要密度", "产品落地页", "数据或专家工具", "交易页面", "不能隐藏必要信息"]
+  }
+];
+
+test("foundation hardening public docs expose the decision model", async () => {
+  for (const doc of FOUNDATION_HARDENING_DOCS) {
+    const markdown = await readFile(doc.file, "utf8");
+    const data = parseFrontmatter(markdown, doc.file);
+    assert.equal(data.route, doc.route, `${doc.file} has wrong route`);
+    assert.equal(data.lang, "zh-CN", `${doc.file} must be Chinese source material`);
+    for (const term of doc.terms) {
+      assert.match(markdown, new RegExp(term), `${doc.file} is missing ${term}`);
+    }
+  }
+});
+
+test("foundation hardening docs are linked from existing entry pages", async () => {
+  const principles = await readFile("docs/principles/index.md", "utf8");
+  const foundations = await readFile("docs/foundations/index.md", "utf8");
+  const guide = await readFile("docs/guides/from-brief-to-web-design.md", "utf8");
+
+  assert.match(principles, /priority-and-tradeoffs\//);
+  assert.match(foundations, /information-distance\//);
+  assert.match(foundations, /accessibility-alignment\//);
+  assert.match(guide, /硬约束检查/);
+  assert.match(guide, /近景.*中景.*远景/s);
+});
