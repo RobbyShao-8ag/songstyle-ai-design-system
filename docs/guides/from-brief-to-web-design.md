@@ -1,6 +1,6 @@
 ---
 title: 从 Brief 到宋式 Web 设计
-description: 用八个步骤把页面目标转化为克制、清楚而可执行的 Web 设计。
+description: 用结构化步骤把页面目标转化为克制、清楚而可执行的 Web 设计。
 lang: zh-CN
 route: /guides/from-brief-to-web-design/
 section: 指南
