@@ -11,6 +11,53 @@ async function expectTopInsideViewport(locator: Locator, viewportHeight: number)
   expect(box!.y).toBeLessThan(viewportHeight - 20);
 }
 
+async function expectChineseHeadingLinesAreReadable(locator: Locator) {
+  const result = await locator.evaluate((element) => {
+    const text = element.textContent?.trim() ?? "";
+    const firstChild = element.firstChild;
+    if (!firstChild) {
+      return { lineCount: 0, lines: [], lastLine: "", width: 0 };
+    }
+
+    const range = document.createRange();
+    const characters = Array.from(text);
+    const characterRects = characters.map((character, index) => {
+      range.setStart(firstChild, index);
+      range.setEnd(firstChild, index + 1);
+      const rect = range.getBoundingClientRect();
+      return { character, top: Math.round(rect.top) };
+    });
+    range.detach();
+
+    const lines = [...new Set(characterRects.map((line) => line.top))]
+      .map((top) =>
+        characterRects
+          .filter((line) => line.top === top)
+          .map((line) => line.character)
+          .join("")
+      )
+      .filter(Boolean);
+
+    return {
+      lineCount: lines.length,
+      lines,
+      lastLine: lines.at(-1) ?? "",
+      width: element.getBoundingClientRect().width
+    };
+  });
+
+  expect(result.width).toBeGreaterThanOrEqual(300);
+  expect(result.lineCount).toBeGreaterThanOrEqual(2);
+  expect(result.lineCount).toBeLessThanOrEqual(3);
+  expect(result.lastLine.replace(/[。！？,.，、\s]/g, "").length).toBeGreaterThan(1);
+  for (const line of result.lines) {
+    expect(line).not.toMatch(/叙$/);
+    expect(line).not.toMatch(/^事/);
+    expect(line).not.toMatch(/安$/);
+    expect(line).not.toMatch(/^静/);
+  }
+}
+
 for (const route of ["/", "/reference-ui/"]) {
   test(`${route} renders without WCAG A/AA violations`, async ({ page }) => {
     await page.goto(withBase(route));
@@ -80,6 +127,24 @@ test("desktop first screen reveals the mobile comparison evidence", async ({ pag
     await page.goto(withBase(route));
     await expectTopInsideViewport(page.getByTestId(testId), 720);
   }
+});
+
+test("SongStyle mobile headings keep readable Chinese line breaks", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 720 });
+
+  await page.goto(withBase("/examples/lifestyle-brand/"));
+  await expectChineseHeadingLinesAreReadable(
+    page.getByTestId("baiting-songstyle-mobile").getByRole("heading", {
+      name: "让水回到桌面，安静地成为日常。"
+    })
+  );
+
+  await page.goto(withBase("/examples/digital-product/"));
+  await expectChineseHeadingLinesAreReadable(
+    page.getByTestId("qingxu-songstyle-mobile").getByRole("heading", {
+      name: "从来源到叙事，让研究过程清楚可见。"
+    })
+  );
 });
 
 test("reference controls are keyboard reachable", async ({ page }) => {

@@ -357,6 +357,30 @@ test("README explains the fair comparison contract", async () => {
   }
 });
 
+test("Chinese heading readability rule is enforced across guidance and generated references", async () => {
+  const requiredPhrase = "中文标题可读性";
+  const files = [
+    "docs/foundations/typography.md",
+    "docs/references/song-aesthetics-digital-design-research.md",
+    "checklists/songstyle-review.md",
+    "checklists/songstyle-review.json",
+    "docs/principles/principles.json",
+    "prompts/web-design/from-brief.md",
+    "prompts/web-design/rewrite-existing-page.md",
+    "prompts/design-review/review-page.md",
+    "prompts/design-review/compare-default-and-songstyle.md",
+    "skills/songstyle-web-designer/references/songstyle-principles.md",
+    "skills/songstyle-web-designer/references/review-model.md",
+    "skills/songstyle-design-reviewer/references/songstyle-principles.md",
+    "skills/songstyle-design-reviewer/references/review-model.md"
+  ];
+
+  for (const file of files) {
+    const content = await readFile(file, "utf8");
+    assert.match(content, new RegExp(requiredPhrase), `${file} is missing ${requiredPhrase}`);
+  }
+});
+
 test("community validation files request context and evidence", async () => {
   const roadmap = await readFile("ROADMAP.md", "utf8");
   const userTesting = await readFile("docs/research/first-round-user-testing.md", "utf8");
