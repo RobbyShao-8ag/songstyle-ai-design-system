@@ -78,6 +78,12 @@ test("review model includes score rubrics, critical failures, and evidence requi
     await readFile("checklists/songstyle-review.json", "utf8")
   );
   const checklistMarkdown = await readFile("checklists/songstyle-review.md", "utf8");
+  const assertMarkdownIncludes = (text, context) => {
+    assert.ok(
+      checklistMarkdown.includes(text),
+      `Markdown must include ${context}: ${text}`
+    );
+  };
 
   for (const dimension of review.dimensions) {
     assert.deepEqual(
@@ -93,9 +99,21 @@ test("review model includes score rubrics, critical failures, and evidence requi
       Array.isArray(dimension.evidenceRequired) && dimension.evidenceRequired.length >= 2,
       `${dimension.id} must define evidence requirements`
     );
-    assert.match(checklistMarkdown, new RegExp(dimension.nameZh));
-    assert.match(checklistMarkdown, /关键失败/);
-    assert.match(checklistMarkdown, /评分证据/);
+    assertMarkdownIncludes(dimension.nameZh, `${dimension.id} Chinese name`);
+    assertMarkdownIncludes(dimension.question, `${dimension.id} question`);
+    assertMarkdownIncludes(dimension.good, `${dimension.id} good example`);
+    assertMarkdownIncludes(dimension.risk, `${dimension.id} risk`);
+    assertMarkdownIncludes("关键失败", "critical failure heading");
+    assertMarkdownIncludes("评分证据", "evidence heading");
+    for (const failure of dimension.criticalFailures) {
+      assertMarkdownIncludes(failure, `${dimension.id} critical failure`);
+    }
+    for (const evidence of dimension.evidenceRequired) {
+      assertMarkdownIncludes(evidence, `${dimension.id} evidence requirement`);
+    }
+    for (const rubric of Object.values(dimension.scoreRubric)) {
+      assertMarkdownIncludes(rubric, `${dimension.id} score rubric`);
+    }
   }
 });
 
