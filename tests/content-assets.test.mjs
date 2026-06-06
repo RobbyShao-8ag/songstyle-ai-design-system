@@ -265,6 +265,37 @@ test("prompt templates share the required structure and review sources", async (
   }
 });
 
+test("prompts and skills require hard-constraint checkpoints and decision evidence", async () => {
+  const promptFiles = [
+    "prompts/web-design/from-brief.md",
+    "prompts/web-design/rewrite-existing-page.md",
+    "prompts/design-review/review-page.md",
+    "prompts/design-review/compare-default-and-songstyle.md"
+  ];
+  const requiredPromptTerms = [
+    "Hard-constraint check / 硬约束检查",
+    "Near / Middle / Far",
+    "Decision record / 决策记录",
+    "Evidence / 证据",
+    "中文标题可读性"
+  ];
+
+  for (const file of promptFiles) {
+    const markdown = await readFile(file, "utf8");
+    for (const term of requiredPromptTerms) {
+      assert.match(markdown, new RegExp(term.replace("/", "\\/")), `${file} is missing ${term}`);
+    }
+  }
+
+  const webDesigner = await readFile("skills/songstyle-web-designer/SKILL.md", "utf8");
+  const reviewer = await readFile("skills/songstyle-design-reviewer/SKILL.md", "utf8");
+  for (const markdown of [webDesigner, reviewer]) {
+    assert.match(markdown, /Hard-constraint checkpoint/);
+    assert.match(markdown, /near, middle, and far/);
+    assert.match(markdown, /decision record/i);
+  }
+});
+
 test("portable Agent Skills have valid metadata and generated references", async () => {
   const skillNames = [
     "songstyle-web-designer",

@@ -23,19 +23,22 @@ State assumptions when context is missing.
 
 ## Workflow
 
-1. Clarify the page goal and user task.
-2. Review information necessity and hierarchy.
-3. Distinguish functional negative space from empty space.
-4. Identify excess color, decoration, motion, and cultural symbolism.
-5. Check usability, accessibility, truthfulness, and business clarity.
-6. Score each shared dimension from 0 to 4.
-7. Produce prioritized, executable improvements.
+1. Clarify the page goal, audience, user task, required content, and business constraints.
+2. Run a Hard-constraint checkpoint before scoring: required content, accessibility, truthfulness, task completion, and Chinese heading readability.
+3. Identify near, middle, and far information layers.
+4. Review information necessity, hierarchy, functional negative space, stopping discipline, cultural expression, and usability goals.
+5. Identify critical failures before assigning scores.
+6. Score each shared dimension from 0 to 4 using the generated review model.
+7. Cite evidence for every score, including the decision record when one is available.
+8. Produce prioritized, executable improvements.
 
 ## Output Format
 
 1. Summary and assumptions
-2. Scorecard for every review dimension
-3. Prioritized issues
-4. Preserved strengths
-5. Executable changes
-6. Risks and unresolved questions
+2. Hard-constraint checkpoint
+3. Near, middle, and far information diagnosis
+4. Scorecard for every review dimension with evidence
+5. Critical failures and prioritized issues
+6. Preserved strengths
+7. Executable changes
+8. Risks and unresolved questions

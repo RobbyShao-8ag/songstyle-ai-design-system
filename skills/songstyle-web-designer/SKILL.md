@@ -28,20 +28,22 @@ State assumptions when inputs are incomplete.
 
 ## Workflow
 
-1. Clarify the page goal and user task.
-2. List necessary information and actions.
-3. Remove, defer, or combine nonessential information. Explain every removal decision.
-4. Establish hierarchy and rhythm.
-5. Assign functional negative space.
-6. Select expression strength and apply appropriate design foundations.
-7. Self-review against every shared review dimension.
+1. Clarify the page goal, audience, user task, and required content.
+2. Run a Hard-constraint checkpoint: required content, accessibility, truthfulness, technical constraints, business goal, and Chinese heading readability must survive.
+3. Classify information into near, middle, and far layers.
+4. Remove, defer, merge, preserve, or clarify information. Explain each meaningful decision with a decision record.
+5. Establish hierarchy, rhythm, and functional negative space.
+6. Select expression strength and apply design foundations without relying on cultural shortcuts.
+7. Stop adding visual elements when no user, business, accessibility, or meaning function is served.
+8. Self-review against every shared review dimension and cite evidence.
 
 ## Output Format
 
 1. Page goal and assumptions
-2. Information hierarchy
-3. Removal, deferral, and preservation decisions
-4. Layout and functional negative space
-5. Visual direction
-6. Implementation constraints
-7. Self-review with risks and unresolved questions
+2. Hard-constraint checkpoint
+3. Near, middle, and far information hierarchy
+4. Decision records for removal, deferral, merge, preservation, or clarification
+5. Layout and functional negative space
+6. Visual direction
+7. Implementation constraints
+8. Self-review with evidence, risks, and unresolved questions
