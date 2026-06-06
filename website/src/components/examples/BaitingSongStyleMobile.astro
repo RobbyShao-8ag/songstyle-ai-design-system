@@ -41,8 +41,9 @@ const { data } = Astro.props;
 
   header {
     display: grid;
-    min-height: 210px;
-    align-content: center;
+    min-height: 178px;
+    align-content: end;
+    padding-bottom: 30px;
   }
 
   header p {
@@ -54,13 +55,14 @@ const { data } = Astro.props;
   }
 
   h3 {
-    max-width: 10ch;
+    width: 100%;
+    max-width: 20rem;
     margin: 0;
     font-family: var(--song-typography-family-display);
-    font-size: 34px;
+    font-size: 30px;
     font-weight: 400;
-    line-height: 1.36;
-    letter-spacing: -0.03em;
+    line-height: 1.42;
+    letter-spacing: -0.02em;
   }
 
   figure {
