@@ -557,3 +557,36 @@ test("foundation hardening docs are linked from existing entry pages", async () 
   assert.match(guide, /necessary-density-boundary\//);
   assert.match(guide, /information-distance\//);
 });
+
+const FOUNDATION_HARDENING_GUIDES = [
+  {
+    file: "docs/guides/decision-record-template.md",
+    route: "/guides/decision-record-template/",
+    terms: ["决策类型", "删除", "延后", "合并", "保留", "澄清", "可逆性"]
+  },
+  {
+    file: "docs/guides/misconceptions.md",
+    route: "/guides/misconceptions/",
+    terms: ["不是极简", "不是古风", "不是删减信息", "不是低对比", "不是水墨"]
+  },
+  {
+    file: "docs/guides/anti-patterns.md",
+    route: "/guides/anti-patterns/",
+    terms: ["空白崇拜", "标题破碎", "柔和但不可访问", "文化符号堆砌", "过度克制"]
+  }
+];
+
+test("foundation hardening guides explain decisions and failure modes", async () => {
+  for (const guide of FOUNDATION_HARDENING_GUIDES) {
+    const markdown = await readFile(guide.file, "utf8");
+    const data = parseFrontmatter(markdown, guide.file);
+    assert.equal(data.route, guide.route, `${guide.file} has wrong route`);
+    for (const term of guide.terms) {
+      assert.match(markdown, new RegExp(term), `${guide.file} is missing ${term}`);
+    }
+  }
+
+  const promptGuide = await readFile("docs/guides/prompts.md", "utf8");
+  assert.match(promptGuide, /decision-record-template\//);
+  assert.match(promptGuide, /anti-patterns\//);
+});

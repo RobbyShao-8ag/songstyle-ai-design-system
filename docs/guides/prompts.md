@@ -11,6 +11,8 @@ order: 2
 
 四个 Prompt 模板共享六项原则与同一份审查清单。它们要求 AI 说明假设、信息层级、删减决策、视觉方向、实现约束与审查结果。
 
+使用 Prompt 前，先完成硬约束检查：可用性、可访问性、业务目标和必要信息不能被审美取舍覆盖。生成或审查方案时，用近景、中景、远景分配信息距离，并把删除、延后、合并、保留和澄清写入 [决策记录模板](decision-record-template/)；发现空白崇拜、标题破碎或低对比等问题时，对照 [反模式](anti-patterns/) 修正。
+
 - [从 Brief 生成宋式 Web 设计](web-design/from-brief/)
 - [重写现有页面为宋式设计](web-design/rewrite-existing-page/)
 - [宋式页面设计审查](design-review/review-page/)
