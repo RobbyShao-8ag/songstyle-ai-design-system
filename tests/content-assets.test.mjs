@@ -501,4 +501,7 @@ test("foundation hardening docs are linked from existing entry pages", async () 
   assert.match(foundations, /accessibility-alignment\//);
   assert.match(guide, /硬约束检查/);
   assert.match(guide, /近景.*中景.*远景/s);
+  assert.match(guide, /priority-and-tradeoffs\//);
+  assert.match(guide, /necessary-density-boundary\//);
+  assert.match(guide, /information-distance\//);
 });
