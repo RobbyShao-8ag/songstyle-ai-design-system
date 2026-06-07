@@ -84,6 +84,32 @@ test("home page presents the central thesis", async ({ page }) => {
   ).toHaveAttribute("href", "#mobile-showcase");
 });
 
+test("home page presents the visible foundation model", async ({ page }) => {
+  await page.goto(withBase("/"));
+
+  await expect(
+    page.getByText("SongStyle 不是把页面做空，而是先守住硬约束", { exact: false })
+  ).toBeVisible();
+
+  const model = page.getByTestId("decision-model-preview");
+  for (const term of ["硬约束", "任务目标", "信息距离", "审美表达"]) {
+    await expect(model.getByRole("heading", { level: 3, name: term })).toBeVisible();
+  }
+  await expect(model.getByRole("link", { name: "打开快速参考", exact: true })).toHaveAttribute(
+    "href",
+    withBase("/quick-reference/")
+  );
+
+  const antiPatterns = page.getByTestId("anti-pattern-preview");
+  for (const term of ["空白崇拜", "功能性留白", "标题破碎", "语义完整标题", "柔和但不可访问", "温润但合规"]) {
+    await expect(antiPatterns.getByText(term, { exact: true })).toBeVisible();
+  }
+  await expect(antiPatterns.getByRole("link", { name: "查看完整反模式", exact: true })).toHaveAttribute(
+    "href",
+    withBase("/guides/anti-patterns/")
+  );
+});
+
 test("home page presents the mobile showcase sequence", async ({ page }) => {
   await page.goto(withBase("/"));
   for (const name of [

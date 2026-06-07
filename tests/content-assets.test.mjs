@@ -461,6 +461,22 @@ test("README explains the fair comparison contract", async () => {
   }
 });
 
+test("README presents the visible foundation model", async () => {
+  const readme = await readFile("README.md", "utf8");
+  for (const term of [
+    "30 秒理解 SongStyle",
+    "硬约束",
+    "任务目标",
+    "近景",
+    "中景",
+    "远景",
+    "审美表达",
+    "docs/quick-reference.md"
+  ]) {
+    assert.match(readme, new RegExp(term), `README is missing ${term}`);
+  }
+});
+
 test("Chinese heading readability rule is enforced across guidance and generated references", async () => {
   const requiredPhrase = "中文标题可读性";
   const files = [
@@ -593,6 +609,97 @@ test("foundation hardening public docs expose the decision model", async () => {
       assert.match(markdown, new RegExp(term), `${doc.file} is missing ${term}`);
     }
   }
+});
+
+test("quick reference exposes the visible foundation model", async () => {
+  const file = "docs/quick-reference.md";
+  const markdown = await readFile(file, "utf8");
+  const data = parseFrontmatter(markdown, file);
+
+  assert.equal(data.route, "/quick-reference/");
+  assert.equal(data.lang, "zh-CN");
+  assert.equal(data.section, "工具");
+
+  for (const term of [
+    "30 秒理解 SongStyle",
+    "四层决策顺序",
+    "硬约束",
+    "任务目标",
+    "信息距离",
+    "审美表达",
+    "六原则一句话",
+    "必要密度",
+    "常见反模式",
+    "如何审查"
+  ]) {
+    assert.match(markdown, new RegExp(term), `Quick Reference is missing ${term}`);
+  }
+
+  for (const link of [
+    "principles/priority-and-tradeoffs/",
+    "foundations/information-distance/",
+    "foundations/accessibility-alignment/",
+    "guides/necessary-density-boundary/",
+    "guides/anti-patterns/",
+    "checklist/",
+    "prompts/",
+    "skills/"
+  ]) {
+    assert.match(markdown, new RegExp(link.replaceAll("/", "\\/")), `Quick Reference is missing link ${link}`);
+  }
+});
+
+test("homepage source exposes visible foundation components", async () => {
+  const index = await readFile("website/src/pages/index.astro", "utf8");
+  assert.match(index, /DecisionModelPreview/);
+  assert.match(index, /AntiPatternPreview/);
+
+  const decision = await readFile(
+    "website/src/components/home/DecisionModelPreview.astro",
+    "utf8"
+  );
+  for (const term of ["硬约束", "任务目标", "信息距离", "审美表达", "近景", "中景", "远景"]) {
+    assert.match(decision, new RegExp(term), `DecisionModelPreview is missing ${term}`);
+  }
+
+  const antiPattern = await readFile(
+    "website/src/components/home/AntiPatternPreview.astro",
+    "utf8"
+  );
+  for (const term of [
+    "反模式",
+    "空白崇拜",
+    "功能性留白",
+    "标题破碎",
+    "语义完整标题",
+    "柔和但不可访问",
+    "温润但合规",
+    "文化符号堆砌",
+    "秩序而非符号",
+    "/guides/anti-patterns/"
+  ]) {
+    assert.match(antiPattern, new RegExp(term.replaceAll("/", "\\/")), `AntiPatternPreview is missing ${term}`);
+  }
+});
+
+test("homepage hero and resources point to quick reference", async () => {
+  const hero = await readFile("website/src/components/HeroStatement.astro", "utf8");
+  for (const term of [
+    "硬约束",
+    "近景",
+    "中景",
+    "远景",
+    "留白",
+    "克制",
+    "/quick-reference/"
+  ]) {
+    assert.match(hero, new RegExp(term.replaceAll("/", "\\/")), `Hero is missing ${term}`);
+  }
+
+  const resources = await readFile("website/src/components/home/ResourceEntry.astro", "utf8");
+  assert.match(resources, /Quick Reference/);
+  assert.match(resources, /快速参考/);
+  assert.match(resources, /\/quick-reference\//);
 });
 
 test("foundation hardening docs are linked from existing entry pages", async () => {

@@ -24,6 +24,19 @@ APP 与 AI 辅助数字设计中的系统性应用研究几乎空白。SongStyle
 [Roadmap](ROADMAP.md) ·
 [First-round user testing](docs/research/first-round-user-testing.md)
 
+## 30 秒理解 SongStyle
+
+SongStyle 不是把页面做空，而是先守住硬约束，再用近景、中景、远景建立秩序，最后才做留白、克制和余韵。
+
+四层决策顺序：
+
+1. **硬约束**：可访问性、中文标题可读性、必要内容、真实表述和清楚主行动不能被审美覆盖。
+2. **任务目标**：页面首先服务用户任务和业务目标，不同场景允许不同信息密度。
+3. **信息距离**：用近景、中景、远景组织即时任务、支持证据和品牌叙事。
+4. **审美表达**：留白、克制、温润和余韵只能强化前三层，不能替代它们。
+
+快速入口：[Quick Reference / 快速参考](docs/quick-reference.md)
+
 ## See The Difference / 先看差异
 
 The ordinary AI and SongStyle versions use **the same brief, the same copy,
