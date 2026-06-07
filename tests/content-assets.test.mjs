@@ -461,6 +461,22 @@ test("README explains the fair comparison contract", async () => {
   }
 });
 
+test("README presents the visible foundation model", async () => {
+  const readme = await readFile("README.md", "utf8");
+  for (const term of [
+    "30 秒理解 SongStyle",
+    "硬约束",
+    "任务目标",
+    "近景",
+    "中景",
+    "远景",
+    "审美表达",
+    "docs/quick-reference.md"
+  ]) {
+    assert.match(readme, new RegExp(term), `README is missing ${term}`);
+  }
+});
+
 test("Chinese heading readability rule is enforced across guidance and generated references", async () => {
   const requiredPhrase = "中文标题可读性";
   const files = [
