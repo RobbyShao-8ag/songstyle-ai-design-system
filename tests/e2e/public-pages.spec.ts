@@ -28,6 +28,7 @@ export const PUBLIC_ROUTES = [
   "/guides/from-brief-to-web-design/",
   "/checklist/",
   "/prompts/",
+  "/quick-reference/",
   "/prompts/web-design/from-brief/",
   "/prompts/web-design/rewrite-existing-page/",
   "/prompts/design-review/review-page/",

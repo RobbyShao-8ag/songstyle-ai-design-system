@@ -13,7 +13,7 @@ const pageSchema = z.object({
 
 const docs = defineCollection({
   loader: glob({
-    pattern: "{*.md,manifesto,principles,foundations,references,research,guides,en}/**/*.{md,mdx}",
+    pattern: ["*.md", "{manifesto,principles,foundations,references,research,guides,en}/**/*.{md,mdx}"],
     base: "./docs"
   }),
   schema: pageSchema
