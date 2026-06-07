@@ -682,6 +682,26 @@ test("homepage source exposes visible foundation components", async () => {
   }
 });
 
+test("homepage hero and resources point to quick reference", async () => {
+  const hero = await readFile("website/src/components/HeroStatement.astro", "utf8");
+  for (const term of [
+    "硬约束",
+    "近景",
+    "中景",
+    "远景",
+    "留白",
+    "克制",
+    "/quick-reference/"
+  ]) {
+    assert.match(hero, new RegExp(term.replaceAll("/", "\\/")), `Hero is missing ${term}`);
+  }
+
+  const resources = await readFile("website/src/components/home/ResourceEntry.astro", "utf8");
+  assert.match(resources, /Quick Reference/);
+  assert.match(resources, /快速参考/);
+  assert.match(resources, /\/quick-reference\//);
+});
+
 test("foundation hardening docs are linked from existing entry pages", async () => {
   const principles = await readFile("docs/principles/index.md", "utf8");
   const foundations = await readFile("docs/foundations/index.md", "utf8");
