@@ -595,6 +595,44 @@ test("foundation hardening public docs expose the decision model", async () => {
   }
 });
 
+test("quick reference exposes the visible foundation model", async () => {
+  const file = "docs/quick-reference.md";
+  const markdown = await readFile(file, "utf8");
+  const data = parseFrontmatter(markdown, file);
+
+  assert.equal(data.route, "/quick-reference/");
+  assert.equal(data.lang, "zh-CN");
+  assert.equal(data.section, "工具");
+
+  for (const term of [
+    "30 秒理解 SongStyle",
+    "四层决策顺序",
+    "硬约束",
+    "任务目标",
+    "信息距离",
+    "审美表达",
+    "六原则一句话",
+    "必要密度",
+    "常见反模式",
+    "如何审查"
+  ]) {
+    assert.match(markdown, new RegExp(term), `Quick Reference is missing ${term}`);
+  }
+
+  for (const link of [
+    "principles/priority-and-tradeoffs/",
+    "foundations/information-distance/",
+    "foundations/accessibility-alignment/",
+    "guides/necessary-density-boundary/",
+    "guides/anti-patterns/",
+    "checklist/",
+    "prompts/",
+    "skills/"
+  ]) {
+    assert.match(markdown, new RegExp(link.replaceAll("/", "\\/")), `Quick Reference is missing link ${link}`);
+  }
+});
+
 test("foundation hardening docs are linked from existing entry pages", async () => {
   const principles = await readFile("docs/principles/index.md", "utf8");
   const foundations = await readFile("docs/foundations/index.md", "utf8");
