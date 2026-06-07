@@ -1,0 +1,91 @@
+---
+import { withBase } from "../../lib/paths";
+
+const pairs = [
+  ["空白崇拜", "大面积空白没有聚焦、分组或节奏功能。", "功能性留白", "空间承担聚焦、分组、停顿和联想。"],
+  ["标题破碎", "为了留白压窄中文标题，破坏语义和阅读。", "语义完整标题", "先保证语义短语完整，再调整层级和空间。"],
+  ["柔和但不可访问", "用低对比文字和弱状态制造温润感。", "温润但合规", "用清楚对比、焦点和反馈支撑温润表达。"],
+  ["文化符号堆砌", "水墨、印章、纹样或书法字体替代秩序。", "秩序而非符号", "用比例、节奏、材料感和信息关系表达气质。"]
+];
+---
+
+<section class="home-section reveal anti-patterns" data-testid="anti-pattern-preview">
+  <div class="container">
+    <p class="eyebrow">再看反模式</p>
+    <h2>SongStyle 先排除错误的高级感</h2>
+    <p class="section-lead">
+      反模式不是风格偏好问题，而是会损害理解、可用性或真实性的设计判断。
+    </p>
+    <div class="pattern-grid">
+      {pairs.map(([failure, failureText, correction, correctionText]) => (
+        <article>
+          <div class="failure">
+            <strong>{failure}</strong>
+            <p>{failureText}</p>
+          </div>
+          <span aria-hidden="true">→</span>
+          <div class="correction">
+            <strong>{correction}</strong>
+            <p>{correctionText}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <a class="quiet-link" href={withBase("/guides/anti-patterns/")}>查看完整反模式 <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<style>
+  .pattern-grid {
+    display: grid;
+    gap: var(--song-space-scale-4);
+    margin-block: var(--song-space-scale-8);
+  }
+
+  article {
+    display: grid;
+    gap: var(--song-space-scale-4);
+    padding: var(--song-space-scale-6);
+    border: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+    border-radius: var(--song-shape-radius-large);
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.72), rgb(239 238 229 / 0.42));
+  }
+
+  strong {
+    display: block;
+    margin-bottom: var(--song-space-scale-2);
+    font-family: var(--song-typography-family-display);
+    font-size: var(--song-typography-size-title-small);
+    font-weight: 400;
+  }
+
+  p {
+    margin: 0;
+    color: var(--song-color-text-secondary);
+    line-height: var(--song-typography-line-height-relaxed);
+  }
+
+  article > span {
+    color: var(--song-color-accent-primary);
+    font-size: var(--song-typography-size-title-small);
+  }
+
+  .failure strong {
+    color: var(--song-color-text-muted);
+  }
+
+  .correction strong {
+    color: var(--song-color-text-primary);
+  }
+
+  @media (min-width: 860px) {
+    .pattern-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    article {
+      grid-template-columns: 1fr auto 1fr;
+      align-items: start;
+    }
+  }
+</style>

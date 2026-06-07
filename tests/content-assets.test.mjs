@@ -649,6 +649,39 @@ test("quick reference exposes the visible foundation model", async () => {
   }
 });
 
+test("homepage source exposes visible foundation components", async () => {
+  const index = await readFile("website/src/pages/index.astro", "utf8");
+  assert.match(index, /DecisionModelPreview/);
+  assert.match(index, /AntiPatternPreview/);
+
+  const decision = await readFile(
+    "website/src/components/home/DecisionModelPreview.astro",
+    "utf8"
+  );
+  for (const term of ["硬约束", "任务目标", "信息距离", "审美表达", "近景", "中景", "远景"]) {
+    assert.match(decision, new RegExp(term), `DecisionModelPreview is missing ${term}`);
+  }
+
+  const antiPattern = await readFile(
+    "website/src/components/home/AntiPatternPreview.astro",
+    "utf8"
+  );
+  for (const term of [
+    "反模式",
+    "空白崇拜",
+    "功能性留白",
+    "标题破碎",
+    "语义完整标题",
+    "柔和但不可访问",
+    "温润但合规",
+    "文化符号堆砌",
+    "秩序而非符号",
+    "/guides/anti-patterns/"
+  ]) {
+    assert.match(antiPattern, new RegExp(term.replaceAll("/", "\\/")), `AntiPatternPreview is missing ${term}`);
+  }
+});
+
 test("foundation hardening docs are linked from existing entry pages", async () => {
   const principles = await readFile("docs/principles/index.md", "utf8");
   const foundations = await readFile("docs/foundations/index.md", "utf8");

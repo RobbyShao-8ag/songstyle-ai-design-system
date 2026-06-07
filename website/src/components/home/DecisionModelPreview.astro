@@ -1,0 +1,79 @@
+---
+import { withBase } from "../../lib/paths";
+
+const layers = [
+  ["01", "硬约束", "可访问性、中文标题、必要内容、真实表述和主行动先被保护。", "有没有硬约束被审美选择覆盖？"],
+  ["02", "任务目标", "页面首先服务用户任务和业务目标，不同场景允许不同密度。", "用户现在最需要完成什么？"],
+  ["03", "信息距离", "用近景、中景、远景组织即时任务、支持证据和品牌叙事。", "近景、中景、远景是否各有位置？"],
+  ["04", "审美表达", "留白、克制、温润和余韵只强化前面三层。", "这个表达是在帮助意义，还是只是在制造风格？"]
+];
+---
+
+<section class="home-section reveal decision-model" data-testid="decision-model-preview">
+  <div class="container">
+    <p class="eyebrow">先看判断</p>
+    <h2>不是把页面做空，而是按顺序做判断</h2>
+    <p class="section-lead">
+      SongStyle 先守住硬约束，再用近景、中景、远景建立秩序，最后才做留白、克制和余韵。
+    </p>
+    <div class="model-grid">
+      {layers.map(([number, title, description, question]) => (
+        <article>
+          <span>{number}</span>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <small>{question}</small>
+        </article>
+      ))}
+    </div>
+    <a class="quiet-link" href={withBase("/quick-reference/")}>打开快速参考 <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<style>
+  .model-grid {
+    display: grid;
+    gap: var(--song-space-scale-4);
+    margin-block: var(--song-space-scale-8);
+  }
+
+  article {
+    padding: var(--song-space-scale-6);
+    border: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+    border-radius: var(--song-shape-radius-large);
+    background: rgb(255 255 255 / 0.62);
+  }
+
+  span {
+    display: inline-block;
+    margin-bottom: var(--song-space-scale-4);
+    color: var(--song-color-accent-primary);
+    font-size: var(--song-typography-size-small);
+    font-weight: var(--song-typography-weight-semibold);
+    letter-spacing: 0.12em;
+  }
+
+  h3 {
+    margin: 0 0 var(--song-space-scale-3);
+    font-family: var(--song-typography-family-display);
+    font-size: var(--song-typography-size-title-small);
+    font-weight: 400;
+  }
+
+  p {
+    margin: 0 0 var(--song-space-scale-4);
+    color: var(--song-color-text-secondary);
+    line-height: var(--song-typography-line-height-relaxed);
+  }
+
+  small {
+    color: var(--song-color-text-muted);
+    line-height: var(--song-typography-line-height-body);
+  }
+
+  @media (min-width: 860px) {
+    .model-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>
