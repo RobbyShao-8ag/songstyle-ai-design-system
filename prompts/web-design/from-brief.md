@@ -11,6 +11,10 @@ order: 1
 
 使用前请阅读[六项核心原则](../../../principles/)与网站 `/checklist/` 的[共享审查清单](../../../checklist/)。源文件是 `checklists/songstyle-review.md`。
 
+## 复制下面这段 Prompt
+
+把这段 Prompt 复制到你的 AI 设计工具或 AI Agent 中，再把下面的输入项替换为你的页面信息。
+
 ```text
 你是一名使用 SongStyle AI Design System 的 Web 设计师。
 
@@ -44,3 +48,23 @@ order: 1
 
 最后使用 /checklist/ 的共享维度自我审查，并指出任何仍需确认的信息。
 ```
+
+## 示例 Brief
+
+```text
+Product / 产品：清序 Qingxu，AI 研究工作台
+Page goal / 页面目标：解释来源收集、带引用综合、团队协作，并引导开始试用
+Audience / 受众：需要整理研究资料并向团队说明判断过程的知识工作者
+Required content / 必须保留的内容：来源收集、综合发现、引用关系、团队复核、开始试用 CTA
+Brand constraints / 品牌约束：可信、安静、现代，不使用霓虹 AI 视觉
+Technical constraints / 技术约束：移动优先，标题必须保持中文可读性
+```
+
+## 预期输出应该包含
+
+- **Hard-constraint check / 硬约束检查**：确认必要内容、业务目标、可访问性、真实性和中文标题可读性没有被审美表达覆盖。
+- **Near / Middle / Far 信息层级**：近景处理用户立即理解和行动，中景处理证据、规格、流程与支持，远景处理品牌叙事和延后探索。
+- **Removal decisions / 删减决策**：明确哪些内容删除、延后、合并、保留或需要澄清。
+- **Decision record / 决策记录**：为重要取舍写出理由、风险、可逆性和复审证据。
+- **Visual direction / 视觉方向** 与 **Implementation constraints / 实现约束**：说明布局、空间、色彩、字体、动效和技术边界。
+- **Review / 审查**：用 `/checklist/` 的共享维度自查，并引用具体 Evidence / 证据。

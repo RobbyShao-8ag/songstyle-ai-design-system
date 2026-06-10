@@ -11,6 +11,16 @@ metadata:
 
 Review whether a design establishes order with sufficient expression and stops at the appropriate moment. Necessary density is allowed when the task requires it.
 
+## Install With Your AI Agent
+
+If your AI Agent supports installing skills from GitHub, copy this sentence into it. 复制这句话：
+
+```text
+请从 GitHub 仓库 RobbyShao-8ag/songstyle-ai-design-system 安装 SongStyle Design Reviewer Skill：skills/songstyle-design-reviewer，并保留 references/ 目录。
+```
+
+After installation, ask the agent to use `songstyle-design-reviewer` with the page goal, audience, required content, screenshots or page URL, and any business or technical constraints.
+
 Read [SongStyle principles](references/songstyle-principles.md) and the [review model](references/review-model.md) before reviewing.
 
 ## Required Inputs

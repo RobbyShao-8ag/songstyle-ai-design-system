@@ -477,6 +477,69 @@ test("README presents the visible foundation model", async () => {
   }
 });
 
+test("README and homepage expose a three-minute trial path", async () => {
+  const readme = await readFile("README.md", "utf8");
+  for (const term of [
+    "3 分钟试一次",
+    "复制 Prompt",
+    "示例 Brief",
+    "预期输出",
+    "自查清单"
+  ]) {
+    assert.match(readme, new RegExp(term), `README trial path is missing ${term}`);
+  }
+
+  const resources = await readFile("website/src/components/home/ResourceEntry.astro", "utf8");
+  for (const term of [
+    "3 分钟试一次",
+    "复制 Prompt",
+    "/prompts/web-design/from-brief/"
+  ]) {
+    assert.match(resources, new RegExp(term.replaceAll("/", "\\/")), `Homepage resources are missing ${term}`);
+  }
+});
+
+test("prompt pages include copy-ready trial inputs and expected output shape", async () => {
+  const prompt = await readFile("prompts/web-design/from-brief.md", "utf8");
+  for (const term of [
+    "复制下面这段 Prompt",
+    "示例 Brief",
+    "Product / 产品：清序 Qingxu",
+    "预期输出应该包含",
+    "Hard-constraint check / 硬约束检查",
+    "Decision record / 决策记录"
+  ]) {
+    assert.match(prompt, new RegExp(term.replace("/", "\\/")), `from-brief prompt page is missing ${term}`);
+  }
+});
+
+test("skill documentation gives one-sentence AI Agent install instructions", async () => {
+  const skillGuide = await readFile("docs/guides/skills.md", "utf8");
+  const webDesigner = await readFile("skills/songstyle-web-designer/SKILL.md", "utf8");
+  const reviewer = await readFile("skills/songstyle-design-reviewer/SKILL.md", "utf8");
+
+  for (const markdown of [skillGuide, webDesigner, reviewer]) {
+    assert.match(markdown, /复制这句话/, "Skill documentation must expose copy-one-sentence usage");
+    assert.match(markdown, /安装.*SongStyle/i, "Skill documentation must mention installing SongStyle skills");
+    assert.match(markdown, /skills\/songstyle-/i, "Skill documentation must include repository skill path");
+  }
+});
+
+test("evaluation guide explains reproducible trial cases", async () => {
+  const guide = await readFile("docs/guides/evaluations.md", "utf8");
+  for (const term of [
+    "可复现试跑",
+    "SaaS 定价页",
+    "交易确认页",
+    "数据密集后台",
+    "输入 Brief",
+    "保存输出",
+    "用审查清单评分"
+  ]) {
+    assert.match(guide, new RegExp(term), `Evaluation guide is missing ${term}`);
+  }
+});
+
 test("Chinese heading readability rule is enforced across guidance and generated references", async () => {
   const requiredPhrase = "中文标题可读性";
   const files = [

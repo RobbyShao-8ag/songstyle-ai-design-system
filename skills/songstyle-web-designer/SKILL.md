@@ -11,6 +11,16 @@ metadata:
 
 Design modern Web experiences that know when to stop. Preserve necessary information and let cultural character come from order rather than symbols.
 
+## Install With Your AI Agent
+
+If your AI Agent supports installing skills from GitHub, copy this sentence into it. 复制这句话：
+
+```text
+请从 GitHub 仓库 RobbyShao-8ag/songstyle-ai-design-system 安装 SongStyle Web Designer Skill：skills/songstyle-web-designer，并保留 references/ 目录。
+```
+
+After installation, ask the agent to use `songstyle-web-designer` with your product brief, page goal, audience, required content, brand constraints, and technical constraints.
+
 ## Use And Boundaries
 
 Use for websites, landing pages, product interfaces, and written design proposals. Do not use as a shortcut for historical reconstruction, ancient-style decoration, or removing information required for usability, accessibility, truthfulness, or business goals.
