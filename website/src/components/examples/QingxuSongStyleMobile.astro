@@ -14,18 +14,19 @@ const { data } = Astro.props;
     <p>{data.brand} · {data.position}</p>
     <h3>{data.headline}</h3>
     <p class="description">{data.description}</p>
-    <a href="#qingxu-mobile-brief">{data.action}</a>
+    <a href="#qingxu-songstyle-brief">{data.action}</a>
   </header>
   <figure class="evidence">
     <img src={withBase(data.image)} alt={data.imageAlt} />
   </figure>
-  <section class="middle" aria-label="研究过程">
+  <section class="middle" id="qingxu-songstyle-brief" aria-label="研究过程">
     {data.features.map((feature) => (
       <article><span>{feature.label}</span><h4>{feature.value}</h4></article>
     ))}
   </section>
   <aside class="far">
-    <span>近景是任务，中景是证据关系，远景是团队能共同理解的叙事。</span>
+    <strong>研究闭环</strong>
+    <span>{data.businessGoal}</span>
   </aside>
 </section>
 
@@ -61,7 +62,7 @@ const { data } = Astro.props;
     font-size: 28px;
     font-weight: 400;
     line-height: 1.42;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   .description {
@@ -71,11 +72,26 @@ const { data } = Astro.props;
   }
 
   a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     justify-self: start;
-    color: #425e55;
+    padding: 0 16px;
+    border: 1px solid rgb(66 94 85 / 0.28);
+    border-radius: 8px;
+    background: #425e55;
+    color: #fff;
     font-weight: 600;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 6px;
+    text-decoration: none;
+  }
+
+  a:focus-visible {
+    outline: 3px solid #8a6f55;
+    outline-offset: 4px;
+  }
+
+  a:active {
+    transform: translateY(1px);
   }
 
   .evidence {
@@ -119,8 +135,14 @@ const { data } = Astro.props;
   }
 
   .far {
+    display: grid;
+    gap: 10px;
     margin-top: 68px;
     color: #656b65;
     line-height: 1.9;
+  }
+
+  .far strong {
+    color: #242521;
   }
 </style>

@@ -11,50 +11,50 @@ const { data } = Astro.props;
 
 <section class="qingxu-default-mobile" data-testid="qingxu-default-mobile">
   <header>
-    <p>{data.brand} · {data.position} · AI POWERED</p>
+    <p>{data.brand} · {data.position}</p>
     <h3>{data.headline}</h3>
     <p class="description">{data.description}</p>
-    <a href="#qingxu-mobile-brief">{data.action}</a>
+    <a href="#qingxu-default-brief">{data.action}</a>
   </header>
   <div class="dashboard">
     <img src={withBase(data.image)} alt={data.imageAlt} />
-    <div class="widgets" aria-hidden="true"><span></span><span></span><span></span></div>
   </div>
-  <div class="feature-grid">
+  <div class="feature-grid" id="qingxu-default-brief">
     {data.features.map((feature) => (
       <article><span>{feature.label}</span><strong>{feature.value}</strong></article>
     ))}
   </div>
+  <aside class="promise">
+    <strong>研究闭环</strong>
+    <p>{data.businessGoal}</p>
+  </aside>
 </section>
 
 <style>
   .qingxu-default-mobile {
     min-height: 100%;
     padding: 30px 22px;
-    background:
-      radial-gradient(circle at 52% 0%, rgb(124 58 237 / 0.78), transparent 34%),
-      linear-gradient(180deg, #120b35, #07152d 64%, #050711);
-    color: #fff;
+    background: #f6f4ee;
+    color: #252821;
     text-align: center;
   }
 
   header p:first-child {
-    color: #7df9ff;
+    color: #50685f;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
   }
 
   h3 {
-    max-width: 11ch;
-    margin: 22px auto;
-    font-size: 34px;
-    line-height: 1.12;
-    text-shadow: 0 0 28px rgb(177 76 255 / 0.72);
+    max-width: 15ch;
+    margin: 20px auto;
+    font-size: 31px;
+    line-height: 1.22;
   }
 
   .description {
-    color: rgb(255 255 255 / 0.82);
+    color: #5c615a;
     line-height: 1.72;
   }
 
@@ -62,20 +62,29 @@ const { data } = Astro.props;
     display: inline-block;
     margin-top: 18px;
     padding: 12px 22px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #7c3aed, #2563eb);
+    border-radius: 8px;
+    background: #435f56;
     color: #fff;
     font-weight: 700;
     text-decoration: none;
-    box-shadow: 0 0 26px rgb(177 76 255 / 0.55);
+  }
+
+  a:focus-visible {
+    outline: 3px solid #9b7c55;
+    outline-offset: 4px;
+  }
+
+  a:active {
+    transform: translateY(1px);
   }
 
   .dashboard {
     position: relative;
     overflow: hidden;
     margin-top: 34px;
-    border: 1px solid rgb(125 249 255 / 0.38);
-    border-radius: 24px;
+    border: 1px solid rgb(68 87 79 / 0.18);
+    border-radius: 8px;
+    background: #e5e1d8;
   }
 
   .dashboard img {
@@ -83,24 +92,8 @@ const { data } = Astro.props;
     width: 100%;
     height: 270px;
     object-fit: cover;
-    opacity: 0.72;
-    filter: saturate(1.2) contrast(1.08);
-  }
-
-  .widgets {
-    position: absolute;
-    inset: auto 16px 16px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-
-  .widgets span {
-    height: 66px;
-    border: 1px solid rgb(125 249 255 / 0.42);
-    border-radius: 16px;
-    background: rgb(177 76 255 / 0.28);
-    backdrop-filter: blur(10px);
+    opacity: 0.88;
+    filter: saturate(0.88) contrast(0.98);
   }
 
   .feature-grid {
@@ -113,13 +106,27 @@ const { data } = Astro.props;
     display: grid;
     gap: 8px;
     padding: 18px;
-    border: 1px solid rgb(125 249 255 / 0.35);
-    border-radius: 18px;
-    background: rgb(177 76 255 / 0.16);
+    border: 1px solid rgb(68 87 79 / 0.18);
+    border-radius: 8px;
+    background: #fffdf8;
   }
 
   .feature-grid span {
-    color: #7df9ff;
+    color: #61756e;
     font-size: 12px;
+  }
+
+  .promise {
+    margin-top: 14px;
+    padding: 18px;
+    border: 1px solid rgb(68 87 79 / 0.18);
+    border-radius: 8px;
+    background: #fffdf8;
+    text-align: left;
+  }
+
+  .promise p {
+    color: #5c615a;
+    line-height: 1.72;
   }
 </style>

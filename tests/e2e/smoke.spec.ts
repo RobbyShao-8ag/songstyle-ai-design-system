@@ -115,7 +115,7 @@ test("home page presents the mobile showcase sequence", async ({ page }) => {
   for (const name of [
     "同一份 Brief，两种移动网站",
     "宋代美学如何变成数字界面",
-    "两个虚构品牌案例"
+    "三个虚构案例"
   ]) {
     await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
   }
@@ -132,6 +132,7 @@ test("home page presents the mobile showcase sequence", async ({ page }) => {
   const cases = page.locator(".case-grid");
   await expect(cases.getByText("生活方式品牌", { exact: true })).toBeVisible();
   await expect(cases.getByText("现代数字产品", { exact: true })).toBeVisible();
+  await expect(cases.getByText("电商图片生成", { exact: true })).toBeVisible();
   const resources = page.locator(".resource-grid");
   for (const text of ["Prompts", "Agent Skills", "设计变量", "审查清单"]) {
     await expect(resources.getByText(text, { exact: true })).toBeVisible();
@@ -229,6 +230,32 @@ test("digital product case study presents two fair mobile websites", async ({ pa
     await expect(section.getByRole("link", { name: "开始试用" })).toBeVisible();
     await expect(section.locator('img[src$="/assets/cases/qingxu-research.webp"]')).toBeVisible();
   }
+});
+
+test("ecommerce image comparison presents default and SongStyle generated images", async ({ page }) => {
+  await page.goto(withBase("/examples/ecommerce-image/"));
+  await expect(page.getByRole("heading", { level: 1, name: "电商介绍图片生成对比" })).toBeVisible();
+  for (const name of ["普通 AI 默认图", "SongStyle 介绍图"]) {
+    await expect(page.getByRole("heading", { level: 2, name })).toBeVisible();
+  }
+  for (const text of [
+    "同一商品",
+    "同一介绍目标",
+    "同一内容-only Base Prompt",
+    "即梦 Default 图",
+    "即梦 SongStyle 图",
+    "Base Prompt",
+    "SongStyle Prompt",
+    "SongStyle Full Prompt",
+    "Scenario fit / 场景匹配",
+    "Page pattern / 页面模式",
+    "Interaction states / 交互状态",
+    "Pre-delivery checks / 交付前检查"
+  ]) {
+    await expect(page.getByText(text, { exact: false }).first()).toBeVisible();
+  }
+  await expect(page.locator('img[src$="/assets/cases/ecommerce-intro-default.png"]')).toBeVisible();
+  await expect(page.locator('img[src$="/assets/cases/ecommerce-intro-songstyle.png"]')).toBeVisible();
 });
 
 test("comparisons explain every review dimension", async ({ page }) => {

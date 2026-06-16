@@ -7,6 +7,7 @@ const principles = JSON.parse(
 const review = JSON.parse(
   await readFile("checklists/songstyle-review.json", "utf8")
 );
+const executionGuide = await readFile("docs/guides/ui-ux-execution-model.md", "utf8");
 const skillNames = [
   "songstyle-web-designer",
   "songstyle-design-reviewer"
@@ -66,9 +67,14 @@ ${renderList("Evidence required", dimension.evidenceRequired)}`
   .join("\n\n")}
 `;
 
+const executionMarkdown = `${generatedComment}
+
+${executionGuide.replace(/^---\n[\s\S]*?\n---\n+/, "")}`;
+
 for (const skillName of skillNames) {
   const referenceDir = path.join("skills", skillName, "references");
   await mkdir(referenceDir, { recursive: true });
   await writeFile(path.join(referenceDir, "songstyle-principles.md"), principlesMarkdown);
   await writeFile(path.join(referenceDir, "review-model.md"), reviewMarkdown);
+  await writeFile(path.join(referenceDir, "ui-ux-execution-model.md"), executionMarkdown);
 }

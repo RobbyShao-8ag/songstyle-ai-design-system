@@ -26,6 +26,15 @@
   background: var(--song-color-primitive-celadon-500);
 }
 
+.song-button:focus-visible {
+  outline: 3px solid var(--song-color-accent-warm);
+  outline-offset: 3px;
+}
+
+.song-button:active {
+  transform: translateY(1px);
+}
+
 .song-button--quiet {
   border-color: var(--song-color-border-subtle);
   background: transparent;

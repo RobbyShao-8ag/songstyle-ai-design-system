@@ -6,10 +6,11 @@ import { withBase } from "../../lib/paths";
 <section class="home-section reveal">
   <div class="container">
     <p class="eyebrow">可视化证据</p>
-    <h2>两个虚构品牌案例</h2>
+    <h2>三个虚构案例</h2>
     <div class="case-grid">
-      <a href={withBase("/examples/lifestyle-brand/")}><img src={withBase(baitingCase.image)} alt={baitingCase.imageAlt} /><span>生活方式品牌</span><strong>白汀 Baiting</strong><p>同一器物内容与图片，比较过度强调与温润秩序。</p></a>
-      <a href={withBase("/examples/digital-product/")}><img src={withBase(qingxuCase.image)} alt={qingxuCase.imageAlt} /><span>现代数字产品</span><strong>清序 Qingxu</strong><p>同一研究工作流内容与图片，比较“AI 感”与可信表达。</p></a>
+      <a href={withBase("/examples/lifestyle-brand/")}><img src={withBase(baitingCase.image)} alt={baitingCase.imageAlt} /><span>生活方式品牌</span><strong>白汀 Baiting</strong><p>同一提示词与图片，只给 SongStyle 版本追加项目指令。</p></a>
+      <a href={withBase("/examples/digital-product/")}><img src={withBase(qingxuCase.image)} alt={qingxuCase.imageAlt} /><span>现代数字产品</span><strong>清序 Qingxu</strong><p>同一研究工作流内容，比较默认层级与 SongStyle 秩序。</p></a>
+      <a href={withBase("/examples/ecommerce-image/")}><img src={withBase("/assets/cases/ecommerce-intro-songstyle.png")} alt="宋式电商介绍图片中的陶瓷桌面香薰扩香器" /><span>电商图片生成</span><strong>桌面香薰扩香器</strong><p>同一 Base Prompt，只多一句 SongStyle Skill/Prompt 指令。</p></a>
     </div>
   </div>
 </section>

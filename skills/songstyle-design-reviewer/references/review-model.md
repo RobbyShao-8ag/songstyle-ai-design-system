@@ -126,3 +126,5 @@ layers before scoring.
   - 主要用户任务
   - 可访问性与对比度检查
   - 业务目标、真实性和必要密度检查
+  - focus、hover、active、disabled、loading、error/success 等交互状态检查
+  - reduced-motion、mobile touch、breakpoint 等响应式和动效边界检查

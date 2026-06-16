@@ -56,7 +56,7 @@ a {
   font-size: clamp(var(--song-typography-size-display), 8vw, var(--song-typography-size-display-large));
   font-weight: var(--song-typography-weight-regular);
   line-height: var(--song-typography-line-height-tight);
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .body-copy {
@@ -257,8 +257,10 @@ a {
 
 .markdown-prose {
   max-width: 48rem;
+  min-width: 0;
   font-size: var(--song-typography-size-body);
   line-height: var(--song-typography-line-height-relaxed);
+  overflow-wrap: anywhere;
 }
 
 .markdown-prose h1,
@@ -307,6 +309,7 @@ a {
 }
 
 .markdown-prose pre {
+  max-width: 100%;
   overflow-x: auto;
   padding: var(--song-space-scale-6);
   border: var(--song-shape-border-width) solid var(--song-color-border-subtle);
@@ -317,6 +320,7 @@ a {
 
 .markdown-prose code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  overflow-wrap: anywhere;
 }
 
 .markdown-prose table {

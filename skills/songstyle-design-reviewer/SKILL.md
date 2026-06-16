@@ -21,7 +21,7 @@ If your AI Agent supports installing skills from GitHub, copy this sentence into
 
 After installation, ask the agent to use `songstyle-design-reviewer` with the page goal, audience, required content, screenshots or page URL, and any business or technical constraints.
 
-Read [SongStyle principles](references/songstyle-principles.md) and the [review model](references/review-model.md) before reviewing.
+Read [SongStyle principles](references/songstyle-principles.md), the [review model](references/review-model.md), and the [UI/UX execution model](references/ui-ux-execution-model.md) before reviewing.
 
 ## Required Inputs
 
@@ -35,20 +35,28 @@ State assumptions when context is missing.
 
 1. Clarify the page goal, audience, user task, required content, and business constraints.
 2. Run a Hard-constraint checkpoint before scoring: required content, accessibility, truthfulness, task completion, and Chinese heading readability.
-3. Identify near, middle, and far information layers.
-4. Review information necessity, hierarchy, functional negative space, stopping discipline, cultural expression, and usability goals.
-5. Identify critical failures before assigning scores.
-6. Score each shared dimension from 0 to 4 using the generated review model.
-7. Cite evidence for every score, including the decision record when one is available.
-8. Produce prioritized, executable improvements.
+3. Diagnose Scenario fit / 场景匹配: confirm whether the design matches the product, transaction, data tool, content, ecommerce image, or other task scene.
+4. Diagnose Page pattern / 页面模式: check whether the chosen structure serves the scene or merely follows a visual template.
+5. Identify near, middle, and far information layers.
+6. Review information necessity, hierarchy, functional negative space, stopping discipline, cultural expression, and usability goals.
+7. Check Interaction states / 交互状态 for focus, hover, active, disabled, loading, and error/success.
+8. Run Pre-delivery checks / 交付前检查 for reduced-motion, mobile touch, breakpoint behavior, accessible contrast, and link or CTA clarity.
+9. Identify critical failures before assigning scores.
+10. Score each shared dimension from 0 to 4 using the generated review model.
+11. Cite evidence for every score, including the decision record when one is available.
+12. Produce prioritized, executable improvements.
 
 ## Output Format
 
 1. Summary and assumptions
 2. Hard-constraint checkpoint
-3. Near, middle, and far information diagnosis
-4. Scorecard for every review dimension with evidence
-5. Critical failures and prioritized issues
-6. Preserved strengths
-7. Executable changes
-8. Risks and unresolved questions
+3. Scenario fit / 场景匹配
+4. Page pattern / 页面模式
+5. Near, middle, and far information diagnosis
+6. Interaction states / 交互状态
+7. Pre-delivery checks / 交付前检查
+8. Scorecard for every review dimension with evidence
+9. Critical failures and prioritized issues
+10. Preserved strengths
+11. Executable changes
+12. Risks and unresolved questions

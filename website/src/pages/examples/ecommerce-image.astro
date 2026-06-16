@@ -1,0 +1,117 @@
+---
+import { getEntry, render } from "astro:content";
+import MarkdownProse from "../../components/MarkdownProse.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../lib/paths";
+
+const entry = await getEntry("examples", "ecommerce-image/intro-image");
+if (!entry) throw new Error("Missing ecommerce image comparison content");
+const { Content } = await render(entry);
+
+const images = [
+  {
+    label: "即梦 Default 图",
+    note: "只使用内容-only Base Prompt，作为普通生成基线",
+    src: "/assets/cases/ecommerce-intro-default.png",
+    alt: "即梦按默认提示词生成的陶瓷桌面香薰扩香器电商介绍图"
+  },
+  {
+    label: "即梦 SongStyle 图",
+    note: "追加完整 SongStyle 说明，不应减少购买判断信息",
+    src: "/assets/cases/ecommerce-intro-songstyle.png",
+    alt: "即梦按宋式设计提示词生成的陶瓷桌面香薰扩香器电商介绍图"
+  }
+];
+---
+
+<BaseLayout title={`${entry.data.title} | SongStyle AI Design System`} description={entry.data.description}>
+  <article class="container ecommerce-image-case">
+    <header class="case-intro">
+      <p class="eyebrow">图片生成对比</p>
+      <h1>{entry.data.title}</h1>
+      <p>同一商品、同一介绍目标、同一必要信息、同一内容-only Base Prompt；不认识 SongStyle 的外部模型可追加完整复现提示词自行测试。</p>
+    </header>
+
+    <section class="image-pair" aria-label="电商介绍图片对比">
+      {images.map((image) => (
+        <figure>
+          <img src={withBase(image.src)} alt={image.alt} />
+          <figcaption>
+            <strong>{image.label}</strong>
+            <span>{image.note}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </section>
+
+    <MarkdownProse><Content /></MarkdownProse>
+  </article>
+</BaseLayout>
+
+<style>
+  .ecommerce-image-case {
+    padding-block: var(--song-space-section-compact);
+  }
+
+  .case-intro {
+    max-width: 58rem;
+    margin-bottom: var(--song-space-scale-8);
+  }
+
+  .case-intro h1 {
+    margin: 0;
+    font-family: var(--song-typography-family-display);
+    font-size: clamp(var(--song-typography-size-title), 6vw, var(--song-typography-size-display));
+    font-weight: 400;
+    line-height: var(--song-typography-line-height-tight);
+  }
+
+  .case-intro p:not(.eyebrow) {
+    color: var(--song-color-text-secondary);
+    font-size: var(--song-typography-size-lead);
+    line-height: var(--song-typography-line-height-relaxed);
+  }
+
+  .image-pair {
+    display: grid;
+    gap: var(--song-space-scale-6);
+    margin-bottom: var(--song-space-section-compact);
+  }
+
+  figure {
+    margin: 0;
+    overflow: hidden;
+    border: var(--song-shape-border-width) solid var(--song-color-border-subtle);
+    border-radius: var(--song-shape-radius-large);
+    background: var(--song-color-surface-default);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    display: grid;
+    gap: var(--song-space-scale-2);
+    padding: var(--song-space-scale-5);
+  }
+
+  figcaption strong {
+    font-family: var(--song-typography-family-display);
+    font-size: var(--song-typography-size-title-small);
+    font-weight: 400;
+  }
+
+  figcaption span {
+    color: var(--song-color-text-secondary);
+    line-height: var(--song-typography-line-height-body);
+  }
+
+  @media (min-width: 860px) {
+    .image-pair {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

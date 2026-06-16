@@ -32,16 +32,22 @@ const { label, note, testId, tone = "songstyle" } = Astro.props;
 
   figcaption {
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
-    justify-content: space-between;
-    gap: var(--song-space-scale-4);
+    justify-content: flex-start;
+    gap: var(--song-space-scale-1) var(--song-space-scale-4);
     color: var(--song-color-text-secondary);
     font-size: var(--song-typography-size-small);
+    line-height: var(--song-typography-line-height-body);
   }
 
   figcaption span {
     color: var(--song-color-text-primary);
     font-weight: var(--song-typography-weight-medium);
+  }
+
+  figcaption small {
+    color: var(--song-color-text-secondary);
   }
 
   .phone-shell {

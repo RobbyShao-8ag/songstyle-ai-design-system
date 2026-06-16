@@ -60,7 +60,7 @@ export const baitingCase: CaseStudy = {
     near: "水壶本身、主标题和查看信息行动。",
     middle: "材质、容量和维护方式。",
     far: "安静、可信、可长期使用的日常生活气质。",
-    defaultDirection: ["渐变叠图", "徽章与强按钮", "三张等权规格卡", "重复强调生活精选"],
+    defaultDirection: ["标准首屏", "常规实心按钮", "三张等权规格卡", "业务说明放在末尾"],
     songstyleDirection: ["器物留白", "题跋式规格", "纸瓷质感", "行动在停顿后出现"]
   },
   songMappings: ["格物致知", "宋版书", "汝窑与墨分五彩", "留白生意", "器以载道"]
@@ -89,7 +89,7 @@ export const qingxuCase: CaseStudy = {
     near: "当前研究任务、主标题和开始试用行动。",
     middle: "来源、发现、引用关系和团队复核路径。",
     far: "从信息到叙事的长期理解能力。",
-    defaultDirection: ["深色科技渐变", "AI POWERED 徽章", "发光按钮", "仪表盘式叠层"],
+    defaultDirection: ["中心化首屏", "常规实心按钮", "场景图后接说明", "三张等权功能卡"],
     songstyleDirection: ["三远法叙事", "纸墨工作台", "细线关系", "留白建立可信"]
   },
   songMappings: ["三远法", "格物致知", "宋版书", "汝窑与墨分五彩", "留白生意"]

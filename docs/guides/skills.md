@@ -11,6 +11,10 @@ order: 3
 
 Agent Skills 把原则、审查模型与工作流打包为可移植目录。将所需 skill 目录安装到支持 Agent Skills 的工具中，并保留其中的 `references/` 文件。
 
+当前 UI/UX 执行工作流部分参考
+[`nextlevelbuilder/ui-ux-pro-max-skill`](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
+的 decision-engine 与 checklist structure，但只吸收场景匹配、页面模式和交付前检查的结构。SongStyle 仍以宋代美学转译为主，不导入外部风格库、配色表或 AI-native 视觉默认值。详见 [UI/UX 执行模型](../guides/ui-ux-execution-model/)。
+
 ## 一句话安装
 
 如果你的 AI Agent 支持从 GitHub 安装 Skills，复制这句话给它：

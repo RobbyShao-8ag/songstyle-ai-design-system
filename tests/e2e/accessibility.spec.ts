@@ -10,6 +10,7 @@ const ROUTES = [
   "/reference-ui/",
   "/examples/lifestyle-brand/",
   "/examples/digital-product/",
+  "/examples/ecommerce-image/",
   "/examples/comparisons/",
   "/references/song-aesthetics-digital-design-research/"
 ];

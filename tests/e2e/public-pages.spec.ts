@@ -39,6 +39,7 @@ export const PUBLIC_ROUTES = [
   "/examples/",
   "/examples/lifestyle-brand/",
   "/examples/digital-product/",
+  "/examples/ecommerce-image/",
   "/examples/comparisons/",
   "/evaluations/",
   "/contributing/",

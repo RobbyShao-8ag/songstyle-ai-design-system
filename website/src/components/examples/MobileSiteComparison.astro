@@ -58,6 +58,7 @@ const { data, compact = false, compactSummary = false } = Astro.props;
 
   .comparison-summary {
     max-width: 46rem;
+    min-width: 0;
   }
 
   .visually-hidden {
@@ -107,6 +108,7 @@ const { data, compact = false, compactSummary = false } = Astro.props;
   .phone-pair {
     display: grid;
     gap: var(--song-space-scale-8);
+    min-width: 0;
   }
 
   .compact {
@@ -117,7 +119,7 @@ const { data, compact = false, compactSummary = false } = Astro.props;
 
   @media (min-width: 980px) {
     .mobile-comparison {
-      padding: var(--song-space-scale-10);
+      padding: var(--song-space-scale-12);
     }
 
     .phone-pair {

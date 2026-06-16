@@ -93,15 +93,15 @@ import { withBase } from "../../lib/paths";
     }
 
     .showcase-heading {
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: start;
       gap: var(--song-space-scale-8);
-      margin-bottom: var(--song-space-scale-3);
+      margin-bottom: 0;
     }
 
     .mobile-showcase .showcase-heading h2 {
       margin-bottom: 0;
-      font-size: 2.75rem;
+      font-size: 2.15rem;
     }
 
     .showcase-heading p:not(.eyebrow) {

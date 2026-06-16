@@ -18,15 +18,16 @@ const { data } = Astro.props;
     <img src={withBase(data.image)} alt={data.imageAlt} />
   </figure>
   <p class="description">{data.description}</p>
-  <dl>
+  <dl id="baiting-songstyle-brief">
     {data.features.map((feature) => (
       <div><dt>{feature.label}</dt><dd>{feature.value}</dd></div>
     ))}
   </dl>
   <div class="distance-note">
-    <span>近景是器物，中景是规格，远景是安静日常。</span>
+    <strong>安心日常</strong>
+    <span>{data.businessGoal}</span>
   </div>
-  <a href="#baiting-mobile-brief">{data.action}</a>
+  <a href="#baiting-songstyle-brief">{data.action}</a>
 </section>
 
 <style>
@@ -62,7 +63,7 @@ const { data } = Astro.props;
     font-size: 30px;
     font-weight: 400;
     line-height: 1.42;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   figure {
@@ -114,6 +115,8 @@ const { data } = Astro.props;
   }
 
   .distance-note {
+    display: grid;
+    gap: 10px;
     margin: 64px 0 26px;
     padding-left: 16px;
     border-left: 1px solid rgb(91 116 107 / 0.34);
@@ -121,10 +124,30 @@ const { data } = Astro.props;
     line-height: 1.8;
   }
 
+  .distance-note strong {
+    color: #25231f;
+  }
+
   a {
-    color: #425e55;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    justify-self: start;
+    padding: 0 16px;
+    border: 1px solid rgb(66 94 85 / 0.28);
+    border-radius: 8px;
+    background: #425e55;
+    color: #fff;
     font-weight: 600;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 6px;
+    text-decoration: none;
+  }
+
+  a:focus-visible {
+    outline: 3px solid #8a6f55;
+    outline-offset: 4px;
+  }
+
+  a:active {
+    transform: translateY(1px);
   }
 </style>

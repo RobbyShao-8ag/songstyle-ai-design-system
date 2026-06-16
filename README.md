@@ -11,6 +11,13 @@ aesthetics into modern UI, web, and app design decisions. It helps designers,
 developers, and AI agents decide what should exist, how information should
 relate, and where expression should stop.
 
+The UI/UX execution workflow partially references the decision-engine and
+checklist structure of
+[nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill),
+then filters it through SongStyle principles. It does not import that project's
+style catalog, palettes, or AI-native visual defaults. Rendered guide:
+`/guides/ui-ux-execution-model/`.
+
 宋式 AI 设计系统不是古风素材库，也不是把界面变得空旷。它将宋代美学中的格物致知、
 三远法、宋版书排版、汝窑色彩、留白生意与器以载道，转译为现代移动网站和 Web UI
 可以执行、审查和讨论的设计判断。
@@ -70,6 +77,8 @@ content did not become better. The design judgment did.
 
 普通 AI 与 SongStyle 版本使用相同建站要求、相同文案、相同图片、相同行动与相同目标。
 变化只来自移动网站的版面、层级、字体、字号、色彩、材质、图片裁切、空间和停止时机。
+案例现在采用同一生成提示词的受控对比：普通版使用只交代任务和内容的 Base Prompt，不写
+排版、布局、字体、风格、留白或色彩方向；SongStyle 版本只多一句“请使用 SongStyle Web Designer Skill 或 SongStyle Prompt 模板进行设计”，用来观察宋代美学执行层本身带来的差异。
 
 ![白汀移动网站公平对比](docs/assets/mobile-showcase-baiting.png)
 
@@ -78,6 +87,8 @@ content did not become better. The design judgment did.
 ![清序移动网站公平对比](docs/assets/mobile-showcase-qingxu.png)
 
 [清序 Qingxu 移动网站对比](https://robbyshao-8ag.github.io/songstyle-ai-design-system/examples/digital-product/)
+
+[电商介绍图片生成对比](https://robbyshao-8ag.github.io/songstyle-ai-design-system/examples/ecommerce-image/)
 
 ## Digital SongStyle Framework / 数字宋式框架
 
@@ -92,6 +103,7 @@ content did not become better. The design judgment did.
 
 - [从 Brief 生成 Web 设计](prompts/web-design/from-brief.md)
 - [改写现有页面](prompts/web-design/rewrite-existing-page.md)
+- [UI/UX 执行模型](docs/guides/ui-ux-execution-model.md)
 - [审查一个页面](prompts/design-review/review-page.md)
 - [比较普通 AI 与 SongStyle](prompts/design-review/compare-default-and-songstyle.md)
 - [SongStyle Web Designer Skill](skills/songstyle-web-designer/SKILL.md)

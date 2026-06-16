@@ -1,0 +1,81 @@
+---
+title: UI/UX 执行模型
+description: 把宋式原则转化为场景匹配、页面模式、交互状态与交付前检查。
+lang: zh-CN
+route: /guides/ui-ux-execution-model/
+section: 指南
+order: 2
+---
+
+# UI/UX 执行模型
+
+SongStyle 的 UI/UX 执行模型用于把 Brief 落到真实页面、界面和图片介绍中。它部分参考
+[`nextlevelbuilder/ui-ux-pro-max-skill`](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
+的 decision-engine 与 checklist structure：先识别场景，再选择页面模式，最后检查交互、响应式和交付状态。
+
+参考只限于决策结构。SongStyle 仍然宋式原则优先，不导入外部风格库，不复制配色、风格标签或 AI-native、neon、glass 等默认审美。
+
+## 决策顺序
+
+1. **Hard-constraint check / 硬约束检查**：必要内容、业务目标、真实性、可访问性、中文标题可读性和技术约束先被保护。
+2. **Scenario fit / 场景匹配**：判断这是产品落地页、交易页、数据工具、内容页、介绍图、运营页还是其他任务场景。
+3. **Page pattern / 页面模式**：选择最小可用结构，例如 hero + evidence + CTA、comparison + CTA、search first、pricing + FAQ、dashboard task flow 或 product intro image。
+4. **Near / Middle / Far 信息距离**：近景承接当前任务，中景解释证据、规格、流程和状态，远景提供品牌、信任和可延后探索。
+5. **Interaction states / 交互状态**：列出主要控件和状态，至少覆盖 focus、hover、active、disabled、loading、error/success。
+6. **Motion and responsive boundary / 动效与响应式边界**：动效解释变化，不制造表演；检查 reduced-motion、mobile touch、breakpoint。
+7. **Pre-delivery checks / 交付前检查**：用审查清单、真实内容、移动断点、可访问性、图片重量和链接路径确认可以交付。
+
+## Scenario fit / 场景匹配
+
+场景匹配不是给页面贴风格标签，而是确认用户在此刻要完成什么。
+
+- 产品落地页：保留价值主张、产品事实、证据、限制、价格或转化路径。
+- 交易页面：保留商品、价格、费用、风险、确认动作和售后路径。
+- 数据或专家工具：保留指标、单位、筛选、状态、异常、来源和纠错。
+- 内容型页面：保留标题、来源、发布时间、正文结构和延伸路径。
+- 电商介绍图片：保留商品、使用语境、材质或功能证据、购买判断所需信息，不把图片变成纯氛围海报。
+
+## Page pattern / 页面模式
+
+页面模式应服务场景，不应套模板。可选模式包括：
+
+- Hero + evidence + CTA：适合单一产品或服务介绍。
+- Comparison + CTA：适合需要解释差异或改写前后对比的页面。
+- Search first：适合目录、知识库、商品集合或服务查找。
+- Pricing + FAQ：适合套餐、价格、限制和异议处理。
+- Dashboard task flow：适合数据密集、状态密集或专家工作台。
+- Product intro image：适合电商商品首图、介绍图或小红书/详情页首屏素材。
+
+选定模式后，只保留完成该模式所需的结构。不要为了显得丰富而叠加轮播、徽章、动效、渐变和重复卡片。
+
+## Interaction states / 交互状态
+
+每个主要行动都要能回答：能否被看见、理解、操作、等待、失败和恢复。
+
+- focus：键盘焦点必须可见，并与视觉顺序一致。
+- hover：桌面 hover 只能补充反馈，不能承载必要信息。
+- active：点击或触控需要即时反馈，避免用户重复提交。
+- disabled：不可用状态要说明原因或保留恢复路径。
+- loading：异步操作要显示 loading、skeleton 或进度，不能冻结。
+- error/success：错误和成功反馈要靠文本或图标解释，不能只靠颜色。
+
+## Motion, Touch, And Breakpoints
+
+动效用于解释层级变化、状态变化或输入反馈。默认微交互应短、轻、少；循环动效只用于必要 loading。
+
+- reduced-motion：尊重用户减少动效偏好，关闭非必要滚动、浮动和视差。
+- mobile touch：移动端主要触点不小于 44px，邻近触点保持间距。
+- breakpoint：至少检查 320、375、414、768、1024、1440 宽度，确认无横向滚动、遮挡、文字溢出和图片裁切错误。
+
+## Pre-delivery checks / 交付前检查
+
+交付前输出必须包含：
+
+- 场景和页面模式选择理由。
+- 近景、中景、远景的信息安排。
+- 删除、延后、合并、保留或澄清的决策记录。
+- 交互状态清单：focus、hover、active、disabled、loading、error/success。
+- reduced-motion、mobile touch、breakpoint 检查结果。
+- 对照 `/checklist/` 的评分和证据。
+
+如果这些检查不能完成，先补信息或收窄方案，不要用宋式审美替代可用性证据。

@@ -125,6 +125,32 @@ test("review model includes score rubrics, critical failures, and evidence requi
   }
 });
 
+test("usability review evidence includes executable UI state checks", async () => {
+  const review = JSON.parse(
+    await readFile("checklists/songstyle-review.json", "utf8")
+  );
+  const checklistMarkdown = await readFile("checklists/songstyle-review.md", "utf8");
+  const usability = review.dimensions.find(
+    ({ id }) => id === "usability-accessibility-goals"
+  );
+  assert.ok(usability, "Missing usability-accessibility-goals dimension");
+
+  for (const term of [
+    "focus",
+    "hover",
+    "active",
+    "disabled",
+    "loading",
+    "error/success",
+    "reduced-motion",
+    "mobile touch",
+    "breakpoint"
+  ]) {
+    assert.match(JSON.stringify(usability), new RegExp(term), `Usability review data is missing ${term}`);
+    assert.match(checklistMarkdown, new RegExp(term), `Checklist markdown is missing ${term}`);
+  }
+});
+
 test("generated skill references include expanded foundation hardening rules", async () => {
   const skillNames = ["songstyle-web-designer", "songstyle-design-reviewer"];
   for (const skillName of skillNames) {
@@ -142,6 +168,59 @@ test("generated skill references include expanded foundation hardening rules", a
       "far"
     ]) {
       assert.match(reviewReference, new RegExp(term, "i"), `${skillName} reference is missing ${term}`);
+    }
+  }
+});
+
+test("UI UX execution model is documented and generated into portable skills", async () => {
+  const guide = await readFile("docs/guides/ui-ux-execution-model.md", "utf8");
+  const guideData = parseFrontmatter(guide, "docs/guides/ui-ux-execution-model.md");
+  assert.equal(guideData.route, "/guides/ui-ux-execution-model/");
+  assert.equal(guideData.lang, "zh-CN");
+
+  for (const term of [
+    "nextlevelbuilder/ui-ux-pro-max-skill",
+    "Scenario fit / 场景匹配",
+    "Page pattern / 页面模式",
+    "Interaction states / 交互状态",
+    "Pre-delivery checks / 交付前检查",
+    "宋式原则优先",
+    "不导入外部风格库",
+    "focus",
+    "hover",
+    "active",
+    "disabled",
+    "loading",
+    "error/success",
+    "reduced-motion",
+    "mobile touch",
+    "breakpoint"
+  ]) {
+    assert.match(guide, new RegExp(term.replace("/", "\\/")), `Execution guide is missing ${term}`);
+  }
+
+  for (const file of ["README.md", "docs/guides/skills.md"]) {
+    const markdown = await readFile(file, "utf8");
+    assert.match(markdown, /nextlevelbuilder\/ui-ux-pro-max-skill/, `${file} is missing attribution`);
+    assert.match(markdown, /ui-ux-execution-model\//, `${file} is missing execution guide link`);
+  }
+
+  for (const skillName of ["songstyle-web-designer", "songstyle-design-reviewer"]) {
+    const skill = await readFile(`skills/${skillName}/SKILL.md`, "utf8");
+    const reference = await readFile(
+      `skills/${skillName}/references/ui-ux-execution-model.md`,
+      "utf8"
+    );
+
+    assert.match(skill, /references\/ui-ux-execution-model\.md/, `${skillName} must read execution model reference`);
+    for (const term of [
+      "Scenario fit / 场景匹配",
+      "Page pattern / 页面模式",
+      "Interaction states / 交互状态",
+      "Pre-delivery checks / 交付前检查"
+    ]) {
+      assert.match(skill, new RegExp(term.replace("/", "\\/")), `${skillName} is missing ${term}`);
+      assert.match(reference, new RegExp(term.replace("/", "\\/")), `${skillName} reference is missing ${term}`);
     }
   }
 });
@@ -171,6 +250,42 @@ function parseFrontmatter(markdown, file) {
   const match = markdown.match(/^---\n([\s\S]*?)\n---/);
   assert.ok(match, `${file} is missing YAML frontmatter`);
   return YAML.parse(match[1]);
+}
+
+function extractPrompt(markdown, heading, file) {
+  const escapedHeading = heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = markdown.match(
+    new RegExp(`### ${escapedHeading}\\n\\n\\\`\\\`\\\`text\\n([\\s\\S]*?)\\n\\\`\\\`\\\``)
+  );
+  assert.ok(match, `${file} is missing ${heading} code block`);
+  return match[1];
+}
+
+function assertBasePromptIsContentOnly(markdown, file) {
+  const basePrompt = extractPrompt(markdown, "Base Prompt", file);
+  for (const forbidden of [
+    "排版",
+    "布局",
+    "字体",
+    "风格",
+    "留白",
+    "色彩",
+    "视觉层级",
+    "交互状态",
+    "交付前检查",
+    "水墨",
+    "印章",
+    "传统纹样",
+    "书法字体",
+    "SongStyle",
+    "宋式"
+  ]) {
+    assert.doesNotMatch(
+      basePrompt,
+      new RegExp(forbidden),
+      `${file} Base Prompt must be content-only and not include ${forbidden}`
+    );
+  }
 }
 
 test("Chinese core documentation is complete and follows the page schema", async () => {
@@ -259,10 +374,14 @@ test("prompt templates share the required structure and review sources", async (
   ];
   const requiredSections = [
     "Assumptions / 假设",
+    "Scenario fit / 场景匹配",
+    "Page pattern / 页面模式",
     "Information hierarchy / 信息层级",
     "Removal decisions / 删减决策",
     "Visual direction / 视觉方向",
+    "Interaction states / 交互状态",
     "Implementation constraints / 实现约束",
+    "Pre-delivery checks / 交付前检查",
     "Review / 审查"
   ];
 
@@ -295,8 +414,12 @@ test("prompts and skills require hard-constraint checkpoints and decision eviden
   ];
   const requiredPromptTerms = [
     "Hard-constraint check / 硬约束检查",
+    "Scenario fit / 场景匹配",
+    "Page pattern / 页面模式",
     "Near / Middle / Far",
     "Decision record / 决策记录",
+    "Interaction states / 交互状态",
+    "Pre-delivery checks / 交付前检查",
     "Evidence / 证据",
     "中文标题可读性"
   ];
@@ -314,6 +437,10 @@ test("prompts and skills require hard-constraint checkpoints and decision eviden
     assert.match(markdown, /Hard-constraint checkpoint/);
     assert.match(markdown, /near, middle, and far/);
     assert.match(markdown, /decision record/i);
+    assert.match(markdown, /Scenario fit \/ 场景匹配/);
+    assert.match(markdown, /Page pattern \/ 页面模式/);
+    assert.match(markdown, /Interaction states \/ 交互状态/);
+    assert.match(markdown, /Pre-delivery checks \/ 交付前检查/);
   }
 });
 
@@ -361,6 +488,85 @@ test("digital product case-study source exists", async () => {
   await access("examples/digital-product/qingxu.md");
 });
 
+test("regenerated website cases use the UI UX execution model", async () => {
+  const cases = [
+    "examples/lifestyle-brand/baiting.md",
+    "examples/digital-product/qingxu.md"
+  ];
+  for (const file of cases) {
+    const markdown = await readFile(file, "utf8");
+    for (const term of [
+      "UI/UX 执行模型再生成",
+      "同一基础生成提示词",
+      "Base Prompt 只交代任务和内容",
+      "不包含排版、布局、字体、风格、留白或色彩方向",
+      "SongStyle 版本只多一句",
+      "Controlled generation prompts",
+      "Base Prompt",
+      "SongStyle Prompt",
+      "请使用 SongStyle Web Designer Skill 或 SongStyle Prompt 模板进行设计",
+      "Scenario fit / 场景匹配",
+      "Page pattern / 页面模式",
+      "Interaction states / 交互状态",
+      "Pre-delivery checks / 交付前检查",
+      "focus",
+      "loading",
+      "reduced-motion",
+      "mobile touch",
+      "breakpoint"
+    ]) {
+      assert.match(markdown, new RegExp(term.replace("/", "\\/")), `${file} is missing regenerated-case term ${term}`);
+    }
+    assertBasePromptIsContentOnly(markdown, file);
+  }
+});
+
+test("ecommerce intro image comparison case exists", async () => {
+  const files = [
+    "examples/ecommerce-image/intro-image.md",
+    "website/src/pages/examples/ecommerce-image.astro",
+    "website/public/assets/cases/ecommerce-intro-default.png",
+    "website/public/assets/cases/ecommerce-intro-songstyle.png"
+  ];
+  for (const file of files) {
+    await assert.doesNotReject(access(file), `Missing ecommerce image comparison file: ${file}`);
+  }
+
+  const markdown = await readFile("examples/ecommerce-image/intro-image.md", "utf8");
+  const promptReference = await readFile("docs/references/image-generation-prompts.md", "utf8");
+  const data = parseFrontmatter(markdown, "examples/ecommerce-image/intro-image.md");
+  assert.equal(data.route, "/examples/ecommerce-image/");
+  for (const term of [
+    "电商介绍图片",
+    "普通 AI 默认图",
+    "SongStyle 介绍图",
+    "同一商品",
+    "同一介绍目标",
+    "同一生成提示词",
+    "Base Prompt 只交代任务和内容",
+    "不包含排版、布局、字体、风格、留白或色彩方向",
+    "SongStyle 版本只多一句",
+    "Controlled generation prompts",
+    "Base Prompt",
+    "SongStyle Prompt",
+    "即梦等外部模型复现提示词",
+    "Default Prompt",
+    "SongStyle Full Prompt",
+    "SongStyle AI Design System 的宋式 UI/UX 设计方法",
+    "请使用 SongStyle Web Designer Skill 或 SongStyle Prompt 模板进行设计",
+    "Scenario fit / 场景匹配",
+    "Page pattern / 页面模式",
+    "Interaction states / 交互状态",
+    "Pre-delivery checks / 交付前检查",
+    "ecommerce-intro-default.png",
+    "ecommerce-intro-songstyle.png"
+  ]) {
+    assert.match(markdown, new RegExp(term.replace("/", "\\/")), `Ecommerce image case is missing ${term}`);
+  }
+  assertBasePromptIsContentOnly(markdown, "examples/ecommerce-image/intro-image.md");
+  assertBasePromptIsContentOnly(promptReference, "docs/references/image-generation-prompts.md");
+});
+
 test("evidence-first redesign assets and collaboration files exist", async () => {
   const files = [
     "ROADMAP.md",
@@ -373,7 +579,9 @@ test("evidence-first redesign assets and collaboration files exist", async () =>
     ".github/ISSUE_TEMPLATE/config.yml",
     "website/src/data/cases.ts",
     "website/public/assets/cases/baiting-carafe.webp",
-    "website/public/assets/cases/qingxu-research.webp"
+    "website/public/assets/cases/qingxu-research.webp",
+    "website/public/assets/cases/ecommerce-intro-default.png",
+    "website/public/assets/cases/ecommerce-intro-songstyle.png"
   ];
 
   for (const file of files) {
@@ -456,7 +664,16 @@ test("case data declares mobile website briefs and SongStyle mappings", async ()
 
 test("README explains the fair comparison contract", async () => {
   const readme = await readFile("README.md", "utf8");
-  for (const term of ["same copy", "same image", "same features", "same goal"]) {
+  for (const term of [
+    "same copy",
+    "same image",
+    "same features",
+    "same goal",
+    "同一生成提示词",
+    "只交代任务和内容",
+    "Base Prompt",
+    "请使用 SongStyle Web Designer Skill 或 SongStyle Prompt 模板进行设计"
+  ]) {
     assert.match(readme, new RegExp(term, "i"), `README is missing: ${term}`);
   }
 });
